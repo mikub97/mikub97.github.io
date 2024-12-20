@@ -3,115 +3,92 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Michał Weiss</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            line-height: 1.6;
-            margin: 0;
-            padding: 0;
-            background-color: #f4f4f4;
-            color: #333;
-        }
-        header {
-            background: #333;
-            color: #fff;
-            padding: 1rem 0;
-            text-align: center;
-        }
-        header h1 {
-            margin: 0;
-            font-size: 2.5rem;
-        }
-        .container {
-            width: 80%;
-            margin: auto;
-            overflow: hidden;
-            padding: 2rem 0;
-        }
-        section {
-            margin-bottom: 2rem;
-        }
-        h2 {
-            color: #444;
-            border-bottom: 2px solid #ddd;
-            padding-bottom: 0.5rem;
-        }
-        ul {
-            list-style: none;
-            padding: 0;
-        }
-        ul li {
-            margin: 0.5rem 0;
-        }
-        footer {
-            text-align: center;
-            padding: 1rem;
-            background: #333;
-            color: #fff;
-            position: fixed;
-            bottom: 0;
-            width: 100%;
-        }
-        a {
-            color: #0066cc;
-            text-decoration: none;
-        }
-        a:hover {
-            text-decoration: underline;
-        }
-    </style>
+    <title> M.W. </title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <header>
         <h1>Michał Weiss</h1>
-        <p>Software Engineer | Cognitive Scientist</p>
+        <p>Educator | Cognitive Scientist | Researcher</p>
     </header>
-
+    <!-- <nav>
+        <a href="#about">About Me</a>
+        <a href="#education">Education & Research</a>
+        <a href="#experience">Teaching Experience</a>
+        <a href="#projects">Projects</a>
+        <a href="#skills">Skills</a>
+        <a href="#interests">Interests</a>
+        <a href="#contact">Contact</a>
+    </nav> -->
+    <div class="language-toggle">
+        <a href="index_pl.html"><img src="imgs/pl-flag.png" alt="Polish version"></a>
+    </div>
     <div class="container">
-        <section>
-            <h2>About Me</h2>
-            <p>I am a software engineer, cognitive scientist, and educator with a passion for exploring complex systems, human-machine interaction, and digital technologies. I also have extensive experience teaching mathematics and computer science to students of all levels.</p>
+        <section class="flex-container">
+            <div class="about">
+                <h2>About Me</h2>
+                <p>I am a software engineer, cognitive scientist, and educator with a deep passion for learning sciences, embodied cognition, and studying interactions between humans and digital technologies. 
+                   Currently, apart from teaching, I collaborate with the Human Interactivity and Language Lab (HILL) and the Polish Academy of Sciences to explore how movement coordination and physiological clues 
+                   can enhance our interactions with digital systems (e.g., collaborative robots and virtual reality).</p>
+                <p> Below, you can read more about my experience and expertise. You can use the widget on the left side (or below, if using mobile) to book a lesson with me
+                </p>
+            </div>
+            <div class="tidycal-cta">
+                <h2>Schedule a Class</h2>
+                <p>Book individual lessons with me through TidyCal.</p>
+                <a href="https://tidycal.com/mikub97" target="_blank">Book Now</a>
+            </div>
         </section>
-
-        <section>
-            <h2>Education</h2>
+        <section id="experience">
+            <h2>Teaching Experience</h2>
             <ul>
-                <li><strong>M.Sc. in Cognitive Science</strong> (2022 - Present) - University of Warsaw</li>
-                <li><strong>B.Sc. in Computer Science</strong> (2017 - 2021) - Warsaw University of Technology</li>
-                <li>Erasmus+ at Instituto Superior de Engenharia do Porto</li>
+                <li><strong>2020 – Present:</strong> Tutor at Classical School (formerly Akademeia Tutoring College), preparing students in Mathematics and Computer Science (A-levels programme) for admission to top universities worldwide.</li>
+                <li><strong>2021 – 2022:</strong> Teacher at Liceum w Chmurze, a democratic high school, teaching Mathematics and Computer Science.</li>
+                <li><strong>2021 – 2022:</strong> Teacher at Liceum im. Zuzanny Ginczanki w Warszawie, focusing on minority education in Mathematics and Computer Science.</li>
+            </ul>
+        </section>
+        <section id="education">
+            <h2>Education & Research</h2>
+            <ul>
+                <li><strong>M.Sc. in Cognitive Science</strong> - University of Warsaw (2022 - 2024)</li>
+                <li class="smaller-text">Master's Thesis: Quantifying Movement Coordination in Human-Robot Interaction (HRI) using Recurrence Quantification Analysis (RQA).</li>
+                <li><strong>B.Sc. in Computer Science</strong> - Warsaw University of Technology (2017 - 2021)</li>
+                <li class="smaller-text">Bachelor's Thesis: Optimization of car routes using ant colony algorithm</li>
+                <li><strong>Collaborated with HILL and Polish Academy of Sciences</strong> on VR and interaction modeling projects.</li>
+                <li><strong>Participated in interdisciplinary conferences and summer schools </strong>, including IEEE Summer School on Social Human-Robot Interaction 2023, Nonlinear Methods for Psychological and Social Sciences, and VR Summit 2023 (2nd place in a hackathon for developing VR software to assist paralyzed individuals).</li>
             </ul>
         </section>
 
-        <section>
-            <h2>Experience</h2>
+        <section id="projects">
+            <h2>Selected Projects</h2>
             <ul>
-                <li><strong>Computer Science and Mathematics Teacher</strong> (2020 - Present)</li>
-                <li><strong>Software Developer</strong> at Globema Sp. z o.o. (2019)</li>
+                <li>Analyzing eye-tracking and physiological data with the Polish Academy of Sciences to study time perception in VR settings.</li>
+                <li>Developed a genetic algorithm to optimize electrical power network configurations.</li>
+                <li>Web application for real-time visualization of biometric data using Python and MongoDB.</li>
             </ul>
+            <p>For more of my projects and contributions, visit my <a href="https://github.com/mikub97" target="_blank">GitHub profile</a>.</p>
         </section>
-
-        <section>
+        
+        <section id="skills">
             <h2>Skills</h2>
             <ul>
-                <li>Programming: Java, Python, R, SQL</li>
-                <li>Web Development: HTML, CSS, JavaScript</li>
-                <li>Data Analysis: RQA, Machine Learning</li>
-                <li>GIS Technology</li>
+                <li>Programming: Python, R, Java, Julia</li>
+                <li>Data Analysis: RQA, nonlinear dynamics</li>
+                <li>Multi-modal data integration: Eye-tracking, HR metrics</li>
+                <li>Web Development: Flask, Plotly Dash, Spring, SQL, MongoDB</li>
             </ul>
         </section>
-
-        <section>
+        <section id="interests">
             <h2>Interests</h2>
             <ul>
                 <li>Human-Robot Interaction</li>
                 <li>Virtual Reality</li>
-                <li>Data Visualization</li>
+                <li>Embodied cognition</li>
+                <li>Contemplative traditions - Advaita Vedanta, Taoism and others</li>
                 <li>Sailing, Climbing, Qigong</li>
             </ul>
         </section>
     </div>
-
     <footer>
         <p>Contact: <a href="mailto:mikub97@gmail.com">mikub97@gmail.com</a></p>
     </footer>
