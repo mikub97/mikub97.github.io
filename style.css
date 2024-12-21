@@ -10,6 +10,7 @@ header {
     background: #0066cc;
     color: #fff;
     padding: 1.5rem 0;
+    justify-content: center; /* Center horizontally */
     text-align: center;
 }
 header h1 {
@@ -18,21 +19,61 @@ header h1 {
 }
 header p {
     margin: 0.5rem 0 0;
+}header ul {
+    display: flex;
+    justify-content: center; /* Center horizontally */
+    align-items: center; /* Center vertically if the nav has height */
+    padding: 1rem;
 }
-nav {
-    background: #444;
-    padding: 0.5rem 0;
-    text-align: center;
+a {
+    color: #333; /* Dark gray for links */
+    text-decoration: none; /* Remove underline by default */
+    transition: color 0.3s ease; /* Smooth hover effect */
 }
-nav a {
-    color: #fff;
-    text-decoration: none;
-    margin: 0 1rem;
-    font-size: 1.1rem;
+a:hover {
+    color: #555; /* Lighter gray for hover effect */
+    text-decoration: underline; /* Optional: Underline on hover */
 }
-nav a:hover {
-    text-decoration: underline;
+
+#others a {
+    color: #333; /* Dark gray for links */
+    text-decoration: none; /* Remove underline by default */
+    transition: color 0.3s ease; /* Smooth hover effect */
 }
+
+#others a:hover {
+    color: #555; /* Lighter gray for hover effect */
+    text-decoration: underline; /* Optional: Underline on hover */
+}
+
+.nav-links {
+    list-style: none; /* Remove default list styling */
+    margin: 0; /* Reset margin */
+    padding: 0; /* Reset padding */
+    display: flex; /* Align items horizontally */
+    gap: 1rem; /* Space between links */
+    border: 2px solid #fff; /* Add white border */
+    border-radius: 8px; /* Optional: Rounded corners for a softer look */
+    background-color: rgba(255, 255, 255, 0.1); /* Optional: Light translucent background */
+}
+
+.nav-links li {
+    margin: 0; /* No extra margin needed for list items */
+}
+
+.nav-links a {
+    text-decoration: none; /* Remove underline */
+    color: #fff; /* White text */
+    font-weight: bold; /* Bold font */
+    padding: 0.5rem 1rem; /* Add padding for clickable area */
+    transition: color 0.3s ease, text-decoration 0.3s ease; /* Smooth hover effect */
+}
+
+.nav-links a:hover {
+    color: #ccc; /* Subtle hover effect for text color */
+    text-decoration: underline; /* Add underline on hover */
+}
+
 .container {
     width: 90%;
     max-width: 1200px;
