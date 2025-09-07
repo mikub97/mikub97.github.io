@@ -1,34 +1,25 @@
 :root {
-  --bg: #0b1016;
-  --bg-soft: #111824;
-  --text: #e8eef5;
-  --muted: #b8c2cf;
-  --brand: #7dd3fc; /* cyan-300 */
-  --brand-strong: #22d3ee; /* cyan-400 */
-  --card: #0f1622;
-  --border: #1f2a3a;
-  --shadow: 0 6px 24px rgba(0,0,0,.35);
+  /* --- Light theme (forced) --- */
+  --bg: #f7fafc;
+  --bg-soft: #ffffff;
+  --text: #0f1720;
+  --muted: #475569;
+  --brand: #0891b2;
+  --brand-strong: #06b6d4;
+  --card: #ffffff;
+  --border: #e5e7eb;
+  --shadow: 0 6px 24px rgba(2,8,23,.08);
 }
 
-@media (prefers-color-scheme: light) {
-  :root {
-    --bg: #f7fafc;
-    --bg-soft: #ffffff;
-    --text: #0f1720;
-    --muted: #475569;
-    --brand: #0891b2;
-    --brand-strong: #06b6d4;
-    --card: #ffffff;
-    --border: #e5e7eb;
-    --shadow: 0 6px 24px rgba(2,8,23,.08);
-  }
-}
+/* removed the prefers-color-scheme media query entirely */
 
 * { box-sizing: border-box; }
 html, body { height: 100%; }
 
 body {
-  margin: 0; background: var(--bg); color: var(--text);
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
   font: 16px/1.6 system-ui, -apple-system, Segoe UI, Roboto, Inter, "Helvetica Neue", Arial, "Noto Sans", "Apple Color Emoji", "Segoe UI Emoji";
   -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility;
 }
@@ -36,13 +27,24 @@ body {
 a { color: var(--brand-strong); text-decoration: none; }
 a:hover { text-decoration: underline; }
 
-.container { max-width: 1080px; margin: 0 auto; padding: 1.25rem; }
+.container {
+  max-width: 1280px; /* instead of 1080px */
+  margin: 0 auto;
+  padding: 1.25rem;
+}
 
 .skip { position: absolute; left: -9999px; }
 .skip:focus { left: 1rem; top: 1rem; background: var(--brand); color: #05202a; padding: .5rem .75rem; border-radius: .5rem; }
 
 /* Header / nav */
-header { position: sticky; top: 0; backdrop-filter: saturate(140%) blur(6px); background: color-mix(in srgb, var(--bg) 85%, transparent); border-bottom: 1px solid var(--border); z-index: 10; }
+header {
+  position: sticky; top: 0;
+  backdrop-filter: saturate(140%) blur(6px);
+  /* light translucent header */
+  background: color-mix(in srgb, var(--bg) 85%, transparent);
+  border-bottom: 1px solid var(--border);
+  z-index: 10;
+}
 .nav { display: flex; align-items: center; gap: 1rem; justify-content: space-between; padding: .75rem 1.25rem; }
 .brand { display: flex; align-items: center; gap: .75rem; font-weight: 700; }
 .brand img { width: 28px; height: 28px; }
@@ -51,29 +53,70 @@ header { position: sticky; top: 0; backdrop-filter: saturate(140%) blur(6px); ba
 .nav a:hover { opacity: 1; }
 
 /* Hero */
-.hero { display: grid; grid-template-columns: 1.3fr .7fr; gap: 2rem; align-items: center; padding: 2.5rem 0 1rem; }
+.hero {
+  width: 100%;                /* span full viewport width */
+  max-width: none;            /* remove container restriction */
+  margin: 0;                  /* flush with edges */
+  padding: 3rem 2rem;         /* some breathing room inside */
+  display: grid;
+  grid-template-columns: 1.3fr .7fr;
+  gap: 2rem;
+  align-items: center;
+  background: var(--bg);      /* keep same background */
+}
+
+@media (max-width: 900px) {
+  .hero {
+    grid-template-columns: 1fr;
+  }
+}
 @media (max-width: 900px) { .hero { grid-template-columns: 1fr; } }
 .hero h2 { font-size: 1.75rem; margin: 0 0 .75rem; }
 .sub { color: var(--muted); margin: 0 0 1rem; }
 
 .cta { display: flex; flex-wrap: wrap; gap: .75rem; }
-.btn { display: inline-flex; align-items: center; gap: .5rem; border: 1px solid var(--border); background: var(--bg-soft); color: var(--text); padding: .6rem .9rem; border-radius: .8rem; box-shadow: var(--shadow); font-weight: 600; }
+.btn {
+  display: inline-flex; align-items: center; gap: .5rem;
+  border: 1px solid var(--border);
+  background: var(--bg-soft);
+  color: var(--text);
+  padding: .6rem .9rem;
+  border-radius: .8rem;
+  box-shadow: var(--shadow);
+  font-weight: 600;
+}
 .btn:hover { background: var(--card); text-decoration: none; }
-.btn.primary { background: linear-gradient(180deg, var(--brand-strong), var(--brand)); color: #05202a; border-color: transparent; }
+.btn.primary {
+  background: linear-gradient(180deg, var(--brand-strong), var(--brand));
+  color: #05202a; /* readable on cyan gradient */
+  border-color: transparent;
+}
 .btn.ghost { background: transparent; }
 
 .photo-box { display: flex; justify-content: center; align-items: center; }
 .photo-box img { max-width: 350px; width: 100%; height: auto; border-radius: 1rem; box-shadow: var(--shadow); }
 
 /* Sections */
-section { margin: 2rem 0; background: var(--card); border: 1px solid var(--border); border-radius: 1rem; box-shadow: var(--shadow); padding: 1.25rem; }
-section h2 { margin: 0 0 .5rem; font-size: 1.25rem; font-weight: 600; } /* Styled smaller like h3 */
+section {
+  margin: 2rem 0;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 1rem;
+  box-shadow: var(--shadow);
+  padding: 1.25rem;
+}
+section h2 { margin: 0 0 .5rem; font-size: 1.25rem; font-weight: 600; } /* smaller h2 (like h3) */
 .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
 @media (max-width: 800px) { .grid-2 { grid-template-columns: 1fr; } }
 
 ul { margin: .5rem 0 0 1rem; }
 
-.pill { display: inline-block; padding: .35rem .6rem; border: 1px solid var(--border); border-radius: 999px; margin: .25rem .25rem 0 0; font-size: .9rem; background: color-mix(in srgb, var(--bg-soft) 70%, var(--brand) 30%); }
+.pill {
+  display: inline-block; padding: .35rem .6rem;
+  border: 1px solid var(--border);
+  border-radius: 999px; margin: .25rem .25rem 0 0; font-size: .9rem;
+  background: color-mix(in srgb, var(--bg-soft) 70%, var(--brand) 30%);
+}
 
 .lang { display: inline-flex; align-items: center; gap: .5rem; }
 .lang img { width: 24px; height: 16px; border-radius: 2px; border: 1px solid var(--border); }
