@@ -1,5 +1,42 @@
 <!doctype html>
 <html lang="en">
+    <script>
+(function() {
+  // Allow manual override via ?lang=en|pl in the URL
+  const qs = new URLSearchParams(location.search);
+  const override = qs.get("lang");
+  if (override === "en" || override === "pl") {
+    try { localStorage.setItem("site_lang_pref", override); } catch {}
+  }
+
+  // Read saved preference
+  let pref = null;
+  try { pref = localStorage.getItem("site_lang_pref"); } catch {}
+
+  // Detect browser language (fallback to 'en')
+  const langs = navigator.languages && navigator.languages.length
+    ? navigator.languages
+    : [navigator.language || "en"];
+
+  const wantsPL = (pref ? pref === "pl" : langs.some(l => (l || "").toLowerCase().startsWith("pl")));
+
+  // Are we currently on the PL page?
+  const isPLPage =
+    document.documentElement.lang === "pl" ||
+    /index_pl\.html$/i.test(location.pathname);
+
+  // Compute target paths relative to current directory
+  const toPL = "index_pl.html";
+  const toEN = "index.html";
+
+  // Only redirect if needed (and avoid loops)
+  if (wantsPL && !isPLPage) {
+    location.replace(toPL);
+  } else if (!wantsPL && isPLPage) {
+    location.replace(toEN);
+  }
+})();
+</script>
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
