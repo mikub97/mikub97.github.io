@@ -1,98 +1,214 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title> M.W. </title>
-    <link rel="icon" href="imgs/light-bulb.png" type="image/x-icon">
-    <link rel="stylesheet" href="style.css">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Michał Weiss — Educator · Cognitive Scientist · Software Engineer</title>
+  <meta name="description" content="Michał Weiss — educator, cognitive scientist and software engineer. Lessons in mathematics and computer science (online), research in embodied cognition and human–technology interaction.">
+  <link rel="icon" href="imgs/light-bulb.png" type="image/png">
+  <link rel="canonical" href="https://mikub97.github.io/">
+
+  <!-- Open Graph / Twitter -->
+  <meta property="og:title" content="Michał Weiss — Educator · Cognitive Scientist · Software Engineer">
+  <meta property="og:description" content="Lessons in maths & CS (online). Research in learning sciences, embodied cognition and human–technology interaction.">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="imgs/og-card.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Michał Weiss">
+  <meta name="twitter:description" content="Educator · Cognitive Scientist · Software Engineer">
+  <meta name="twitter:image" content="imgs/og-card.png">
+
+  <!-- Alternate language -->
+  <link rel="alternate" href="/index_pl.html" hreflang="pl" />
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="style.css">
+
+  <!-- Structured data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Michał Weiss",
+    "jobTitle": "Educator, Cognitive Scientist",
+    "email": "mailto:mikub97@gmail.com",
+    "url": "https://mikub97.github.io/",
+    "sameAs": [
+      "https://github.com/mikub97"
+    ]
+  }
+  </script>
 </head>
 <body>
-    <header>
-        <h1>Michał Weiss</h1>
-        <p>Educator | Cognitive Scientist | Software Engineer</p>
-    <!-- </br>
-        <ul class="nav-links">
-            <li><a href="books.html">Materials and Recommendations</a></li>
-            <li><a href="#contact">Contact</a></li>
-        </ul> -->
-    </header>
-    <div class="language-toggle">
-        <a href="index_pl.html"><img src="imgs/pl-flag.png" alt="Polish version"></a>
-    </div>
-    <div class="container">
-        <section class="flex-container">
-            <div class="about">
-                <h2>About Me</h2>
-                <p>I am a software engineer, cognitive scientist, and educator with a deep passion for learning sciences, embodied cognition, and studying interactions between humans and digital technologies. 
-                   Currently, apart from teaching, I collaborate with the Human Interactivity and Language Lab (HILL) and the Polish Academy of Sciences to explore how movement coordination and physiological clues 
-                   can enhance our interactions with digital systems (e.g., collaborative robots and virtual reality).</p>
-                <p> Below, you can read more about my experience and expertise. You can use the widget on the right side (or below, if using mobile) to book a lesson with me.
-                </p>
-            </div>
-            <div class="tidycal-cta">
-                <h2>Schedule a Class</h2>
-                <p>Book individual lessons with me through TidyCal.</p>
-                <a href="https://tidycal.com/mikub97" target="_blank">Book Now</a>
-            </div>
-        </section>
-        <section id="experience">
-            <h2>Teaching Experience</h2>
-            <ul>
-                <li><strong>2020 – Present:</strong> Teacher at Classical School (formerly Akademeia Tutoring College), preparing students in Mathematics and Computer Science (A-levels programme) for admission to top universities worldwide.</li>
-                <li><strong>2021 – 2022:</strong> Teacher at Liceum w Chmurze, a democratic high school, teaching Mathematics and Computer Science.</li>
-                <li><strong>2021 – 2022:</strong> Teacher at Liceum im. Zuzanny Ginczanki w Warszawie, focusing on minority education in Mathematics and Computer Science.</li>
-            </ul>
-        </section>
-        <section id="education">
-            <h2>Education & Research</h2>
-            <ul>
-                <li><strong>M.Sc. in Cognitive Science</strong> - University of Warsaw (2022 - 2024)</li>
-                <li class="smaller-text">Master's Thesis: Quantifying Movement Coordination in Human-Robot Interaction (HRI) using Recurrence Quantification Analysis (RQA).</li>
-                <li><strong>B.Sc. in Computer Science</strong> - Warsaw University of Technology (2017 - 2021)</li>
-                <li class="smaller-text">Bachelor's Thesis: Optimization of car routes using ant colony algorithm</li>
-                <li><strong>Collaborated with HILL and Polish Academy of Sciences</strong> on VR and interaction modeling projects.</li>
-                <li><strong>Participated in interdisciplinary conferences and summer schools </strong>, including IEEE Summer School on Social Human-Robot Interaction 2023, Nonlinear Methods for Psychological and Social Sciences, and VR Summit 2023 (2nd place in a hackathon for developing VR software to assist paralyzed individuals).</li>
-            </ul>
-        </section>
+  <a class="skip" href="#main">Skip to content</a>
+  <header>
+    <nav class="nav" aria-label="Primary">
+      <div class="brand">
+        <img src="imgs/light-bulb.png" alt="Site icon">
+        <span>Michał Weiss</span>
+      </div>
+      <ul>
+        <li><a href="#about">Bio</a></li>
+        <!-- <li><a href="#education-teaching">Education & Teaching</a></li>
+        <li><a href="#publications">Publications</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#offer">Educational Offer</a></li>
+        <li><a href="#projects">Projects</a></li> -->
+        <li><a href="#contact">Contact</a></li>
+        <li><a class="lang" href="index_pl.html" aria-label="Polish version"><img src="imgs/pl-flag.png" alt="PL"></a></li>
+      </ul>
+    </nav>
+  </header>
 
-        <section id="projects">
-            <h2>Selected Projects</h2>
-            <ul>
-                <li>Analyzing eye-tracking and physiological data with the Polish Academy of Sciences to study time perception in VR settings.</li>
-                <li>Developed a genetic algorithm to optimize electrical power network configurations.</li>
-                <li>Web application for real-time visualization of biometric data using Python and MongoDB.</li>
-            </ul>
-            <p>For more of my projects and contributions, visit my <a href="https://github.com/mikub97" target="_blank"><strong>GitHub profile</strong></a>.</p>
-        </section>
-        
-        <section id="skills">
-            <h2>Skills</h2>
-            <ul>
-                <li>Programming: Python, R, Java, Julia</li>
-                <li>Data Analysis: RQA, nonlinear dynamics</li>
-                <li>Multi-modal data integration: Eye-tracking, HR metrics</li>
-                <li>Web Development: Flask, Plotly Dash, Spring, SQL, MongoDB</li>
-            </ul>
-        </section>
-        <section id="interests">
-            <h2>Interests</h2>
-            <ul>
-                <li>Consciousness</li>
-                <li>Music (70s, progressive rock and jazz fusion). Recently, I started learning playing percussion</li>
-                <li>Movement practices - qigong, gymnastics, baguazhang, capoeira and everything that feels right </li>
-                <li>Contemplative traditions - Advaita Vedanta, Taoism and others</li>
-                <li>Sailing, climbing, basketball</li>
-                <li>Human-machine interactions</li>
-                <li>4E cognition</li>
-               
-            </ul>
-            <p> Here you can find some interesting <a href="books.html"><strong> Materials and Recommendations</strong></a>
+  <main id="main" class="container">
+    <section class="hero" id="about">
+      <div>
+        <h2>Bio</h2>
+        <p class="sub">
+          Hello everyone! My name is Michał Weiss. I am a cognitive scientist, software engineer, and educator. 
+          My research focuses on embodied cognition and multimodal interaction. I study how language, gaze, and movement 
+          synchronize in collaborative activities, and how these processes can inform the design of digital systems such 
+          as collaborative robots and educational technologies. I collaborate closely with the Human Interactivity and 
+          Language Lab (HILL) and the Copernicus Science Centre in Warsaw, where I work on projects connecting interaction research 
+          with learning sciences.
+        </p>
 
-        </section>
-    </div>
-    <footer id="contact">
-        <p>Contact: <a href="mailto:mikub97@gmail.com">mikub97@gmail.com</a></p>
-    </footer>
+        <p class="sub">
+          I hold a B.Sc. in Computer Science from the Warsaw University of Technology and an M.Sc. in Cognitive Science 
+          from the University of Warsaw. Currently, I conduct research on embodied learning with the Copernicus Science Centre, studying how children develop Cartesian perception 
+          through joint action and interactive games.
+        </p>
+
+        <p class="sub">
+          Alongside my academic work, I have more than eight years of teaching experience. I have taught mathematics 
+          and computer science in Classical School (formerly Akademeia Tutoring College), Liceum w Chmurze, 
+          and L.O. im. Zuzanny Ginczanki. I enjoy inspiring students by recognizing their talents and helping them broaden 
+          their horizons. I currently offer online lessons in mathematics and computer science for learners at all levels, 
+          from primary school to university.
+        </p>
+
+        <p>
+          📄 You can download my professional CV here: 
+          <a href="cv.pdf" target="_blank" rel="noopener"><strong>Download CV (PDF)</strong></a>
+        </p>
+
+        <div class="cta">
+          <a class="btn primary" href="https://tidycal.com/mikub97" target="_blank" rel="noopener">Book a lesson</a>
+          <a class="btn" href="#offer">See teaching offer</a>
+          <a class="btn ghost" href="https://github.com/mikub97" target="_blank" rel="noopener">GitHub</a>
+          <a class="btn ghost" href="mailto:mikub97@gmail.com">Email</a>
+        </div>
+      </div>
+      <div class="photo-box">
+        <img src="imgs/michal_morro_marron.jpg" alt="Portrait of Michał Weiss" loading="lazy">
+      </div>
+    </section>
+
+    <section id="education-teaching">
+      <div class="grid-2">
+        <div>
+          <h2>Education & Research</h2>
+          <ul>
+            <li><strong>M.Sc. Cognitive Science</strong> — University of Warsaw (2022–2024). Thesis: <em>Quantifying Movement Coordination in Human-Robot Interaction (HRI) using Recurrence Quantification Analysis (RQA)</em>.</li>
+            <li><strong>B.Sc. Computer Science</strong> — Warsaw University of Technology (2017–2021). Thesis: <em>Optimization of car routes using the ant colony algorithm</em>.</li>
+            <li><strong>Collaborations</strong>: HILL & Copernicus Science Centre in Warsaw & Polish Academy of Sciences — VR and interaction modelling projects.</li>
+          </ul>
+        </div>
+        <div>
+          <h2>Teaching Experience</h2>
+          <ul>
+            <li><strong>2020 – Present</strong>: Teacher at Classical School (formerly Akademeia Tutoring College). Preparing students in Mathematics and Computer Science (A-levels) for top universities.</li>
+            <li><strong>2021 – 2022</strong>: Teacher at <em>Liceum w Chmurze</em> (democratic high school) — Mathematics & Computer Science.</li>
+            <li><strong>2021 – 2022</strong>: Teacher at <em>L.O. im. Zuzanny Ginczanki</em> — minority education, Mathematics & Computer Science.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section id="publications">
+      <h2>Publications</h2>
+      <ul>
+        <li>
+          Weiss, M., Araújo, E., Silva, P. A., Bermudez i Badia, S., Pilacinski, A., & Zubek, J. (2024).
+          <em>Quantifying Movement Coordination in Human-Robot Interaction</em>. 
+          Preprint. 
+          <a href="Movement_Coordination_in_HRI__COGSCI_.pdf" target="_blank" rel="noopener"><strong>Download PDF</strong></a>
+        </li>
+      </ul>
+    </section>
+
+    <section id="skills">
+      <h2>Skills</h2>
+      <p>
+        <span class="pill">Python</span>
+        <span class="pill">R</span>
+        <span class="pill">Java</span>
+        <span class="pill">Julia</span>
+        <span class="pill">Plotly Dash</span>
+        <span class="pill">Flask</span>
+        <span class="pill">Spring</span>
+        <span class="pill">SQL</span>
+        <span class="pill">MongoDB</span>
+        <span class="pill">RQA</span>
+        <span class="pill">Nonlinear dynamics</span>
+        <span class="pill">Eye-tracking</span>
+        <span class="pill">HR metrics</span>
+      </p>
+    </section>
+
+    <section id="offer">
+      <h2>Educational Offer</h2>
+      <p><strong>I teach online</strong> — tailored one-to-one lessons for pupils and students.</p>
+      <ul>
+        <li><strong>Mathematics</strong>: primary → high school, exam prep (incl. matura basic/extended), extra problem sets & notes.</li>
+        <li><strong>Computer Science / Programming</strong>: Python, Java, Lua (Minecraft); algorithmic thinking; intro to AI; graphics; OS & computer architecture.</li>
+        <li><strong>Approach</strong>: clear explanations, steady scaffolding, and motivation through authentic interests.</li>
+      </ul>
+    </section>
+
+    <section id="projects">
+      <h2>Selected Projects</h2>
+      <ul>
+        <li>
+          Research on embodied learning 
+          (<a href="https://www.youtube.com/watch?v=RPwMP0sdwWQ" target="_blank" rel="noopener"><strong>OЯTHO project</strong></a>) 
+          — researching how children develop <em>Cartesian perception</em> through interactive games
+        </li>
+        <li>Analysis of eye-tracking & physiological data to study time perception in VR (with PAS).</li>
+        <li>Quantifying movement coordination in Human-Robot Interaction using (cross) RQA </li>
+        <li>Design and implementation of a <strong>railway network modelling tool</strong> within a GIS system (GE Smallworld PNI, B2B contract work).</li>
+        <li>Genetic algorithm for optimizing electrical power network configurations.</li>
+        <li>Real-time web app for biometric data visualization (Python + MongoDB).</li>
+        <li>Interactive dashboards for multimodal research data (Python, Plotly Dash, Streamlit)</li>
+        <li>Arduino-based <strong>CanSat</strong> system for environmental data logging and LoRa telemetry, with ground station dashboard.</li>
+      </ul>
+      <p>More on <a href="https://github.com/mikub97" target="_blank" rel="noopener"><strong>GitHub</strong></a>.</p>
+    </section>
+
+    <section id="contact">
+      <h2>Contact</h2>
+      <div class="grid-2">
+        <div>
+          <p>Email: <a href="mailto:mikub97@gmail.com">mikub97@gmail.com</a></p>
+          <p>I teach online across Poland and internationally.</p>
+        </div>
+        <div>
+          <p>
+            <a class="btn primary" href="mailto:mikub97@gmail.com?subject=Lessons%20in%20Math%20/ %20CS">Email me</a>
+            <a class="btn" href="https://tidycal.com/mikub97" target="_blank" rel="noopener">Book via TidyCal</a>
+          </p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="container">
+    <p>© <span id="y"></span> Michał Weiss · <a href="index_pl.html">Polski</a></p>
+  </footer>
+
+  <script>
+    // Current year in footer
+    document.getElementById('y').textContent = new Date().getFullYear();
+  </script>
 </body>
 </html>
