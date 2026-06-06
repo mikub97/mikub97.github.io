@@ -1,0 +1,20 @@
+title: "Brasil 2026"
+description: "Notes, photos, and movement — a research trip to Brazil"
+baseurl: ""
+url: "https://mikub97.github.io"
+author: "Michał Weiss"
+lang: en
+
+markdown: kramdown
+permalink: /:year/:month/:day/:title/
+show_excerpts: true
+excerpt_separator: "<!--more-->"
+
+plugins:
+  - jekyll-seo-tag
+  - jekyll-feed
+
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - "*.sh"

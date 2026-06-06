@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="{{ site.lang | default: 'en' }}">
+<head>
+  {% include head.html %}
+</head>
+<body>
+  {% include nav.html %}
+  <main class="main-content">
+    {{ content }}
+  </main>
+  <footer class="site-footer">
+    <div class="container">
+      <p>{{ site.author }} &mdash; {{ site.time | date: "%Y" }}</p>
+    </div>
+  </footer>
+</body>
+</html>
