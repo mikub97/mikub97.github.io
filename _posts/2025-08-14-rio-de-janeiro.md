@@ -15,14 +15,13 @@ Cidade de deus. Miasto Boga. Absolutnie przepiękne, kujące w oczy kontrastami.
 
 <!--more-->
 Wylądowałem w São Paulo i wszystko wydawało mi się niesamowicie obce. Myśląc o lądzie, po którym stąpałem, wyobrażałem sobie portugalskich konkwistadorów, zgadzając się z nimi, że jest to zdecydowanie coś innego niż dotychczas.
-Po nocy w hostelu, spędziłem poranek w spokojnej dzielnicy. Byłem bardzo podekscytowany. Zachwycałem się wszystkim co było - posłodzoną tanią kawą, przedziwnym systemem sprzedaży w sklepo-kawiarni, prostotą i brzydotą brudnych ulic i grafitti. Pamiętam jak napawałem się jednym z nich, na których były brazylijskie barwy. Z jakiegoś powodu flaga Brazylii wywoływała u mnie poczucie dumy.
+Po nocy w hostelu, spędziłem poranek w spokojnej dzielnicy. Byłem bardzo podekscytowany. Zachwycałem się wszystkim co było - posłodzoną tanią kawą, przedziwnym systemem sprzedaży w sklepo-kawiarni, prostotą i brzydotą brudnych ulic, grafitti. Pamiętam jak napawałem się jednym z murali, na którym były barwy flagi Brazylii. Z jakiegoś powodu wywoływało to u mnie poczucie dumy.
 
 Poza tym São Paulo mnie wyczerpało. Newiele widząć poza ogromem tej metropolii, szybko wsiadłem w autobus do Rio de Janeiro. 
 
 Autokar, którym podróżowałem, zaraz po przejechaniu granicy miasta, gwałtownie zatrzymał się, a siła bezwładności strąciła mój telefon na podłogę. Przestał działać - ekran nie odpowiada. 
 
-Nawet teraz, gdy to piszę, sam zadziwiam się nad moją spokojną reakcją na tą sytuację. Doświadczeniu witaj, pomyślałem. 10 minut później wysiadłem na przystanku autobusowym w Rio de Janeiro. Pomogła mi grupka Żydów, która również jechała na Capacabanę. Jakiś cudem znalazłem moje airbnb i wszedłem do środka. To było piękne mieszkanie, nieobecnej jeszcze wtedy zamożnej kobiety, architektki Celiny. Jej zachrypnięty głos, 
-piękne wnętrze mieszkania i unoszący się wokół dym tytoniowy nadawał temu miejscu charakter, który bardzo dobrze wspominam. Rozpoczął się pierwszy etap mojej podróży - czas cichego obserwowania obyczajów Brazylijczyków.
+Nawet teraz, gdy to piszę, sam zadziwiam się  moją spokojną reakcją na tą sytuację. "Doświadczeniu - witaj", pomyślałem. 10 minut później wysiadłem na przystanku autobusowym w Rio de Janeiro. Pomogła mi grupka Żydów, która również jechała na Capacabanę, zapraszając mnie do wspólnej taksówki. Jakiś cudem znalazłem moje airbnb i wszedłem do środka. To było piękne mieszkanie, nieobecnej jeszcze wtedy zamożnej kobiety, architektki Celiny. Jej zachrypnięty głos, piękne mieszkanie i unoszący się wokół dym tytoniowy nadawał temu miejscu charakter, który bardzo dobrze wspominam. Rozpoczął się pierwszy etap mojej podróży - czas cichego obserwowania obyczajów Brazylijczyków.
 
 ![Plaża o zmierzchu](/assets/images/rio/20250819_171658.jpg)
 
