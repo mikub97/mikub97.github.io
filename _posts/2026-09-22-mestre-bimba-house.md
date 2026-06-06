@@ -3,6 +3,8 @@ layout: post
 title: "Casa de Mestre Bimba"
 date: 2026-09-22
 location: "Salvador, Bahia"
+lat: -12.9714
+lng: -38.5014
 tags: [capoeira, history, mestre-bimba]
 ---
 

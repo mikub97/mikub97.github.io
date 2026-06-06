@@ -1,6 +1,9 @@
 <header class="site-header">
   <div class="container nav-inner">
-    <a class="site-title" href="{{ '/' | relative_url }}">{{ site.title }}</a>
+    <a class="site-title" href="{{ '/' | relative_url }}">
+      <img class="nav-flag" src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/05/Flag_of_Brazil.svg/500px-Flag_of_Brazil.svg.png" alt="Brazil">
+      {{ site.title }}
+    </a>
     <nav class="site-nav">
       <a href="{{ '/' | relative_url }}" {% if page.url == '/' %}class="active"{% endif %}>Posts</a>
       <a href="{{ '/timeline' | relative_url }}" {% if page.url == '/timeline' %}class="active"{% endif %}>Timeline</a>
