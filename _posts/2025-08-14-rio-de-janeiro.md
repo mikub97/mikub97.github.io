@@ -5,7 +5,6 @@ date: 2025-08-14
 location: "Rio de Janeiro"
 lat: -22.9068
 lng: -43.1729
-tags: [rio]
 written: 2026-06-06
 cover_image: /assets/images/rio/20250821_143350.jpg
 ---

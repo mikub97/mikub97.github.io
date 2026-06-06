@@ -5,7 +5,6 @@ date: 2025-09-18
 location: "Chapada Diamantina"
 lat: -12.5583
 lng: -41.3906
-tags: [chapada, bahia, brazylia, trekking]
 written: 2026-06-07
 cover_image: /assets/images/bahia/20250927_082346.jpg
 ---

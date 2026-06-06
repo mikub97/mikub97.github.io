@@ -5,7 +5,6 @@ date: 2025-08-25
 location: "Morro de São Paulo, Bahia"
 lat: -13.3814
 lng: -38.9138
-tags: [morro, bahia, workaway, brazylia]
 written: 2026-06-06
 cover_image: /assets/images/morro/20250904_205728.jpg
 ---

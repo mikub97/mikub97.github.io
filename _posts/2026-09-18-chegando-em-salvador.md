@@ -5,7 +5,6 @@ date: 2026-09-18
 location: "Salvador, Bahia"
 lat: -12.9714
 lng: -38.5014
-tags: [capoeira, salvador, arrival]
 cover_image: /assets/images/salvador-cover.jpg
 ---
 

@@ -5,7 +5,6 @@ date: 2026-09-22
 location: "Salvador, Bahia"
 lat: -12.9714
 lng: -38.5014
-tags: [capoeira, history, mestre-bimba]
 ---
 
 The house on Rua das Laranjeiras where Manoel dos Reis Machado taught is now a small museum. We visited in the late afternoon when the heat finally softened.
