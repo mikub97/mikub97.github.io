@@ -39,7 +39,7 @@ Wypożyczyłem samochód i pojechałem do Igatu, miejscowości, w której zatrzy
 
 ![Lodówka hostelowa](/assets/images/bahia/20251002_142802.jpg)
 
-Po powrocie, nadszedł czas na parę ostatnich nocy w kochanie Chapadzie. 
+Po powrocie, nadszedł czas na parę ostatnich nocy w kochanej Chapadzie. 
 Był to czas dorocznego festiwalu muzycznego, największego w regionie.
 Świętowanie.
 Pierwsza porządna libacja owocową cachacą i nocna włóczęga z Wimem i Adrianą.
