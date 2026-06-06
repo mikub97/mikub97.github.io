@@ -4,12 +4,7 @@ title: Posts
 ---
 <div class="container">
 
-  <div class="index-header">
-    <h1>{{ site.title }}</h1>
-    <p>{{ site.description }}</p>
-  </div>
-
-  {% if site.posts.size == 0 %}
+{% if site.posts.size == 0 %}
   <p style="color: var(--muted); font-style: italic;">No posts yet. Add a file to <code>_posts/</code> to get started.</p>
   {% else %}
   <ul class="post-list">
