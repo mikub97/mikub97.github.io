@@ -28,9 +28,8 @@ Nawet teraz, gdy to piszę, sam zadziwiam się  moją spokojną reakcją na tą 
 Parę dni później, w mieszkaniu na Copacabanie, pojawiła się Cecylia. Mówiła po angielsku, więc zamiast podszkolić portugalski, dowiedziałem się jakie
 społeczne postawy kształtują nierówny teren społeczno-ekonomiczny w jednej z największych metropolii kraju. 
 Ona nie chciała wiedzieć i dziwiła mi się, ze interesuję się tymi ludźmi z przecznicy dalej - faweli. 
-"Oni są niebezbieczni, nie ma co się interesować nimi. Niech będą tam, my jesteśmy tu". To było zdumiewające.
-A jednak, czułem się bardziej jak "my", niz "oni" - ich nie poznałem, natomiast ona wydawała mi się zadziwiająco podobna
-to tego co znałem z Polski.
+"Oni są niebezpieczni -  nie ma co się interesować nimi. Niech będą tam, my jesteśmy tu". To było zdumiewające.
+A jednak, czułem się bardziej jak "my", niż "oni" - ich nie poznałem, natomiast ona wydawała mi się zadziwiająco znajoma.
 
 ![Widok z trasy — Baía de Guanabara](/assets/images/rio/20250821_145003.jpg)
 
