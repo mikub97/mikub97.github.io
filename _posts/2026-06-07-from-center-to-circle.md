@@ -192,18 +192,4 @@ W połączeniu z nagraniem video ("video-cued") jest to szczególnie precyzyjne 
 
 Żeby to robić dobrze, trzeba się nauczyć nie prowadzić. Dosłownie.
 
-Dlatego **21–25 września 2026** dołączam do intensywnego szkolenia Camili Valenzueli — pięć dni online, po angielsku. Format: ćwiczenia par, nagrywanie wywiadów, superwizja, analiza transkryptów. Dwa dodatkowe spotkania superwizyjne miesiąc po kursie. To jest warunek konieczny, żebym mógł prowadzić wywiady w terenie bez zniekształcania materiału własnym bagażem interpretacyjnym.
-
----
-
-#### A MATHA — Escola de Fenomenologia Corporal
-
-Camila Valenzuela prowadzi szkołę fenomenologii ciała — **A MATHA** — w Arraial d'Ajuda, kilkanaście kilometrów od Porto Seguro, na południe od Bahii. Nie jest to szkoła akademicka. Jest to miejsce, gdzie fenomenologia spotyka praktykę ciała: ruch, oddech, obecność. Rezydencje, kursy, praca w małych grupach.
-
-To nie jest oczywiste połączenie z projektem o capoeirze. Ale jest w tym logika: capoeira i mikrofenomenologia zadają to samo pytanie, tylko w różnych językach — jak ciało wie, zanim wie umysł? A MATHA jest miejscem, gdzie ta kwestia jest traktowana poważnie przez praktyków, nie tylko przez naukowców.
-
-Plan jest wstępny: **styczeń 2027**, jeśli logistyka pozwoli, kilka dni w Arraial d'Ajuda — po pilotażu w Bauru, przed potencjalnym powrotem do Warszawy albo dłuższym pobytem w Salvadorze. Rozmawiamy też o możliwości wymiany: sprzęt IMU za szkolenie, dane za kontekst, obecność za obecność.
-
-Nie wiem jeszcze, czy to wyjdzie. Ale wiem, że tego chcę spróbować.
-
 </div>
