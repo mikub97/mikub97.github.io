@@ -16,7 +16,7 @@ Nie wiedziałem czego się spodziewać, jednocześnie bliskość tajemnicy, któ
 
 Trafiłem do cudownego hostelu, gdzie poza gośćmi mieszkały dwie brazylijki i 3 koty. Wszyscy bardzo mili. Panowała tam rodzinna atmosfera. Był nawet netflix, na którym przemęczyłem ze dwa sezony brazylijskiego serialu "3%". 
 
-Dwa dni po moim przyjeździe, do mojego pokoju wszedł Mathew - niemiec, który był w trakcie podróży dookoła świata. Słowo do słowa i szybko okazało się, że właśnie zmierza do Wernera na workaway. Szybko się zakumplowaliśmy. Poszliśmy na lunch "a kilo", następnego dnia Mathew pojechał do Wernera.
+Dwa dni po moim przyjeździe, do mojego pokoju wszedł Mathew - Niemiec, który był w trakcie podróży dookoła świata. Słowo do słowa i szybko okazało się, że właśnie zmierza do Wernera na workaway. Szybko się zakumplowaliśmy. Poszliśmy na lunch "a kilo", następnego dnia Mathew pojechał do Wernera.
 
 
 Koci hostel - było mi tam wygodnie. Nie jestem pewny czy dobrze, ale wygodnie. Odwagi wymagała ode mnie decyzja by jechać dalej - do Chapady Diamentiny. Zebrałem się w sobie i złapałem nocny autobus do Lencois. Jeszcze nie wiedziałem, że będzie to jedna z najlepiej wspominanych przeze mnie przygód mojego życia. 
