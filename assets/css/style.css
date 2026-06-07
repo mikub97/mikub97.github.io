@@ -492,4 +492,13 @@ img { max-width: 100%; height: auto; display: block; }
 
   .site-nav { gap: 1.2rem; }
   .site-nav a { font-size: 0.8rem; }
+
+  .site-title {
+    font-size: 0.82rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    min-width: 0;
+  }
+  .nav-flag { height: 18px; }
 }
