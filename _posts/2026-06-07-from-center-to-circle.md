@@ -53,7 +53,7 @@ Wspólnota, w swojej tradycyjnej formie, jest dziś w zachodnym świecie bardzo 
 
 Szukajac przynależności, docierałem do różnych źródeł, z których niektóre - jak tradycja advaity vedanty oraz Jezus Chrystus, jako źródło samo w sobie - dawały mi to czego szukałem - przez jakiś czas. Po chwili kontemplacji, modlitwy, lub innej praktyki, przychodził czas, gdy jako bańka mydlana dostrzegałem inne, które leciały w zupełnie innym kierunku. Jak to tak? 
 
-Żyjemy w Polsce, jesteśmy Polakami. Żyję w Europie, jestem Europejczykiem. Wspinam się, jestem wspinaczem. Uczę się, jestem studentem. Pracuję, jestem podatnikiem. Oddycham, jem, choruje i umrę. Żyjemy obok siebie, będąc tak podobnymi, a Twoja bańka, tak podobna do mojej leci odizolowana w innym kierunku. Moja również. 
+Żyjemy w Polsce, jesteśmy Polakami. Żyjemy w Europie, jesteśmy Europejczykami. Dalej. Wspinam się, jestem wspinaczem. Uczę się, jestem studentem. Pracuję, jestem podatnikiem. Oddycham, jem, choruję i umrę. Żyjemy obok siebie, będąc tak podobnymi, a Twoja bańka, tak podobna do mojej leci odizolowana w innym kierunku. Moja również. 
 
 Niezadowolenie, które wybrzmiewa w tym co teraz piszę, wypycha mnie do świata fantazji, które z kolei sprawia, że jestem częstym klientem linii lotniczych. 
 <iframe data-testid="embed-iframe" style="border-radius:12px" src="https://open.spotify.com/embed/track/7a7SwAK20adk3oPY83svVc?utm_source=generator" width="100%" height="152" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
