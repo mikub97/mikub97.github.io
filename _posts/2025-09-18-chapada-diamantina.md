@@ -19,7 +19,7 @@ Trafiłem do cudownego hostelu, gdzie poza gośćmi mieszkały dwie brazylijki i
 Dwa dni po moim przyjeździe, do mojego pokoju wszedł Mathew - Niemiec, który był w trakcie podróży dookoła świata. Słowo do słowa i szybko okazało się, że właśnie zmierza do Wernera na workaway. Szybko się zakumplowaliśmy. Poszliśmy na lunch "a kilo", następnego dnia Mathew pojechał do Wernera.
 
 
-Koci hostel - było mi tam wygodnie. Nie jestem pewny czy dobrze, ale wygodnie. Odwagi wymagała ode mnie decyzja by jechać dalej - do Chapady Diamentiny. Zebrałem się w sobie i złapałem nocny autobus do Lencois. Jeszcze nie wiedziałem, że będzie to jedna z najlepiej wspominanych przeze mnie przygód mojego życia. 
+Koci hostel - było mi tam wygodnie. Nie jestem pewny czy dobrze, ale wygodnie. Odwagi wymagała ode mnie decyzja by jechać dalej - do Chapady Diamentiny. Zebrałem się w sobie i złapałem nocny autobus do Lencois. Jeszcze nie wiedziałem, że będzie to jedna z najlepiej wspominanych przygód mojego życia. 
 ![Szlak — przy rzece](/assets/images/bahia/20250922_171742.jpg)
 
 ![Trasa — AllTrails](/assets/images/bahia/Screenshot_20250930_191304_AllTrails.jpg)
