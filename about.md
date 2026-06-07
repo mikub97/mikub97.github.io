@@ -1,11 +1,11 @@
 ---
 layout: page
-title: About
+title: O mnie
 permalink: /about/
 ---
 
-A research trip to Brazil — capoeira, bodies in motion, and the places where knowledge lives outside of text.
+Wyjazd badawczy do Brazylii — capoeira, ciała w ruchu i miejsca, w których wiedza istnieje poza tekstem.
 
-I'm a doctoral researcher at the University of Warsaw working on embodied cognition and movement practices. This blog is a field journal: photos, impressions, and reflections from time spent in Salvador, Rio, and beyond.
+Jestem doktorantem na Wydziale Psychologii Uniwersytetu Warszawskiego. Zajmuję się ucieleśnionym poznaniem i praktykami ruchowymi. Ten blog to dziennik z terenu: zdjęcia, wrażenia i refleksje z czasu spędzonego w Salvadorze, Rio i nie tylko.
 
-Posts are written close to the moment, unpolished.
+Posty pisane blisko momentu, bez szlifowania.

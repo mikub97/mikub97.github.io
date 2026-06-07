@@ -117,6 +117,27 @@ Ramy teoretyczne to **enaktywizm** (Varela, Thompson) — założenie, że ciał
 
 ---
 
+#### Tło: czego brakuje w naukach kontemplacyjnych
+
+Badania nad praktykami kontemplacyjnymi koncentrowały się dotychczas niemal wyłącznie na praktykującym siedzącym w ciszy. Medytacja, mindfulness, kontemplacja — termin za terminem, wszędzie to samo założenie: wewnętrzność jest podstawową przestrzenią transformacji. Izoluje się praktykującego od społeczno-kulturowego kontekstu i bada efekty tej izolacji.
+
+Komjathy (2017) trafnie nazywa to **buddhocentryzmem** — wzięciem buddyjskich wartości (spokój, samoregulacja, współczucie) za powszechny standard, przez który ocenia się wszystkie inne tradycje. Te, które kultywują coś innego — czujność, opór, strategiczne wyczucie relacji, bycie-z-innymi — lądują na marginesie. Badania neuronauki kontemplacyjnej dokumentują efekty medytacji na uwagę i regulację emocji (Eberth & Sedlmeier, 2012), ale odcinając praktykującego od wspólnoty i kultury, ryzykują przeoczenie tego, co w praktykach kontemplacyjnych najbardziej relacyjne, ekologiczne i społeczne.
+
+Capoeira Angola nie pasuje do tego schematu. Nie dlatego, że jest lepsza — ale dlatego, że jest *inna*. Choć rzadko opisywana w tych kategoriach, kultywuje zdolności charakterystyczne dla życia kontemplacyjnego: uważność, obecność, wyrafinowanie percepcyjne, transformację przez zaangażowanie. Robi to jednak przez **sporną interakcję**, nie przez ciszę.
+
+Kilka kluczowych pojęć, bez których ciężko to zrozumieć:
+
+- **Ginga** — rytmiczny kołys będący jednocześnie wyrazem temperamentu, osobistej historii i czujności na partnera. Nie ma w capoeirze dwóch identycznych ging — to ruch, który jest autobiografią ciała.
+- **Energia** — subtelne pole intensywności relacyjnej wyłaniające się przez kontakt wzrokowy, dystans, timing i muzyczne współgranie. Czujesz je, zanim cokolwiek "się wydarzy".
+- **Malícia i malandragem** — strategiczne wyczucie i zaradność: zdolność do działania pod presją, czytania subtelnych sygnałów, odpowiadania na niepewność bez paraliżu. Sharpen attentional acuity, emotional discernment, and interpretive flexibility — jak napisali moi recenzenci, i trudno to przetłumaczyć lepiej.
+- **Roda** — krąg, w którym przeszłość (przodkowie, mestrowie, quilombos) jest realnie obecna i wpływa na to, co dzieje się w środku. *"Mała roda przygotowuje do dużej"* (Wesolowski, 2012) — jogo jest mikrokosmosem życia społecznego. Roda może hamować agresję, podnosić niezdecydowanych graczy albo zmieniać moralną atmosferę całej sesji.
+
+Istniejące badania nad koordynacją ruchową dokumentują, jak ciała tworzą wzorce synchronizacji i sprzężenia (Kelso, 1995; Schmidt & Richardson, 2008). Badania nad tańcem rozszerzały te modele o subiektywne doświadczenie — Himberg i in. (2018) mierzyli "kinaestetyczną wspólnotę" w improwizacji grupowej, Kimmel (2021) śledził mikrofenomenologicznie powstawanie synergii w Contact Improvisation. Ale zawsze chodziło o harmonię, wzajemne wspieranie, kooperację.
+
+Nikt dotychczas nie zbadał empirycznie, jak wygląda **dominacja od środka** — i co jednocześnie robi z ruchem.
+
+---
+
 #### Trzy pytania badawcze
 
 1. **Jak doświadcza się sprawstwo?** — jakie są fenomenologiczne tryby (uwięzienie, opór, wyzwolenie, przewodzenie) i jak capoeirzyści je opisują?
@@ -154,9 +175,35 @@ Ramy teoretyczne to **enaktywizm** (Varela, Thompson) — założenie, że ciał
 Perception Neuron 3 — 17 czujników IMU na ciele każdego gracza (≥200 Hz), 4 kamery (60 fps), bezmarkerowa estymacja pozycji (YOLOv11, offline). Analiza: rekurencja (RQA), entropia, faza względna między partnerami.
 
 **Doświadczenie (perspektywa wewnętrzna):**  
-Mikrofenomenologiczne wywiady video-cued po każdym warunku — pytania prowadzą uczestnika przez konkretne momenty sesji krok po kroku, bez narzucania interpretacji. Dodatkowo krótkie raporty bezpośrednio po grze oraz komentarz Mestre.
+Mikrofenomenologiczne wywiady video-cued — uczestnik ogląda nagranie swojej sesji, a prowadzący zatrzymuje je w konkretnym momencie i zadaje pytania, które prowadzą z powrotem do *tego* momentu, nie do jego interpretacji. Bezpośrednio po grze: krótki raport spontaniczny. Podzbiór par: wspólny wywiad z obu perspektyw. Komentarz Mestre jako ekspert kulturowy.
 
 **Integracja:** korespondencja między momentami przejść fenomenologicznych a zmianami w dynamice ruchu (okno ±2 sek.).
 Projekt jest osadzony w szerszym grancie NCN Opus 27 dotyczącym napięcia między indywidualną autonomią a funkcjonalnym połączeniem z innymi.
+
+---
+
+#### Mikrofenomenologia — jak słuchać ciała
+
+Standardowe badanie pyta: *co czułeś podczas sesji?* Odpowiedź jest retrospektywna, nieświadomie przefiltrowana przez to, co wiemy o sobie, przez język, którym dysponujemy, przez narracje, które nosimy w głowie. Dostajemy interpretację przeżycia, nie samo przeżycie.
+
+Mikrofenomenologia, rozwinięta przez Claire Petitmengin, próbuje dotrzeć do czegoś wcześniejszego — do pre-refleksyjnej struktury doświadczenia, nim ciało stało się myślą. Robi to przez tak zwaną metodę drugoosobową: prowadzący nie pyta "co czułeś?", ale prowadzi uczestnika z powrotem, krok po kroku, do konkretnego momentu. *"Zanim to się wydarzyło — co było?"* *"Gdzie w ciele to było?"* *"Co zauważyłeś jako pierwsze?"*
+
+W połączeniu z nagraniem video ("video-cued") jest to szczególnie precyzyjne narzędzie: zatrzymujemy zapis dokładnie w tym momencie, który nas interesuje — nie mniej niż dwie sekundy przed wyraźną zmianą w dynamice ruchu — i pytamy uczestnika, czy może do niego wrócić. Często może. I mówi rzeczy, których nie powiedziałby, gdybyśmy zapytali go o "całą sesję".
+
+Żeby to robić dobrze, trzeba się nauczyć nie prowadzić. Dosłownie.
+
+Dlatego **21–25 września 2026** dołączam do intensywnego szkolenia Camili Valenzueli — pięć dni online, po angielsku. Format: ćwiczenia par, nagrywanie wywiadów, superwizja, analiza transkryptów. Dwa dodatkowe spotkania superwizyjne miesiąc po kursie. To jest warunek konieczny, żebym mógł prowadzić wywiady w terenie bez zniekształcania materiału własnym bagażem interpretacyjnym.
+
+---
+
+#### A MATHA — Escola de Fenomenologia Corporal
+
+Camila Valenzuela prowadzi szkołę fenomenologii ciała — **A MATHA** — w Arraial d'Ajuda, kilkanaście kilometrów od Porto Seguro, na południe od Bahii. Nie jest to szkoła akademicka. Jest to miejsce, gdzie fenomenologia spotyka praktykę ciała: ruch, oddech, obecność. Rezydencje, kursy, praca w małych grupach.
+
+To nie jest oczywiste połączenie z projektem o capoeirze. Ale jest w tym logika: capoeira i mikrofenomenologia zadają to samo pytanie, tylko w różnych językach — jak ciało wie, zanim wie umysł? A MATHA jest miejscem, gdzie ta kwestia jest traktowana poważnie przez praktyków, nie tylko przez naukowców.
+
+Plan jest wstępny: **styczeń 2027**, jeśli logistyka pozwoli, kilka dni w Arraial d'Ajuda — po pilotażu w Bauru, przed potencjalnym powrotem do Warszawy albo dłuższym pobytem w Salvadorze. Rozmawiamy też o możliwości wymiany: sprzęt IMU za szkolenie, dane za kontekst, obecność za obecność.
+
+Nie wiem jeszcze, czy to wyjdzie. Ale wiem, że tego chcę spróbować.
 
 </div>

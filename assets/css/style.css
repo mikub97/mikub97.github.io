@@ -124,6 +124,16 @@ img { max-width: 100%; height: auto; display: block; }
 
 .index-header p { color: var(--muted); font-size: 0.95rem; }
 
+.posts-note {
+  color: var(--muted);
+  font-size: 0.9rem;
+  font-style: italic;
+  margin-bottom: 2rem;
+  line-height: 1.6;
+}
+.posts-note a { color: var(--muted); text-decoration: underline; }
+.posts-note a:hover { color: var(--accent2); }
+
 .post-list { list-style: none; }
 
 .post-card {

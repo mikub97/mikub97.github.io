@@ -1,14 +1,14 @@
 ---
 layout: default
-title: Timeline
+title: Oś czasu
 permalink: /timeline/
 ---
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
 
 <div class="container">
   <div class="timeline-header">
-    <h1>Trip timeline</h1>
-    <p>Posts in chronological order &mdash; click a pin to see photos and notes from that place.</p>
+    <h1>Oś czasu</h1>
+    <p>Posty w kolejności chronologicznej &mdash; kliknij znacznik na mapie, żeby zobaczyć, co pisałem z danego miejsca.</p>
   </div>
 </div>
 
@@ -19,7 +19,7 @@ permalink: /timeline/
 <div class="container">
 
   {% if site.posts.size == 0 %}
-  <p style="color: var(--muted); font-style: italic;">No posts yet.</p>
+  <p style="color: var(--muted); font-style: italic;">Brak postów.</p>
   {% else %}
 
   {% assign sorted_posts = site.posts | sort: 'date' %}
@@ -27,7 +27,7 @@ permalink: /timeline/
   <div class="timeline">
     {% for post in sorted_posts %}
     <div class="timeline-entry" {% if post.lat and post.lng %}data-lat="{{ post.lat }}" data-lng="{{ post.lng }}"{% endif %}>
-      <div class="timeline-date">{{ post.date | date: "%B %-d, %Y" }}</div>
+      <div class="timeline-date">{{ post.date | date: "%-d.%m.%Y" }}</div>
       {% if post.location %}
       <div class="timeline-location">{{ post.location }}</div>
       {% endif %}
@@ -54,7 +54,7 @@ permalink: /timeline/
     {% if post.lat and post.lng %}
     {
       title:    {{ post.title | jsonify }},
-      date:     {{ post.date | date: "%B %-d, %Y" | jsonify }},
+      date:     {{ post.date | date: "%-d.%m.%Y" | jsonify }},
       location: {{ post.location | default: "" | jsonify }},
       url:      {{ post.url | relative_url | jsonify }},
       cover:    {{ post.cover_image | default: "" | jsonify }},
