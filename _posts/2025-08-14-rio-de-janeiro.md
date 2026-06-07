@@ -33,7 +33,7 @@ A jednak, czułem się bardziej jak "my", niż "oni" - ich nie poznałem, natomi
 
 ![Widok z trasy — Baía de Guanabara](/assets/images/rio/20250821_145003.jpg)
 
-Samo miasto Rio de Janeiro to ewenement. Nie widzałem nigdy piękniej osadzonego miasta -  w nagiej i przepięknej naturze. Fawele, bloki, mieszkania i domu wylewaja się na wybrzeżu, tak jakoś naturalnie..
+Samo miasto Rio de Janeiro to ewenement. Nie widzałem nigdy piękniej osadzonego miasta -  w nagiej i przepięknej naturze. Fawele, bloki, mieszkania i domy wylewają się na wybrzeżu, tak jakoś naturalnie..
 To miasto nie wydawało mi się miastem ludzi. Miastem dla ludzi - owszem, ale nie ich własnością.
 Cariocas (mieszkańcy Rio) mówią, że to miasto Boga i coś w tym musi być. Posąg Jezusa ze wzgórza błogosławi to miasto z góry, podczas gdy poniżej toczy się życie. Coś pięknego. 
 
