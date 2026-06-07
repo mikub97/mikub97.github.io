@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Lençóis"
+title: "Salvador i Lençóis"
 date: 2025-09-18
 location: "Chapada Diamantina"
 lat: -12.5583
