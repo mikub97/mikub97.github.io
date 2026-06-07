@@ -30,7 +30,7 @@ Ludzie, energia przygody, plecaki, ruch i słońce. Niesamowity przemiał ciekaw
 
 ![Hamak](/assets/images/bahia/20251003_142740.jpg)
 
-Tu poznałem Wilhema i Adrianę. On z Holandii, ona z Australii. Przez chwilę tworzyliśmy naprawdę zgraną paczkę. Z Wimem poszliśmy na jednodniowy trekking zobaczyć Cachoeira da Fumaça (co tu mówić - cudo natury). Kilka innych trekkingów, spacer. Z jednym brazyliczykiem poszedłem jeździć konno. 
+Tu poznałem Wilhema i Adrianę. On z Holandii, ona z Australii. Przez chwilę tworzyliśmy naprawdę zgraną paczkę. Z Wimem poszliśmy na jednodniowy trekking zobaczyć Cachoeira da Fumaça (co tu mówić - cudo natury). Kilka innych trekkingów, spacery, kąpiele w naturalnych basenach i strumykach górskich. Z jednym brazyliczykiem poszedłem jeździć konno. 
 ![Noc na dziedzińcu](/assets/images/bahia/20251003_224744.jpg)
 
 Wypożyczyłem samochód i pojechałem do Igatu, miejscowości, w której zatrzymaliśmy się na chwilę z ekipką, podczas jednego trekkingu. Zachwycił mnie wtedy spokój tego miejsca. Tu mógłbym być stary - pomyślałem. Dodatkowo zobaczyłem tam budynek hostelu, który miał w ofercie wspinaczkę skalną. Wróciłem tam sam. Spędziłem tam dwie lub trzy noce. Było to kolejne cudowne miejsce - hostel miał w sobie szkołe wspinaczki, oraz zewnętrzną siłownię, gdzie prowadzono również treningi capoeiry. Pomimo, że byłem jedynym "kursantem", na zajęciach oprócz instruktora przyszedł jeszcze jeden ziomek, brazylijczyk - żeby się powspinać - oraz pewna Kanadyjka - żeby popatrzeć. Ziomek Brazylijczyk też przyjechał do Igatu, bo przelotem zakochał się w tym miejscu. To było naprawdę piękne miasteczko. 
