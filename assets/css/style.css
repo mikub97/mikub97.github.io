@@ -488,6 +488,12 @@ img { max-width: 100%; height: auto; display: block; }
 .leaflet-popup-content { margin: 14px 16px !important; }
 
 /* ── Responsive ────────────────────────────────────────── */
+@media (max-width: 720px) {
+  .site-nav { gap: 1rem; }
+  .site-nav a { font-size: 0.78rem; }
+  .site-title { font-size: 0.88rem; }
+}
+
 @media (max-width: 540px) {
   html { font-size: 16px; }
 
@@ -500,8 +506,8 @@ img { max-width: 100%; height: auto; display: block; }
   .post-nav a { max-width: 100%; }
   .post-nav-next { align-items: flex-start; text-align: left; }
 
-  .site-nav { gap: 1.2rem; }
-  .site-nav a { font-size: 0.8rem; }
+  .site-nav { gap: 0.7rem; }
+  .site-nav a { font-size: 0.72rem; }
 
   .site-title {
     font-size: 0.82rem;
