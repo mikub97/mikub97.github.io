@@ -5,3 +5,9 @@ _site/
 .bundle/
 vendor/
 Gemfile.lock
+
+# Posts are stored encrypted (.md.enc). Never commit the plain markdown.
+_posts/*.md
+
+# Staticrypt config (auto-generated)
+staticrypt.json

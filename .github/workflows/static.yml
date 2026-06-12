@@ -19,14 +19,50 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+
+      # ── 1. Decrypt posts ────────────────────────────────────────────────────
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: pip install cryptography
+      - name: Decrypt posts
+        run: python3 scripts/crypt.py decrypt
+        env:
+          POSTS_PASSWORD: ${{ secrets.POSTS_PASSWORD }}
+
+      # ── 2. Build Jekyll ─────────────────────────────────────────────────────
       - uses: ruby/setup-ruby@v1
         with:
           ruby-version: '3.2'
           bundler-cache: true
       - uses: actions/configure-pages@v5
-      - run: bundle exec jekyll build
+      - name: Jekyll build
+        run: bundle exec jekyll build
         env:
           JEKYLL_ENV: production
+
+      # ── 3. Encrypt built pages with Staticrypt ──────────────────────────────
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - run: npm install -g staticrypt
+      - name: Staticrypt — posts index
+        run: staticrypt _site/index.html -p "$POSTS_PASSWORD" -d _site --remember 30
+        env:
+          POSTS_PASSWORD: ${{ secrets.POSTS_PASSWORD }}
+      - name: Staticrypt — individual posts
+        run: |
+          find _site -name 'index.html' -regex '.*/20[0-9][0-9]/.*' | while IFS= read -r f; do
+            staticrypt "$f" -p "$POSTS_PASSWORD" -d "$(dirname "$f")" --remember 30
+          done
+        env:
+          POSTS_PASSWORD: ${{ secrets.POSTS_PASSWORD }}
+      - name: Staticrypt — timeline (lists post titles)
+        run: staticrypt _site/timeline/index.html -p "$POSTS_PASSWORD" -d _site/timeline --remember 30
+        env:
+          POSTS_PASSWORD: ${{ secrets.POSTS_PASSWORD }}
+
+      # ── 4. Upload artifact ──────────────────────────────────────────────────
       - uses: actions/upload-pages-artifact@v3
         with:
           path: ./_site
