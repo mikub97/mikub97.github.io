@@ -1,15 +1,14 @@
 #!/usr/bin/env python3
 """
-Encrypt / decrypt _posts/*.md files.
+Encrypt / decrypt post files.
 
-  python3 scripts/crypt.py encrypt          # encrypt all .md posts → .md.enc
-  python3 scripts/crypt.py decrypt          # decrypt all .md.enc posts → .md (used by CI)
+  python3 scripts/crypt.py encrypt          # encrypt all _posts/*.md → assets/enc/*.enc
+  python3 scripts/crypt.py decrypt          # decrypt all assets/enc/*.enc → _posts/*.md
   python3 scripts/crypt.py encrypt post.md
-  python3 scripts/crypt.py decrypt post.md.enc
+  python3 scripts/crypt.py decrypt 2025-08-01-poczatek.enc
 
-Password source (first one found):
-  1. POSTS_PASSWORD environment variable  (CI / non-interactive)
-  2. Interactive prompt
+Encrypted files live in assets/enc/ and are served as static files by Jekyll.
+Decryption happens client-side in the browser (WebCrypto API) — no CI secrets needed.
 
 File format (binary): SALT(16) | NONCE(12) | CIPHERTEXT+TAG
 Algorithm: AES-256-GCM, key via PBKDF2-HMAC-SHA256 (600 000 iterations)
@@ -17,8 +16,9 @@ Algorithm: AES-256-GCM, key via PBKDF2-HMAC-SHA256 (600 000 iterations)
 import os, sys, getpass
 from pathlib import Path
 
-POSTS_DIR  = Path("_posts")
-ITERATIONS = 600_000
+POSTS_DIR   = Path("_posts")
+ENC_DIR     = Path("assets/enc")
+ITERATIONS  = 600_000
 
 # ── crypto ────────────────────────────────────────────────────────────────────
 def _require_cryptography():
@@ -43,9 +43,10 @@ def encrypt_file(src: Path, password: str):
     nonce = _s.token_bytes(12)
     key   = _derive_key(password, salt)
     ct    = AESGCM(key).encrypt(nonce, src.read_bytes(), None)
-    dst   = src.with_suffix(src.suffix + ".enc")
+    ENC_DIR.mkdir(parents=True, exist_ok=True)
+    dst = ENC_DIR / (src.stem + ".enc")   # _posts/foo.md → assets/enc/foo.enc
     dst.write_bytes(salt + nonce + ct)
-    print(f"  ✓  {src.name}  →  {dst.name}")
+    print(f"  ✓  {src.name}  →  {dst}")
 
 def decrypt_file(src: Path, password: str):
     _, _, AESGCM = _require_cryptography()
@@ -56,9 +57,10 @@ def decrypt_file(src: Path, password: str):
         plain = AESGCM(key).decrypt(nonce, ct, None)
     except Exception:
         sys.exit(f"  ✗  Wrong password or corrupted file: {src}")
-    dst = Path(str(src)[:-4])   # strip .enc
+    POSTS_DIR.mkdir(parents=True, exist_ok=True)
+    dst = POSTS_DIR / (src.stem + ".md")   # assets/enc/foo.enc → _posts/foo.md
     dst.write_bytes(plain)
-    print(f"  ✓  {src.name}  →  {dst.name}")
+    print(f"  ✓  {src.name}  →  {dst}")
 
 # ── helpers ───────────────────────────────────────────────────────────────────
 def _password():
@@ -70,30 +72,36 @@ def _password():
         sys.exit("Password required.")
     return pw
 
-def _resolve(args, pattern):
+def _resolve_encrypt(args):
     if args:
         return [Path(a) for a in args]
-    files = sorted(POSTS_DIR.glob(pattern))
+    files = sorted(POSTS_DIR.glob("*.md"))
     if not files:
-        print(f"No files matching _posts/{pattern}")
+        print("No .md files found in _posts/")
+    return files
+
+def _resolve_decrypt(args):
+    if args:
+        return [Path(a) for a in args]
+    files = sorted(ENC_DIR.glob("*.enc"))
+    if not files:
+        print("No .enc files found in assets/enc/")
     return files
 
 # ── commands ──────────────────────────────────────────────────────────────────
 def cmd_encrypt(args):
-    files = _resolve(args, "*.md")
+    files = _resolve_encrypt(args)
     if not files:
         return
     pw = _password()
     for f in files:
         if not f.exists():
             print(f"  not found: {f}"); continue
-        if f.suffix != ".md":
-            print(f"  skipping (not .md): {f}"); continue
         encrypt_file(f, pw)
-    print("\nDone. Commit the .enc files — plain .md files are gitignored.")
+    print("\nDone. Commit the .enc files in assets/enc/")
 
 def cmd_decrypt(args):
-    files = _resolve(args, "*.md.enc")
+    files = _resolve_decrypt(args)
     if not files:
         return
     pw = _password()
@@ -101,13 +109,13 @@ def cmd_decrypt(args):
         if not f.exists():
             print(f"  not found: {f}"); continue
         decrypt_file(f, pw)
-    print("Done.")
+    print("Done. Plain .md files are in _posts/ (gitignored).")
 
 # ── main ──────────────────────────────────────────────────────────────────────
 USAGE = """
 Commands:
-  encrypt [file.md ...]     encrypt posts (prompts for password)
-  decrypt [file.md.enc ...] decrypt posts (used by CI via $POSTS_PASSWORD)
+  encrypt [file.md ...]   encrypt _posts/*.md → assets/enc/*.enc
+  decrypt [file.enc ...]  decrypt assets/enc/*.enc → _posts/*.md (for local editing)
 """
 
 def main():

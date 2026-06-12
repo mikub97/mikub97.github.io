@@ -1,0 +1,43 @@
+- slug: 2025-08-01-poczatek
+  title: "Początek"
+  date: 2025-08-01
+
+- slug: 2025-08-14-rio-de-janeiro
+  title: "Cidade de Deus"
+  date: 2025-08-14
+  location: "Rio de Janeiro"
+  lat: -22.9068
+  lng: -43.1729
+  cover_image: /assets/images/rio/20250821_143350.jpg
+
+- slug: 2025-08-25-morro-de-sao-paulo
+  title: "Morro de São Paulo"
+  date: 2025-08-25
+  location: "Morro de São Paulo, Bahia"
+  lat: -13.3814
+  lng: -38.9138
+  cover_image: /assets/images/morro/20250904_205728.jpg
+
+- slug: 2025-09-18-chapada-diamantina
+  title: "Salvador i Lençóis"
+  date: 2025-09-18
+  location: "Chapada Diamantina"
+  lat: -12.5583
+  lng: -41.3906
+  cover_image: /assets/images/bahia/20250927_082346.jpg
+
+- slug: 2025-10-05-salvador
+  title: "Salvador pt.2"
+  date: 2025-10-05
+  location: "Salvador, Bahia"
+  lat: -12.9714
+  lng: -38.5014
+  cover_image: /assets/images/bahia/20251007_220739.jpg
+
+- slug: 2026-06-07-from-center-to-circle
+  title: "From Center to Circle"
+  date: 2026-06-07
+  location: "Warszawa"
+  lat: 52.2297
+  lng: 21.0122
+  hidden: true

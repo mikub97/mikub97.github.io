@@ -18,31 +18,27 @@ permalink: /timeline/
 
 <div class="container">
 
-  {% if site.posts.size == 0 %}
-  <p style="color: var(--muted); font-style: italic;">Brak postów.</p>
-  {% else %}
+{% assign sorted_posts = site.data.posts | where_exp: "p", "p.hidden != true" %}
 
-  {% assign sorted_posts = site.posts | sort: 'date' %}
+{% if sorted_posts.size == 0 %}
+<p style="color: var(--muted); font-style: italic;">Brak postów.</p>
+{% else %}
 
-  <div class="timeline">
-    {% for post in sorted_posts %}
-    {% if post.hidden %}{% continue %}{% endif %}
-    <div class="timeline-entry" {% if post.lat and post.lng %}data-lat="{{ post.lat }}" data-lng="{{ post.lng }}"{% endif %}>
-      <div class="timeline-date">{{ post.date | date: "%-d.%m.%Y" }}</div>
-      {% if post.location %}
-      <div class="timeline-location">{{ post.location }}</div>
-      {% endif %}
-      <div class="timeline-title">
-        <a href="{{ post.url | relative_url }}">{{ post.title }}</a>
-      </div>
-      {% if post.excerpt %}
-      <div class="timeline-excerpt">{{ post.excerpt | strip_html | truncate: 140 }}</div>
-      {% endif %}
+<div class="timeline">
+  {% for post in sorted_posts %}
+  <div class="timeline-entry" {% if post.lat and post.lng %}data-lat="{{ post.lat }}" data-lng="{{ post.lng }}"{% endif %}>
+    <div class="timeline-date">{{ post.date | date: "%-d.%m.%Y" }}</div>
+    {% if post.location %}
+    <div class="timeline-location">{{ post.location }}</div>
+    {% endif %}
+    <div class="timeline-title">
+      <a href="{{ '/post/' | relative_url }}?s={{ post.slug }}">{{ post.title }}</a>
     </div>
-    {% endfor %}
   </div>
+  {% endfor %}
+</div>
 
-  {% endif %}
+{% endif %}
 
 </div>
 
@@ -50,15 +46,13 @@ permalink: /timeline/
 <script>
 (function () {
   var posts = [
-    {% assign sorted = site.posts | sort: 'date' %}
-    {% for post in sorted %}
-    {% if post.hidden %}{% continue %}{% endif %}
+    {% for post in sorted_posts %}
     {% if post.lat and post.lng %}
     {
       title:    {{ post.title | jsonify }},
       date:     {{ post.date | date: "%-d.%m.%Y" | jsonify }},
       location: {{ post.location | default: "" | jsonify }},
-      url:      {{ post.url | relative_url | jsonify }},
+      url:      {{ "/post/" | relative_url | append: "?s=" | append: post.slug | jsonify }},
       cover:    {{ post.cover_image | default: "" | jsonify }},
       lat:      {{ post.lat }},
       lng:      {{ post.lng }}
@@ -75,7 +69,7 @@ permalink: /timeline/
     byCoord[key].posts.push(p);
   });
 
-  // Default center: Salvador, Bahia — adjust if your trip starts elsewhere
+  // Default center: Salvador, Bahia
   var defaultCenter = posts.length ? [posts[0].lat, posts[0].lng] : [-12.97, -38.50];
   var map = L.map("map", { zoomControl: true }).setView(defaultCenter, 6);
 
@@ -85,26 +79,12 @@ permalink: /timeline/
     maxZoom: 19
   }).addTo(map);
 
-  // Dashed route line connecting locations in chronological order
   var routeCoords = posts.map(function (p) { return [p.lat, p.lng]; });
   if (routeCoords.length > 1) {
-    L.polyline(routeCoords, {
-      color: "#c9a227",
-      weight: 2,
-      opacity: 0.5,
-      dashArray: "5, 10"
-    }).addTo(map);
+    L.polyline(routeCoords, { color: "#c9a227", weight: 2, opacity: 0.5, dashArray: "5, 10" }).addTo(map);
   }
 
-  var markerStyle = {
-    radius: 9,
-    fillColor: "#c9a227",
-    color: "#1a4731",
-    weight: 2,
-    opacity: 1,
-    fillOpacity: 0.92
-  };
-
+  var markerStyle = { radius: 9, fillColor: "#c9a227", color: "#1a4731", weight: 2, opacity: 1, fillOpacity: 0.92 };
   var markers = [];
 
   Object.values(byCoord).forEach(function (loc) {
@@ -119,25 +99,20 @@ permalink: /timeline/
         "</div></div>";
     }).join("");
 
-    var html = '<div class="mp-wrap">' +
-      '<div class="mp-loc">' + (loc.posts[0].location || "") + "</div>" +
-      inner + "</div>";
-
+    var html = '<div class="mp-wrap"><div class="mp-loc">' + (loc.posts[0].location || "") + "</div>" + inner + "</div>";
     m.bindPopup(html, { maxWidth: 220, minWidth: 180 });
     markers.push(m);
   });
 
-  // Fit map to all markers
   if (markers.length > 1) {
     var group = L.featureGroup(markers);
     map.fitBounds(group.getBounds().pad(0.4));
   }
 
-  // Clicking a timeline entry opens its marker
   document.querySelectorAll(".timeline-entry[data-lat]").forEach(function (el) {
     el.style.cursor = "pointer";
     el.addEventListener("click", function (e) {
-      if (e.target.tagName === "A") return; // let link clicks through
+      if (e.target.tagName === "A") return;
       var lat = parseFloat(el.dataset.lat);
       var lng = parseFloat(el.dataset.lng);
       var key = lat + "," + lng;

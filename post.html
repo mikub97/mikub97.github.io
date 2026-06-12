@@ -1,0 +1,191 @@
+---
+layout: default
+title: Post
+permalink: /post/
+---
+
+{% assign posts_json = site.data.posts | jsonify %}
+<script>const POSTS_DATA = {{ posts_json }};</script>
+
+<article class="post container" id="post-article">
+
+  <header class="post-header" id="post-header" hidden>
+    <div class="post-meta">
+      <time id="post-date"></time>
+      <span id="post-location" class="post-location" hidden>
+        <span class="pin">&#9675;</span> <span id="post-location-text"></span>
+      </span>
+    </div>
+    <h1 class="post-title" id="post-title"></h1>
+  </header>
+
+  <div id="enc-form" class="enc-form">
+    <div class="enc-icon">&#128274;</div>
+    <p class="enc-hint">Wprowadź hasło, żeby przeczytać post.</p>
+    <div class="enc-row">
+      <input type="password" id="enc-pw" placeholder="Hasło" autocomplete="current-password">
+      <button id="enc-btn" onclick="encUnlock()">Odblokuj</button>
+    </div>
+    <p id="enc-err" class="enc-error" hidden>Nieprawidłowe hasło.</p>
+  </div>
+
+  <div id="post-body" class="post-body" hidden></div>
+
+  <nav class="post-nav" id="post-nav" hidden>
+    <a id="post-nav-prev" class="post-nav-prev" href="#">
+      <span class="nav-label">&#8592; Wcześniej</span>
+      <span class="nav-title" id="post-nav-prev-title"></span>
+    </a>
+    <a id="post-nav-next" class="post-nav-next" href="#">
+      <span class="nav-label">Dalej &#8594;</span>
+      <span class="nav-title" id="post-nav-next-title"></span>
+    </a>
+  </nav>
+
+</article>
+
+<script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+<script>
+(function () {
+  const SK = 'blog_pw';
+  const slug = new URLSearchParams(location.search).get('s') || '';
+  const posts = POSTS_DATA.filter(p => !p.hidden);
+  const idx   = posts.findIndex(p => p.slug === slug);
+  const meta  = idx >= 0 ? posts[idx] : null;
+
+  // Populate header metadata (always visible)
+  if (meta) {
+    document.title = meta.title + ' – {{ site.title }}';
+    const fmtDate = new Date(meta.date + 'T12:00:00').toLocaleDateString('pl-PL',
+      { day: 'numeric', month: '2-digit', year: 'numeric' });
+    document.getElementById('post-date').textContent = fmtDate;
+    document.getElementById('post-title').textContent = meta.title;
+    if (meta.location) {
+      document.getElementById('post-location-text').textContent = meta.location;
+      document.getElementById('post-location').hidden = false;
+    }
+    document.getElementById('post-header').hidden = false;
+  }
+
+  // Post navigation
+  function setupNav() {
+    const nav  = document.getElementById('post-nav');
+    const prev = document.getElementById('post-nav-prev');
+    const next = document.getElementById('post-nav-next');
+    const prevTitle = document.getElementById('post-nav-prev-title');
+    const nextTitle = document.getElementById('post-nav-next-title');
+    if (idx > 0) {
+      const p = posts[idx - 1];
+      prevTitle.textContent = p.title;
+      prev.href = '/post/?s=' + p.slug;
+      prev.hidden = false;
+    } else {
+      prev.hidden = true;
+    }
+    if (idx >= 0 && idx < posts.length - 1) {
+      const n = posts[idx + 1];
+      nextTitle.textContent = n.title;
+      next.href = '/post/?s=' + n.slug;
+      next.hidden = false;
+    } else {
+      next.hidden = true;
+    }
+    nav.hidden = false;
+  }
+
+  // Crypto helpers (must match crypt.py: PBKDF2-HMAC-SHA256 600k iter, AES-256-GCM)
+  async function deriveKey(pw, salt) {
+    const km = await crypto.subtle.importKey(
+      'raw', new TextEncoder().encode(pw), 'PBKDF2', false, ['deriveKey']
+    );
+    return crypto.subtle.deriveKey(
+      { name: 'PBKDF2', salt, iterations: 600000, hash: 'SHA-256' },
+      km, { name: 'AES-GCM', length: 256 }, false, ['decrypt']
+    );
+  }
+
+  async function tryDecrypt(pw) {
+    const url = '{{ "/" | relative_url }}assets/enc/' + slug + '.enc';
+    let buf;
+    try {
+      const res = await fetch(url);
+      if (!res.ok) throw new Error('fetch failed');
+      buf = new Uint8Array(await res.arrayBuffer());
+    } catch { return null; }
+
+    const salt  = buf.slice(0, 16);
+    const nonce = buf.slice(16, 28);
+    const ct    = buf.slice(28);
+    try {
+      const key   = await deriveKey(pw, salt);
+      const plain = await crypto.subtle.decrypt({ name: 'AES-GCM', iv: nonce }, key, ct);
+      return new TextDecoder().decode(plain);
+    } catch { return null; }
+  }
+
+  function stripFrontmatter(text) {
+    if (!text.startsWith('---')) return text;
+    const end = text.indexOf('\n---', 3);
+    return end === -1 ? text : text.slice(end + 4).trimStart();
+  }
+
+  async function showContent(raw) {
+    document.getElementById('enc-form').hidden = true;
+    const body = document.getElementById('post-body');
+    body.innerHTML = marked.parse(stripFrontmatter(raw));
+    body.hidden = false;
+    setupNav();
+  }
+
+  window.encUnlock = async function () {
+    const btn = document.getElementById('enc-btn');
+    btn.disabled = true; btn.textContent = '…';
+    const pw  = document.getElementById('enc-pw').value;
+    const raw = await tryDecrypt(pw);
+    if (raw === null) {
+      document.getElementById('enc-err').hidden = false;
+      btn.disabled = false; btn.textContent = 'Odblokuj';
+      return;
+    }
+    sessionStorage.setItem(SK, pw);
+    await showContent(raw);
+  };
+
+  document.getElementById('enc-pw').addEventListener('keydown', e => {
+    if (e.key === 'Enter') window.encUnlock();
+  });
+
+  // Auto-unlock with cached password
+  (async () => {
+    const cached = sessionStorage.getItem(SK);
+    if (!cached) return;
+    const raw = await tryDecrypt(cached);
+    if (raw !== null) await showContent(raw);
+  })();
+})();
+</script>
+
+<style>
+.enc-form {
+  display: flex; flex-direction: column; align-items: center; gap: 1rem;
+  padding: 3rem 2rem; margin: 2rem 0;
+  background: var(--card-bg, #fff);
+  border: 1px solid var(--border, #e8e0d0); border-radius: 10px;
+}
+.enc-icon { font-size: 2rem; }
+.enc-hint { color: var(--muted); margin: 0; font-size: 0.95rem; }
+.enc-row  { display: flex; gap: 0.5rem; width: 100%; max-width: 340px; }
+.enc-row input[type="password"] {
+  flex: 1; padding: 0.55rem 0.9rem;
+  border: 1px solid var(--border, #d4c9b0); border-radius: 6px;
+  font-size: 1rem; background: var(--bg); color: var(--text);
+}
+.enc-row input[type="password"]:focus { outline: 2px solid var(--accent); border-color: var(--accent); }
+.enc-row button {
+  padding: 0.55rem 1.1rem; background: var(--accent2, #1a4731); color: #fff;
+  border: none; border-radius: 6px; font-size: 0.95rem; cursor: pointer;
+}
+.enc-row button:hover { opacity: 0.88; }
+.enc-row button:disabled { opacity: 0.55; cursor: default; }
+.enc-error { color: #b94040; font-size: 0.88rem; margin: 0; }
+</style>

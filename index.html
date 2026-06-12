@@ -4,15 +4,16 @@ title: Posty
 ---
 <div class="container">
 
-{% if site.posts.size == 0 %}
-  <p style="color: var(--muted); font-style: italic;">Brak postów. Dodaj plik do <code>_posts/</code>, żeby zacząć.</p>
-  {% else %}
+{% assign visible_posts = site.data.posts | where_exp: "p", "p.hidden != true" | reverse %}
+
+{% if visible_posts.size == 0 %}
+  <p style="color: var(--muted); font-style: italic;">Brak postów.</p>
+{% else %}
 
   <p class="posts-note">Posty ułożone od najnowszego do najstarszego. Jeśli wolisz prześledzić tę historię od początku — polecam zajrzeć na <a href="{{ '/timeline' | relative_url }}">Oś czasu</a>, gdzie znajdziesz je w kolejności chronologicznej, razem z mapą miejsc, o których piszę.</p>
 
   <ul class="post-list">
-    {% for post in site.posts %}
-    {% if post.hidden %}{% continue %}{% endif %}
+    {% for post in visible_posts %}
     <li class="post-card">
       <div class="post-card-inner">
         {% if post.cover_image %}
@@ -20,19 +21,16 @@ title: Posty
         {% endif %}
         <div class="post-card-body">
           <div class="card-meta">
-            <time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%-d.%m.%Y" }}</time>
+            <time>{{ post.date | date: "%-d.%m.%Y" }}</time>
             {% if post.location %}<span class="card-location">{{ post.location }}</span>{% endif %}
           </div>
-          <h2><a href="{{ post.url | relative_url }}">{{ post.title }}</a></h2>
-          {% if post.excerpt %}
-          <p class="excerpt">{{ post.excerpt | strip_html | truncate: 180 }}</p>
-          {% endif %}
-          <a class="read-more" href="{{ post.url | relative_url }}">Czytaj &rarr;</a>
+          <h2><a href="{{ '/post/' | relative_url }}?s={{ post.slug }}">{{ post.title }}</a></h2>
+          <a class="read-more" href="{{ '/post/' | relative_url }}?s={{ post.slug }}">Czytaj &rarr;</a>
         </div>
       </div>
     </li>
     {% endfor %}
   </ul>
-  {% endif %}
+{% endif %}
 
 </div>

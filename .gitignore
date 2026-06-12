@@ -6,10 +6,6 @@ _site/
 vendor/
 Gemfile.lock
 
-# Posts are stored encrypted (.md.enc). Never commit the plain markdown.
+# Plain post markdown is never committed — encrypted copies live in assets/enc/
 _posts/*.md
-# 2020 posts are excluded from this blog entirely
-_posts/2020-*.md.enc
-
-# Staticrypt config (auto-generated)
-staticrypt.json
+_posts/2020-*.md
