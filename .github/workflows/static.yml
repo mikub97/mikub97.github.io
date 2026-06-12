@@ -41,7 +41,7 @@ jobs:
         env:
           JEKYLL_ENV: production
 
-      # ── 3. Encrypt built pages with Staticrypt ──────────────────────────────
+      # ── 3. Staticrypt — password-protect deployed pages ─────────────────────
       - uses: actions/setup-node@v4
         with:
           node-version: '20'
@@ -57,8 +57,12 @@ jobs:
           done
         env:
           POSTS_PASSWORD: ${{ secrets.POSTS_PASSWORD }}
-      - name: Staticrypt — timeline (lists post titles)
+      - name: Staticrypt — timeline
         run: staticrypt _site/timeline/index.html -p "$POSTS_PASSWORD" -d _site/timeline --remember 30
+        env:
+          POSTS_PASSWORD: ${{ secrets.POSTS_PASSWORD }}
+      - name: Staticrypt — capoeira techniques
+        run: staticrypt _site/capoeira-techniques/index.html -p "$POSTS_PASSWORD" -d _site/capoeira-techniques --remember 30
         env:
           POSTS_PASSWORD: ${{ secrets.POSTS_PASSWORD }}
 

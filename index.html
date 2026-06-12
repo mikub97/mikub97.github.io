@@ -12,6 +12,7 @@ title: Posty
 
   <ul class="post-list">
     {% for post in site.posts %}
+    {% if post.hidden %}{% continue %}{% endif %}
     <li class="post-card">
       <div class="post-card-inner">
         {% if post.cover_image %}

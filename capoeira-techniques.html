@@ -1,0 +1,847 @@
+---
+layout: default
+title: Capoeira Techniques
+---
+<style>
+.ct-wrap {
+  max-width: 640px;
+  margin: 0 auto;
+  padding: 0 1rem 3rem;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+/* ── Top bar ─────────────────────────────────────────────── */
+.ct-topbar {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+.ct-title {
+  font-family: 'Lora', Georgia, serif;
+  font-size: 1.4rem;
+  color: var(--text);
+  flex: 1;
+}
+.ct-search {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  color: var(--text);
+  padding: 6px 14px;
+  border-radius: 20px;
+  font-size: 0.82rem;
+  font-family: 'Inter', sans-serif;
+  width: 160px;
+  outline: none;
+  transition: border-color 0.2s;
+}
+.ct-search:focus { border-color: var(--accent); }
+.ct-search::placeholder { color: var(--muted); }
+
+.ct-mode {
+  display: flex;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  overflow: hidden;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.78rem;
+}
+.ct-mode-btn {
+  padding: 6px 14px;
+  background: var(--surface);
+  border: none;
+  cursor: pointer;
+  color: var(--muted);
+  font-family: inherit;
+  font-size: inherit;
+  font-weight: 500;
+  transition: all 0.15s;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+.ct-mode-btn + .ct-mode-btn { border-left: 1px solid var(--border); }
+.ct-mode-btn.active { background: var(--accent2); color: #fff; }
+
+/* ── Filter pills ────────────────────────────────────────── */
+.ct-filters {
+  display: flex;
+  gap: 6px;
+  overflow-x: auto;
+  scrollbar-width: none;
+  padding-bottom: 2px;
+}
+.ct-filters::-webkit-scrollbar { display: none; }
+.ct-filter {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  color: var(--muted);
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-size: 0.75rem;
+  cursor: pointer;
+  white-space: nowrap;
+  font-family: 'Inter', sans-serif;
+  font-weight: 500;
+  transition: all 0.15s;
+}
+.ct-filter:hover { border-color: var(--accent); color: var(--text); }
+.ct-filter.active { background: var(--accent); border-color: var(--accent); color: #fff; }
+
+/* ── Progress ────────────────────────────────────────────── */
+.ct-progress { height: 3px; background: var(--border); border-radius: 2px; overflow: hidden; }
+.ct-progress-fill { height: 100%; background: var(--accent); transition: width 0.3s; }
+
+/* ── Shared card button styles ───────────────────────────── */
+.ct-btn {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  color: var(--text);
+  padding: 9px 20px;
+  border-radius: var(--radius);
+  font-size: 0.82rem;
+  cursor: pointer;
+  font-family: 'Inter', sans-serif;
+  font-weight: 500;
+  transition: all 0.15s;
+}
+.ct-btn:hover { border-color: var(--accent2); color: var(--accent2); }
+.ct-btn:disabled { opacity: 0.3; cursor: default; }
+.ct-btn.primary { background: var(--accent2); border-color: var(--accent2); color: #fff; }
+.ct-btn.primary:hover { background: #15392a; }
+.ct-btn.icon { padding: 9px 12px; }
+.ct-btn.shuffle-on { border-color: var(--accent); color: var(--accent); }
+
+.ct-badge {
+  font-size: 0.68rem;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  color: var(--accent);
+  border: 1px solid var(--accent);
+  padding: 2px 9px;
+  border-radius: 12px;
+  font-family: 'Inter', sans-serif;
+  opacity: 0.85;
+  display: inline-block;
+}
+
+/* ── FLASHCARD ───────────────────────────────────────────── */
+.ct-counter {
+  text-align: center;
+  font-size: 0.78rem;
+  color: var(--muted);
+  font-family: 'Inter', sans-serif;
+}
+
+.ct-scene {
+  width: 100%;
+  height: 380px;
+  perspective: 1200px;
+  cursor: pointer;
+}
+.ct-card {
+  width: 100%; height: 100%;
+  position: relative;
+  transform-style: preserve-3d;
+  transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.ct-card.flipped { transform: rotateY(180deg); }
+
+.ct-face {
+  position: absolute; inset: 0;
+  border-radius: var(--radius);
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  border: 1px solid var(--border);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Front: media + category badge */
+.ct-front { background: var(--surface); }
+.ct-front-media {
+  flex: 1;
+  overflow: hidden;
+  background: var(--border);
+  min-height: 220px;
+}
+.ct-front-media img, .ct-front-media video {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  display: block;
+}
+.ct-front-media iframe { width: 100%; height: 100%; border: none; display: block; }
+.ct-front-nomedia {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  padding: 32px;
+  text-align: center;
+  color: var(--muted);
+  font-family: 'Lora', Georgia, serif;
+  font-style: italic;
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+.ct-front-footer {
+  padding: 12px 16px;
+  border-top: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: var(--bg);
+}
+.ct-front-hint {
+  font-size: 0.7rem;
+  color: var(--muted);
+  font-family: 'Inter', sans-serif;
+}
+.ct-front-hint kbd {
+  font-size: 0.66rem;
+  border: 1px solid var(--border);
+  border-radius: 3px;
+  padding: 1px 4px;
+  background: var(--surface);
+  color: var(--muted);
+}
+
+/* Back: name big + description */
+.ct-back {
+  background: #fdf6e3;
+  transform: rotateY(180deg);
+  justify-content: center;
+  gap: 0;
+}
+.ct-back-body {
+  flex: 1;
+  padding: 28px 28px 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 10px;
+  overflow-y: auto;
+}
+.ct-back-name-big {
+  font-family: 'Lora', Georgia, serif;
+  font-size: clamp(1.5rem, 5vw, 2.2rem);
+  line-height: 1.2;
+  color: var(--text);
+}
+.ct-back-desc {
+  font-family: 'Lora', Georgia, serif;
+  font-size: 0.9rem;
+  line-height: 1.65;
+  color: var(--muted);
+}
+
+.ct-controls {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+/* ── QUIZ ────────────────────────────────────────────────── */
+.ct-quiz { display: flex; flex-direction: column; gap: 12px; }
+
+.ct-quiz-score {
+  text-align: right;
+  font-size: 0.78rem;
+  font-family: 'Inter', sans-serif;
+  color: var(--muted);
+  min-height: 1.2em;
+}
+.ct-quiz-score strong { color: var(--accent2); }
+
+.ct-quiz-question {
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  overflow: hidden;
+  background: var(--surface);
+  min-height: 200px;
+  display: flex;
+  flex-direction: column;
+}
+.ct-quiz-media { width: 100%; max-height: 260px; overflow: hidden; background: var(--border); }
+.ct-quiz-media img, .ct-quiz-media video { width: 100%; max-height: 260px; object-fit: cover; display: block; }
+.ct-quiz-media iframe { width: 100%; height: 260px; border: none; display: block; }
+
+.ct-quiz-clue {
+  flex: 1;
+  padding: 20px 24px 16px;
+  font-family: 'Lora', Georgia, serif;
+  font-style: italic;
+  font-size: 0.92rem;
+  line-height: 1.65;
+  color: var(--muted);
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  align-items: flex-start;
+  justify-content: center;
+}
+
+.ct-quiz-reveal {
+  padding: 12px 20px;
+  border-top: 1px solid var(--border);
+  font-size: 0.85rem;
+  font-family: 'Lora', Georgia, serif;
+  line-height: 1.6;
+  color: var(--muted);
+  display: none;
+}
+
+.ct-quiz-answers {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+}
+.ct-ans {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  padding: 12px 14px;
+  border-radius: var(--radius);
+  font-family: 'Lora', Georgia, serif;
+  font-size: 0.92rem;
+  cursor: pointer;
+  text-align: center;
+  color: var(--text);
+  transition: all 0.15s;
+  line-height: 1.3;
+}
+.ct-ans:hover:not(:disabled) { border-color: var(--accent2); background: #f5fbf7; }
+.ct-ans.correct { background: #edf7f1; border-color: #1a4731; color: #1a4731; font-weight: 600; }
+.ct-ans.wrong   { background: #fdf0f0; border-color: #c0392b; color: #c0392b; }
+.ct-ans:disabled { cursor: default; }
+
+.ct-quiz-next {
+  display: none;
+  width: 100%;
+  padding: 11px;
+  background: var(--accent2);
+  border: none;
+  border-radius: var(--radius);
+  color: #fff;
+  font-family: 'Inter', sans-serif;
+  font-weight: 500;
+  font-size: 0.88rem;
+  cursor: pointer;
+  transition: background 0.15s;
+}
+.ct-quiz-next:hover { background: #15392a; }
+
+/* ── LIST VIEW ───────────────────────────────────────────── */
+.ct-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.85rem;
+}
+.ct-table thead th {
+  text-align: left;
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  color: var(--muted);
+  padding: 6px 10px 8px;
+  border-bottom: 2px solid var(--border);
+  font-weight: 600;
+}
+.ct-table tbody tr {
+  border-bottom: 1px solid var(--border);
+  transition: background 0.1s;
+  cursor: default;
+}
+.ct-table tbody tr:hover { background: #f5f0e8; }
+.ct-table td { padding: 9px 10px; vertical-align: top; line-height: 1.4; }
+.ct-table td:first-child {
+  font-family: 'Lora', Georgia, serif;
+  font-size: 0.92rem;
+  font-weight: 600;
+  color: var(--text);
+  white-space: nowrap;
+}
+.ct-table td:nth-child(2) { color: var(--muted); font-size: 0.8rem; white-space: nowrap; }
+.ct-table td:nth-child(3) { color: var(--muted); font-size: 0.82rem; }
+.ct-table tbody tr.has-media { cursor: pointer; }
+.ct-table tbody tr.has-media:hover { background: #edf7f1; }
+
+/* ── Row popup ───────────────────────────────────────────── */
+.ct-popup-backdrop {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.35);
+  z-index: 200;
+  align-items: center;
+  justify-content: center;
+}
+.ct-popup-backdrop.open { display: flex; }
+.ct-popup {
+  background: var(--surface);
+  border-radius: var(--radius);
+  border: 1px solid var(--border);
+  max-width: 480px;
+  width: calc(100% - 32px);
+  overflow: hidden;
+  box-shadow: 0 8px 40px rgba(0,0,0,0.18);
+  display: flex;
+  flex-direction: column;
+  max-height: 90vh;
+}
+.ct-popup-media { flex: 0 0 auto; max-height: 280px; overflow: hidden; background: var(--border); }
+.ct-popup-media img, .ct-popup-media video { width: 100%; max-height: 280px; object-fit: cover; display: block; }
+.ct-popup-body {
+  padding: 20px 22px 22px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.ct-popup-name {
+  font-family: 'Lora', Georgia, serif;
+  font-size: 1.4rem;
+  color: var(--text);
+  line-height: 1.2;
+}
+.ct-popup-desc {
+  font-family: 'Lora', Georgia, serif;
+  font-size: 0.9rem;
+  line-height: 1.65;
+  color: var(--muted);
+}
+.ct-popup-close {
+  position: absolute;
+  top: 10px; right: 12px;
+  background: rgba(255,255,255,0.85);
+  border: 1px solid var(--border);
+  border-radius: 50%;
+  width: 28px; height: 28px;
+  font-size: 1rem;
+  line-height: 1;
+  cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  color: var(--muted);
+}
+.ct-popup-close:hover { color: var(--text); }
+
+/* ── Empty state ─────────────────────────────────────────── */
+.ct-empty {
+  text-align: center;
+  color: var(--muted);
+  font-style: italic;
+  padding: 40px;
+  font-family: 'Lora', Georgia, serif;
+}
+
+/* ── Sources ─────────────────────────────────────────────── */
+.ct-sources {
+  margin-top: 16px;
+  padding-top: 12px;
+  border-top: 1px solid var(--border);
+  font-size: 0.72rem;
+  color: var(--muted);
+  font-family: 'Inter', sans-serif;
+  line-height: 1.7;
+}
+.ct-sources a { color: var(--muted); text-decoration: underline; }
+.ct-sources a:hover { color: var(--accent2); }
+</style>
+
+<div class="ct-wrap">
+
+  <div class="ct-topbar">
+    <div class="ct-title">Capoeira Techniques</div>
+    <input id="ct-search" class="ct-search" type="search" placeholder="Search…" autocomplete="off">
+    <div class="ct-mode">
+      <button class="ct-mode-btn" id="btn-flashcard" onclick="setMode('flashcard')" title="Flashcard">⬜ Card</button>
+      <button class="ct-mode-btn" id="btn-quiz" onclick="setMode('quiz')" title="Quiz">? Quiz</button>
+      <button class="ct-mode-btn active" id="btn-list" onclick="setMode('list')" title="List">≡ List</button>
+    </div>
+  </div>
+
+  <div class="ct-filters" id="ct-filters"></div>
+  <div class="ct-progress"><div class="ct-progress-fill" id="ct-progress-fill"></div></div>
+
+  <!-- FLASHCARD VIEW -->
+  <div id="view-flashcard" style="display:none">
+    <div class="ct-counter" id="ct-counter"></div>
+    <div style="height:8px"></div>
+    <div class="ct-scene" onclick="flipCard()">
+      <div class="ct-card" id="ct-card">
+        <!-- Front: media or text clue -->
+        <div class="ct-face ct-front">
+          <div id="ct-front-media" class="ct-front-media"></div>
+          <div class="ct-front-footer">
+            <span class="ct-badge" id="ct-front-cat"></span>
+            <span class="ct-front-hint"><kbd>Space</kbd> reveal &nbsp; <kbd>←</kbd><kbd>→</kbd> navigate</span>
+          </div>
+        </div>
+        <!-- Back: name + description -->
+        <div class="ct-face ct-back">
+          <div class="ct-back-body">
+            <div><span class="ct-badge" id="ct-back-cat"></span></div>
+            <div class="ct-back-name-big" id="ct-name"></div>
+            <div class="ct-back-desc" id="ct-description"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div style="height:14px"></div>
+    <div class="ct-controls">
+      <button class="ct-btn" id="ct-prev" onclick="navigate(-1)">← Prev</button>
+      <button class="ct-btn primary" onclick="flipCard()">Reveal</button>
+      <button class="ct-btn" id="ct-next" onclick="navigate(1)">Next →</button>
+      <button class="ct-btn icon" id="ct-shuffle" title="Shuffle" onclick="toggleShuffle()">⇄</button>
+    </div>
+  </div>
+
+  <!-- QUIZ VIEW -->
+  <div id="view-quiz" style="display:none">
+    <div class="ct-quiz">
+      <div class="ct-quiz-score" id="quiz-score">&nbsp;</div>
+      <div class="ct-quiz-question" id="quiz-question">
+        <div class="ct-quiz-media" id="quiz-media" style="display:none"></div>
+        <div class="ct-quiz-clue" id="quiz-clue"></div>
+        <div class="ct-quiz-reveal" id="quiz-reveal"></div>
+      </div>
+      <div class="ct-quiz-answers" id="quiz-answers"></div>
+      <button class="ct-quiz-next" id="quiz-next" onclick="nextQuestion()">Next question →</button>
+    </div>
+  </div>
+
+  <!-- LIST VIEW -->
+  <div id="view-list">
+    <div style="display:flex;justify-content:flex-end;margin-bottom:8px">
+      <button class="ct-filter" id="media-only-btn" onclick="toggleMediaOnly()">● With media only</button>
+    </div>
+    <table class="ct-table" id="ct-table">
+      <thead>
+        <tr>
+          <th style="width:18px"></th>
+          <th>Name</th>
+          <th>Category</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody id="ct-tbody"></tbody>
+    </table>
+  </div>
+
+  <div class="ct-empty" id="ct-empty" style="display:none">No techniques match your search.</div>
+
+  <div class="ct-sources">
+    Techniques: <a href="https://en.wikipedia.org/wiki/List_of_capoeira_techniques" target="_blank">Wikipedia — List of capoeira techniques</a>.<br>
+    Images and GIFs: <a href="https://commons.wikimedia.org" target="_blank">Wikimedia Commons</a>, various contributors, licensed under <a href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank">CC BY-SA 4.0</a>.
+  </div>
+
+</div>
+
+<!-- Popup — position:fixed, DOM location doesn't matter -->
+<div class="ct-popup-backdrop" id="ct-popup-backdrop" onclick="closePopup(event)">
+  <div class="ct-popup" id="ct-popup" style="position:relative">
+    <button class="ct-popup-close" onclick="closePopup()">✕</button>
+    <div class="ct-popup-media" id="ct-popup-media"></div>
+    <div class="ct-popup-body">
+      <span class="ct-badge" id="ct-popup-cat"></span>
+      <div class="ct-popup-name" id="ct-popup-name"></div>
+      <div class="ct-popup-desc" id="ct-popup-desc"></div>
+    </div>
+  </div>
+</div>
+
+<script src="{{ '/assets/js/capoeira-data.js' | relative_url }}"></script>
+<script>
+// ─── STATE ────────────────────────────────────────────────────────────────────
+let filtered = [], order = [], cursor = 0, isFlipped = false, shuffleOn = false;
+let activeCategory = 'All', mode = 'list', mediaOnly = false;
+let quizCorrect = 0, quizTotal = 0, quizAnswered = false;
+
+// ─── INIT ─────────────────────────────────────────────────────────────────────
+function init() {
+  const cats = ['All', ...new Set(techniques.map(t => t.cat))];
+  const row = document.getElementById('ct-filters');
+  cats.forEach(cat => {
+    const btn = document.createElement('button');
+    btn.className = 'ct-filter' + (cat === activeCategory ? ' active' : '');
+    btn.dataset.cat = cat;
+    btn.textContent = cat;
+    btn.onclick = () => setCategory(cat);
+    row.appendChild(btn);
+  });
+  applyFilter();
+}
+
+function setMode(m) {
+  mode = m;
+  ['flashcard','quiz','list'].forEach(id => {
+    document.getElementById('btn-' + id).classList.toggle('active', id === m);
+    document.getElementById('view-' + id).style.display = id === m ? '' : 'none';
+  });
+  document.getElementById('ct-progress-fill').style.width =
+    m === 'list' ? '100%' : `${((cursor + 1) / Math.max(filtered.length, 1)) * 100}%`;
+  if (m === 'quiz') { quizCorrect = 0; quizTotal = 0; cursor = 0; renderQuiz(); }
+  if (m === 'list') renderList();
+  if (m === 'flashcard') { cursor = 0; renderCard(); }
+}
+
+function setCategory(cat) {
+  activeCategory = cat;
+  document.querySelectorAll('.ct-filter').forEach(b =>
+    b.classList.toggle('active', b.dataset.cat === cat));
+  applyFilter();
+}
+
+function applyFilter() {
+  const q = document.getElementById('ct-search').value.trim().toLowerCase();
+  filtered = techniques.filter(t => {
+    const matchCat = activeCategory === 'All' || t.cat === activeCategory;
+    const matchQ = !q || t.name.toLowerCase().includes(q) || t.desc.toLowerCase().includes(q);
+    return matchCat && matchQ;
+  });
+  order = filtered.map((_, i) => i);
+  if (shuffleOn) shuffleArray(order);
+  cursor = 0;
+  if (mode === 'flashcard') renderCard();
+  else if (mode === 'quiz') { quizCorrect = 0; quizTotal = 0; renderQuiz(); }
+  else renderList();
+}
+
+// ─── FLASHCARD ────────────────────────────────────────────────────────────────
+function renderCard() {
+  const empty = document.getElementById('ct-empty');
+  const wrap  = document.getElementById('view-flashcard');
+  if (filtered.length === 0) {
+    empty.style.display = ''; wrap.style.display = 'none';
+    document.getElementById('ct-progress-fill').style.width = '0%';
+    return;
+  }
+  empty.style.display = 'none'; wrap.style.display = '';
+
+  const t = filtered[order[cursor]];
+  document.getElementById('ct-counter').textContent = `${cursor + 1} / ${filtered.length}`;
+  document.getElementById('ct-progress-fill').style.width = `${((cursor + 1) / filtered.length) * 100}%`;
+  document.getElementById('ct-front-cat').textContent = t.cat;
+  document.getElementById('ct-back-cat').textContent = t.cat;
+  document.getElementById('ct-name').textContent = t.name;
+  document.getElementById('ct-description').textContent = t.desc;
+
+  // Front: media or text clue
+  const frontMedia = document.getElementById('ct-front-media');
+  frontMedia.innerHTML = '';
+  if (t.media) {
+    frontMedia.className = 'ct-front-media';
+    frontMedia.appendChild(buildMedia(t.media, t.name));
+  } else {
+    frontMedia.className = 'ct-front-nomedia';
+    const clue = t.desc.replace(
+      new RegExp(t.name.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'), 'gi'), '___');
+    frontMedia.textContent = clue;
+  }
+
+  document.getElementById('ct-card').classList.toggle('flipped', isFlipped);
+  document.getElementById('ct-prev').disabled = cursor === 0;
+  document.getElementById('ct-next').disabled = cursor === filtered.length - 1;
+}
+
+function flipCard() {
+  isFlipped = !isFlipped;
+  document.getElementById('ct-card').classList.toggle('flipped', isFlipped);
+}
+function navigate(dir) {
+  const next = cursor + dir;
+  if (next >= 0 && next < filtered.length) { cursor = next; renderCard(); }
+}
+function toggleShuffle() {
+  shuffleOn = !shuffleOn;
+  document.getElementById('ct-shuffle').classList.toggle('shuffle-on', shuffleOn);
+  if (shuffleOn) shuffleArray(order); else order = filtered.map((_, i) => i);
+  cursor = 0; renderCard();
+}
+
+// ─── QUIZ ─────────────────────────────────────────────────────────────────────
+function renderQuiz() {
+  if (filtered.length < 2) {
+    document.getElementById('quiz-question').innerHTML =
+      '<div class="ct-quiz-clue">Need at least 2 techniques to quiz.</div>';
+    document.getElementById('quiz-answers').innerHTML = '';
+    document.getElementById('quiz-next').style.display = 'none';
+    document.getElementById('quiz-score').innerHTML = '&nbsp;';
+    return;
+  }
+  quizAnswered = false;
+  const t = filtered[order[cursor]];
+
+  document.getElementById('quiz-score').innerHTML =
+    quizTotal > 0 ? `Score: <strong>${quizCorrect} / ${quizTotal}</strong>` : '&nbsp;';
+  document.getElementById('ct-progress-fill').style.width =
+    `${((cursor + 1) / filtered.length) * 100}%`;
+
+  const mediaWrap = document.getElementById('quiz-media');
+  const clueEl    = document.getElementById('quiz-clue');
+  const revealEl  = document.getElementById('quiz-reveal');
+  revealEl.style.display = 'none'; revealEl.textContent = '';
+
+  mediaWrap.innerHTML = '';
+  if (t.media) {
+    mediaWrap.style.display = '';
+    mediaWrap.appendChild(buildMedia(t.media, t.name));
+    clueEl.innerHTML = `<span class="ct-badge">${t.cat}</span>`;
+  } else {
+    mediaWrap.style.display = 'none';
+    const clue = t.desc.replace(
+      new RegExp(t.name.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'), 'gi'), '___');
+    clueEl.innerHTML = `<span class="ct-badge">${t.cat}</span>${clue}`;
+  }
+
+  const wrong = techniques.filter(x => x.id !== t.id).sort(() => Math.random() - 0.5).slice(0, 3);
+  const choices = [...wrong, t].sort(() => Math.random() - 0.5);
+
+  const answersEl = document.getElementById('quiz-answers');
+  answersEl.innerHTML = '';
+  choices.forEach(choice => {
+    const btn = document.createElement('button');
+    btn.className = 'ct-ans';
+    btn.textContent = choice.name;
+    btn.onclick = () => answerQuiz(choice.id === t.id, btn, t);
+    answersEl.appendChild(btn);
+  });
+
+  document.getElementById('quiz-next').style.display = 'none';
+}
+
+function answerQuiz(correct, clickedBtn, t) {
+  if (quizAnswered) return;
+  quizAnswered = true;
+  quizTotal++;
+  if (correct) quizCorrect++;
+
+  document.querySelectorAll('.ct-ans').forEach(btn => {
+    btn.disabled = true;
+    if (btn.textContent === t.name) btn.classList.add('correct');
+    else if (btn === clickedBtn && !correct) btn.classList.add('wrong');
+  });
+
+  const revealEl = document.getElementById('quiz-reveal');
+  revealEl.textContent = t.desc;
+  revealEl.style.display = '';
+
+  document.getElementById('quiz-score').innerHTML =
+    `Score: <strong>${quizCorrect} / ${quizTotal}</strong>`;
+
+  const nextBtn = document.getElementById('quiz-next');
+  nextBtn.textContent = cursor === filtered.length - 1 ? 'Restart →' : 'Next →';
+  nextBtn.style.display = '';
+}
+
+function nextQuestion() {
+  if (cursor === filtered.length - 1) {
+    cursor = 0;
+    if (shuffleOn) shuffleArray(order);
+    quizCorrect = 0; quizTotal = 0;
+  } else { cursor++; }
+  renderQuiz();
+}
+
+function toggleMediaOnly() {
+  mediaOnly = !mediaOnly;
+  document.getElementById('media-only-btn').classList.toggle('active', mediaOnly);
+  renderList();
+}
+
+// ─── LIST ─────────────────────────────────────────────────────────────────────
+function renderList() {
+  const empty = document.getElementById('ct-empty');
+  const wrap  = document.getElementById('view-list');
+  if (filtered.length === 0) {
+    empty.style.display = ''; wrap.style.display = 'none'; return;
+  }
+  empty.style.display = 'none'; wrap.style.display = '';
+
+  const tbody = document.getElementById('ct-tbody');
+  tbody.innerHTML = '';
+  const rows = mediaOnly ? filtered.filter(t => t.media) : filtered;
+  rows.forEach(t => {
+    const tr = document.createElement('tr');
+    if (t.media) tr.classList.add('has-media');
+    const dot = t.media ? `<td style="text-align:center;color:var(--accent);font-size:0.55rem;padding-top:11px">●</td>` : '<td></td>';
+    tr.innerHTML = `${dot}<td>${t.name}</td><td>${t.cat}</td><td>${t.desc}</td>`;
+    if (t.media) tr.onclick = () => openPopup(t);
+    tbody.appendChild(tr);
+  });
+}
+
+// ─── HELPERS ──────────────────────────────────────────────────────────────────
+function buildMedia(media, name) {
+  if (media.type === 'youtube') {
+    const iframe = document.createElement('iframe');
+    iframe.src = `https://www.youtube.com/embed/${media.id}?start=${media.start||0}&rel=0`;
+    iframe.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture';
+    iframe.allowFullscreen = true;
+    return iframe;
+  }
+  if (media.type === 'image' || media.type === 'gif') {
+    const img = document.createElement('img');
+    img.src = media.src; img.alt = name;
+    return img;
+  }
+  if (media.type === 'video') {
+    const vid = document.createElement('video');
+    vid.src = media.src; vid.controls = true; vid.loop = true; vid.autoplay = true; vid.muted = true;
+    return vid;
+  }
+}
+
+function shuffleArray(arr) {
+  for (let i = arr.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [arr[i], arr[j]] = [arr[j], arr[i]];
+  }
+}
+
+// ─── POPUP ────────────────────────────────────────────────────────────────────
+function openPopup(t) {
+  document.getElementById('ct-popup-cat').textContent = t.cat;
+  document.getElementById('ct-popup-name').textContent = t.name;
+  document.getElementById('ct-popup-desc').textContent = t.desc;
+  const mediaEl = document.getElementById('ct-popup-media');
+  mediaEl.innerHTML = '';
+  if (t.media) {
+    mediaEl.style.display = '';
+    mediaEl.appendChild(buildMedia(t.media, t.name));
+  } else {
+    mediaEl.style.display = 'none';
+  }
+  document.getElementById('ct-popup-backdrop').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+
+function closePopup(e) {
+  if (e && e.target !== document.getElementById('ct-popup-backdrop') &&
+      !e.target.classList.contains('ct-popup-close')) return;
+  document.getElementById('ct-popup-backdrop').classList.remove('open');
+  document.getElementById('ct-popup-media').innerHTML = '';
+  document.body.style.overflow = '';
+}
+
+document.getElementById('ct-search').addEventListener('input', applyFilter);
+document.addEventListener('keydown', e => {
+  if (e.key === 'Escape') { closePopup({ target: document.getElementById('ct-popup-backdrop') }); return; }
+  if (e.target.tagName === 'INPUT') return;
+  if (mode === 'flashcard') {
+    if (e.key === 'ArrowRight') navigate(1);
+    else if (e.key === 'ArrowLeft') navigate(-1);
+    else if (e.key === ' ') { e.preventDefault(); flipCard(); }
+    else if (e.key === 's' || e.key === 'S') toggleShuffle();
+  } else if (mode === 'quiz' && e.key === 'ArrowRight' && quizAnswered) nextQuestion();
+});
+
+init();
+</script>

@@ -2,9 +2,9 @@
 """
 Encrypt / decrypt _posts/*.md files.
 
-  python3 scripts/crypt.py encrypt          # encrypt all unencrypted posts
-  python3 scripts/crypt.py decrypt          # decrypt all .enc posts (used by CI)
-  python3 scripts/crypt.py encrypt post.md  # single file
+  python3 scripts/crypt.py encrypt          # encrypt all .md posts → .md.enc
+  python3 scripts/crypt.py decrypt          # decrypt all .md.enc posts → .md (used by CI)
+  python3 scripts/crypt.py encrypt post.md
   python3 scripts/crypt.py decrypt post.md.enc
 
 Password source (first one found):
@@ -17,7 +17,7 @@ Algorithm: AES-256-GCM, key via PBKDF2-HMAC-SHA256 (600 000 iterations)
 import os, sys, getpass
 from pathlib import Path
 
-POSTS_DIR = Path("_posts")
+POSTS_DIR  = Path("_posts")
 ITERATIONS = 600_000
 
 # ── crypto ────────────────────────────────────────────────────────────────────
@@ -86,11 +86,9 @@ def cmd_encrypt(args):
     pw = _password()
     for f in files:
         if not f.exists():
-            print(f"  not found: {f}")
-            continue
+            print(f"  not found: {f}"); continue
         if f.suffix != ".md":
-            print(f"  skipping (not .md): {f}")
-            continue
+            print(f"  skipping (not .md): {f}"); continue
         encrypt_file(f, pw)
     print("\nDone. Commit the .enc files — plain .md files are gitignored.")
 
@@ -101,8 +99,7 @@ def cmd_decrypt(args):
     pw = _password()
     for f in files:
         if not f.exists():
-            print(f"  not found: {f}")
-            continue
+            print(f"  not found: {f}"); continue
         decrypt_file(f, pw)
     print("Done.")
 
@@ -114,7 +111,7 @@ Commands:
 """
 
 def main():
-    cmd = sys.argv[1] if len(sys.argv) > 1 else ""
+    cmd  = sys.argv[1] if len(sys.argv) > 1 else ""
     rest = sys.argv[2:]
     if cmd == "encrypt":
         cmd_encrypt(rest)

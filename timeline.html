@@ -26,6 +26,7 @@ permalink: /timeline/
 
   <div class="timeline">
     {% for post in sorted_posts %}
+    {% if post.hidden %}{% continue %}{% endif %}
     <div class="timeline-entry" {% if post.lat and post.lng %}data-lat="{{ post.lat }}" data-lng="{{ post.lng }}"{% endif %}>
       <div class="timeline-date">{{ post.date | date: "%-d.%m.%Y" }}</div>
       {% if post.location %}
@@ -51,6 +52,7 @@ permalink: /timeline/
   var posts = [
     {% assign sorted = site.posts | sort: 'date' %}
     {% for post in sorted %}
+    {% if post.hidden %}{% continue %}{% endif %}
     {% if post.lat and post.lng %}
     {
       title:    {{ post.title | jsonify }},
