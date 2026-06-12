@@ -19,7 +19,7 @@ permalink: /post/
     <h1 class="post-title" id="post-title"></h1>
   </header>
 
-  <div id="enc-form" class="enc-form">
+  <div id="enc-form" class="enc-form" style="display:none">
     <div class="enc-icon">&#128274;</div>
     <p class="enc-hint">Wprowadź hasło, żeby przeczytać post.</p>
     <div class="enc-row">
@@ -129,8 +129,13 @@ permalink: /post/
     return end === -1 ? text : text.slice(end + 4).trimStart();
   }
 
+  const encForm = document.getElementById('enc-form');
+
+  function showForm() { encForm.style.display = 'flex'; }
+  function hideForm() { encForm.style.display = 'none'; }
+
   async function showContent(raw) {
-    document.getElementById('enc-form').hidden = true;
+    hideForm();
     const body = document.getElementById('post-body');
     body.innerHTML = marked.parse(stripFrontmatter(raw));
     body.hidden = false;
@@ -155,12 +160,14 @@ permalink: /post/
     if (e.key === 'Enter') window.encUnlock();
   });
 
-  // Auto-unlock with cached password
+  // Auto-unlock with cached password; show form only if no valid cached password
   (async () => {
     const cached = sessionStorage.getItem(SK);
-    if (!cached) return;
-    const raw = await tryDecrypt(cached);
-    if (raw !== null) await showContent(raw);
+    if (cached) {
+      const raw = await tryDecrypt(cached);
+      if (raw !== null) { await showContent(raw); return; }
+    }
+    showForm();
   })();
 })();
 </script>
