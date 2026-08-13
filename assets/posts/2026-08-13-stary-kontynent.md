@@ -42,7 +42,7 @@ Tu chciałbym wrócić do mojej przesady - istnieje dialektyczne napięcie pomi�
 **O walce.**
 Walka - to nurtuje mnie chyba najbardziej. Mam świadomość, że moje zrozumienie afrobrazylijczyków i ich sytuacji społecznej jest obecnie co najmniej ubogie. W szczególności, nie mam pojęcia jak ustosunkowywują się oni do "białych". Jedyne co wiem, to to, że są bardzo mili i w życiu nie doświadczyłem z ich strony żadnej wrogości. Jakie emocje towarzyszą im w życiu codziennym ? Jakie w praktyce?
 
-Mog tylko ekstrapolować na to co znam. 
+Mogę jedynie ekstrapolować do tego co znam. 
 
 <iframe data-testid="embed-iframe" style="border-radius:12px" src="https://open.spotify.com/embed/track/0bOG3AmfbXRN1kvc11VDNn?utm_source=generator&si=984eb38991474116" width="100%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
 
