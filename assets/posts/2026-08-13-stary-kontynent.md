@@ -20,7 +20,7 @@ Jest dla mnie w antropologii coś niezwykle pociągającego. Zawsze tak było. P
 
 
 
-Nieco ponad 2 tygodnie temu, na konferencji ESRI w Austrii poznałem prof. antropologii Lotte Meinert i choć była antropolożką, nie zakochałem się w niej.  Z satysfakcją jednak powiem, że głęboko mnie ona zainspirowała. Dała mi bardzo pozytywnego kopa. Dzięki niej zdałem sobie sprawę, że to co zamierzam zrobić w ramach projektu "From Center to Circle", to typowa praca w terenie, którą wykonują etnografowie. Dała mi ona kilka lektur i wskazówki jak postępować.
+Nieco ponad 2 tygodnie temu, na konferencji ESRI w Austrii poznałem prof. Lotte Meinert i choć była antropolożką, nie zakochałem się w niej.  Z satysfakcją jednak powiem, że głęboko mnie ona zainspirowała. Dała mi bardzo pozytywnego kopa. Dzięki niej zdałem sobie sprawę, że to co zamierzam zrobić w ramach projektu "From Center to Circle", to typowa praca w terenie, którą wykonują etnografowie. Dała mi ona kilka lektur i wskazówki jak postępować.
 
 Jedną z nich (i chyba najważniejszą) było spisać przed wyjazdem, to co ja uważam "o tym" - tzn. o tym co badam - a potem weryfikować to z rzeczywistością, a każdą z nieścisłości odnotowywać. "Tak generowana jest wiedza" - powiedziała. 
 
