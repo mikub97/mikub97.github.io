@@ -53,6 +53,13 @@ Nie wiem. Wydaje mi się, że capoeiriści i szerzej - afrobrazyliczycy działaj
 
 Słyszę ją w pieśniach, doświadczyłem jej rok temu w teatrze na Pelourinio, w Salwadorze i popłakałem się ze wzruszenia. Nie jestem w stanie jeszcze tego dokładnie nazwać, ale wydaje mi się, że w jakiś sposób, w kręgu capoeiry, trauma niewolnictwa, utraty wolności, korzeni, domu - zostaje przekształcona w miłość i nadzieję. W to wierzę. Tak to rozumiem, choć zupełnie nie intelektualnie. 
 
-Jeśli to co przeczuwam sercem jest prawdą, my Polacy możemy się od afrobrazylijczyków, a może szerzej - od brazylijczyków - wiele nauczyć. Uważam, że to co dzieje się dzisiaj w przestrzeni społeczno-politycznej w Polsce, to skrajna awersja do wszystkiego co wspólne, czy wspólnotowe, wliczając w to kościół (być może z wyjątkiem kilku kolektywów, jak "dobrze", czy osiedla Jazdów w Warszawie), a wynika to, jak sądzę,  z traumy sowietyzmu. Zresztą traum nam nie brakuje - potop szwedzki, rozbiory, dwie wojny światowe... Nie sądzę, by zostały one odpowiednio zaadresowane i przepracowane. Przydałaby nam się kolektywna psychoterapia. Nie wiem jak i co z tym zrobić, ale duszę się w tym czasem.
+Jeśli to co przeczuwam sercem jest prawdą, my Polacy możemy się od Afrobrazylijczyków  wiele nauczyć. Myślę, że to co dzieje się dzisiaj w przestrzeni społeczno-politycznej w Polsce -  skrajna awersja do wszystkiego co miałoby być wspólne, czy wspólnotowe, wliczając w to kościół (być może z wyjątkiem kilku kolektywów, jak "dobrze", osiedla Jazdów w Warszawie i paru innych) - wynika, jak sądzę, z traumy sowietyzmu. Zresztą traum nam nie brakuje - potop, rozbiory, dwie niemałe wojny w ostatnim wieku... Nie sądzę, by zostało to odpowiednio przepracowane. Przydałaby nam się kolektywna psychoterapia. Albo zabawa? Ruch? Relacje międzypokoleniowe? 
+
+Po polsku.
+
+Tymczasem. 
+
+Axé!
+
 
 
