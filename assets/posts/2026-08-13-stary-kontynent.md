@@ -15,7 +15,7 @@ Jest dla mnie w antropologii coś niezwykle pociągającego. Zawsze tak było. P
 
 <figure>
   <img src="/assets/images/europa/ksiazki.jpg" alt="Antropologiczne książki">
-  <figcaption> Książki antropologiczne - po lewej o Candomblé, po prawej jak widać </figcaption>
+  <figcaption> Książki, które aktualnie czytam - po lewej o Candomblé, po prawej jak widać </figcaption>
 </figure>
 
 
