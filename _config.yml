@@ -1,4 +1,4 @@
-title: "From Center to Circle"
+title: "Viajando"
 description: "Notes, photos, and movement — travels in Brazil"
 baseurl: ""
 url: "https://mikub97.github.io"
@@ -18,3 +18,16 @@ exclude:
   - Gemfile
   - Gemfile.lock
   - "*.sh"
+  - scripts
+  - README.md
+  # _posts/ is the private working copy — the site renders only what
+  # publish_posts.py copied into assets/posts/. Without this, Jekyll would
+  # also render posts marked hidden into pages and into the feed.
+  - _posts
+  # Capoeira subpage (cards + quiz) — deactivated 2026-08-13, files kept on disk
+  - capoeira-techniques.html
+  - capoeira-cards.html
+  - assets/js/capoeira-data.js
+  # Posts are served as plain markdown from assets/posts/ — the encrypted
+  # copies are no longer read by the site, kept only as a backup.
+  - assets/enc

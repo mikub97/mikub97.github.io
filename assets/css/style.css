@@ -269,6 +269,15 @@ img { max-width: 100%; height: auto; display: block; }
   border-radius: var(--radius);
   margin: 1.5em auto;
 }
+.post-body figure { margin: 1.5em 0; }
+.post-body figure img { margin-bottom: 0.6em; }
+.post-body figcaption {
+  font-size: 0.85rem;
+  line-height: 1.5;
+  color: var(--muted);
+  text-align: center;
+  font-style: italic;
+}
 .post-body hr {
   border: none;
   border-top: 1px solid var(--border);

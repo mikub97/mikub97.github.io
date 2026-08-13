@@ -41,3 +41,12 @@
   lat: 52.2297
   lng: 21.0122
   hidden: true
+
+- slug: 2026-08-13-stary-kontynent
+  title: "Stary kontynent"
+  date: 2026-08-13
+  location: "Warszawa"
+  lat: 52.2297
+  lng: 21.0122
+  cover_image: /assets/images/europa/angola.jpg
+  hidden: false
