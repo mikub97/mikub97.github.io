@@ -4,7 +4,7 @@ Wczoraj doświadczyłem kryzysu. Na świadomym poziomie nie jestem w stanie powi
 Zwykle tak jest, że po przeczytaniu czegoś inspirującego, sięgam po dziennik i piszę, zwykle zarażony stylem autora.
 Zatem piszę. Zarażony górnolotnością, którą będę nasycał mój tekst, bo tak lubię i tak już mam. 
 
-Podobnie jak Jung, będę pisał do Was "Drodzy Przyjaciele". To pomaga. Jak przeświadczeni są enaktywiści, a w szczególności moja promotorka Joanna - wszystko jest w interakcji. Życie, znaczenia, chyba tylko nie-przeznaczenia - rodzą się w interakcji. Zatem nawet jeśli nikt tego nie czyta, interakacja zachodzi między mną a moją projekcją Was. Miłej lektury.
+Podobnie jak Jung, będę pisał do Was "Drodzy Przyjaciele". To pomaga. Jak przeświadczeni są enaktywiści, a w szczególności moja promotorka Joanna - wszystko jest w interakcji. Życie, zdarzenia, ich znaczeni - wszystko, chyba tylko nie przeznaczenia - rodzą się w interakcji. Zatem nawet jeśli nikt tego nie czyta, interakacja zachodzi między mną a moją projekcją Was. Miłej lektury.
 
 <!--more-->
 
