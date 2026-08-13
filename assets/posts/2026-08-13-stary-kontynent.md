@@ -37,7 +37,7 @@ Tu chciałbym wrócić do mojej przesady - istnieje dialektyczne napięcie pomi�
 
 **O umiejętnościach.**
 
-**O energii**. Axé, które pobudza rytm berimbau oraz atabaque, zamkniętej w kręgu przepływającej przez i kierującej ruchy, wyzwalającej śpiewy, jak i przez nie modulowaną. 
+**O energii**. Axé, które pobudza rytm berimbau oraz atabaque, zamkniętej w kręgu przepływającej przez i kierującej  ciał, wyzwalającej i reagującej na śpiewy. 
 
 **O walce.**
 Walka - to nurtuje mnie chyba najbardziej. Mam świadomość, że moje zrozumienie afrobrazylijczyków i ich sytuacji społecznej jest obecnie co najmniej ubogie. W szczególności, nie mam pojęcia jak ustosunkowywują się oni do "białych". Jedyne co wiem, to to, że są bardzo mili i w życiu nie doświadczyłem z ich strony żadnej wrogości. Jakie emocje towarzyszą im w życiu codziennym ? Jakie w praktyce?
