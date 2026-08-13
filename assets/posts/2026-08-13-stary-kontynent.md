@@ -31,7 +31,7 @@ Zatem, o czym o to jest?
 
 **O aktywnym uczestnictwie.** Z świadomą przesadą powiem - o całkowitym oddaniu się jednostki dla wspólnoty, w szczególności troscę o najsłabszych w grupie. O podtrzymywaniu się nawzajem. 
 
-Tu chciałbym wrócić do mojej przesady - istnieje dialektyczne napięcie pomiędzy owym oddaniem się a potrzebą istnienia jako odrębne indywiduum. To napięcie jest u podstaw enaktywizmu oraz pokrewnej teorii naukowej "participatory sense-making", które są teoretycznym kręgosłupem mojej pracy jako badacza. Napięcie bywa również rozumiane, w moim doświadczeniu, jako bardzo ludzkie napięcie. Doświadczam go również, a może w szczególności w grupie ludzi, co  jest jednym z moich wyzwań na tę podróż - "z centrum (środka, wewnątrz) do wewnątrz koła (między ludzi)" 
+Tu chciałbym wrócić do mojej przesady - istnieje dialektyczne napięcie pomiędzy owym oddaniem się a potrzebą istnienia jako odrębne indywiduum. To napięcie jest u podstaw enaktywizmu oraz pokrewnej teorii naukowej "participatory sense-making", które są teoretycznym kręgosłupem mojej pracy jako badacza. Napięcie bywa również rozumiane, w moim doświadczeniu, jako bardzo ludzkie napięcie emocjonalne. Doświadczam go również, a może w szczególności w grupie ludzi, co  jest jednym z moich wyzwań na tę podróż.
 
 **O zabawie.**
 
