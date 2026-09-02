@@ -5,11 +5,13 @@ Cztery pliki plus obrazki. Otwiera się dwuklikiem z dysku i wygląda tak samo,
 jak po wrzuceniu na serwer.
 
 ```
-index.html      wersja polska (główna)
+index.html      wersja polska (v1)
+index-v2.html   wersja polska (v2)
 index_en.html   wersja angielska
-style.css       jeden arkusz dla obu, wyłącznie jasny motyw + kreski
-cv.pdf          odtworzone z commita c43f27d
-img/            portret i flagi, też z c43f27d
+style.css       jeden arkusz dla wszystkich, wyłącznie jasny motyw + kreski
+cv.pdf          budowane z ~/Documents/Research/cv/ (patrz tamtejszy README)
+abrahamson-et-al-2026-cjep-ortho.pdf   manuskrypt CJEP, linkowany z sekcji o publikacji
+img/            portret i flagi, z c43f27d
 ```
 
 Wywodzi się z poprzedniej strony (`index.html` w commicie **c43f27d**,
@@ -20,11 +22,11 @@ a „doktorant, który udziela korepetycji" nie jest.
 
 ## Co zostało zmienione wobec starej wersji
 
-* **Oferta zamiast biografii.** Trzy ścieżki, każda z konkretnym odbiorcą
-  i stawką. Poprzednia strona nie mówiła, ile kosztuje lekcja ani czego
-  dokładnie dotyczy — sekcja „Educational Offer" była zakomentowana.
-* **Analiza danych na pierwszym miejscu.** Segment 250 zł, o który opiera się
-  plan w `projects/korepetycje/README.md`, i którego żadne dotychczasowe
+* **Oferta zamiast biografii.** Ścieżki z konkretnym odbiorcą i konkretnym
+  zakresem. Poprzednia strona nie mówiła, czego dokładnie dotyczą lekcje —
+  sekcja „Educational Offer" była zakomentowana.
+* **Analiza danych na pierwszym miejscu.** Segment, o który opiera się plan
+  w `projects/korepetycje/README.md`, i którego żadne dotychczasowe
   ogłoszenie nie sprzedawało.
 * **Doprecyzowana afiliacja.** Międzydziedzinowa Szkoła Doktorska UW,
   dyscypliny: matematyka i psychologia. W publikacji CJEP figuruje jednostka
@@ -50,7 +52,8 @@ a „doktorant, który udziela korepetycji" nie jest.
 * **Pomarańcz zamiast cyjanu.** Dawny akcent `#06b6d4` zniknął — przycisk
   akcji jest pomarańczowy, linki w spokojnym petrolu `#1f6f8b`.
   Pomarańcz pojawia się dokładnie w dwóch miejscach: „Napisz do mnie"
-  i jedna wyróżniona karta oferty. Trzecie miejsce i wyróżnienie przestaje
+  i obramowanie jednej wyróżnionej karty oferty (po usunięciu stawek karta
+  trzyma się już tylko ramką i tłem — to wystarcza). Trzecie miejsce i wyróżnienie przestaje
   wyróżniać — dlatego cytat z publikacji ma neutralne tło.
 * **Wyróżniona jest matematyka na egzaminy**, nie analiza danych. To decyzja
   o tym, po co ktoś tu wchodzi z ogłoszenia, a nie o tym, co jest najbardziej
@@ -82,11 +85,14 @@ wejdzie z ogłoszenia i zobaczy relację z Salvadoru, nie przeczyta oferty.
 
 ## Zanim trafi do sieci — do sprawdzenia przez człowieka
 
-* **Stawki.** W `index.html` stoi 250 zł i 180 zł, komentarz w kodzie mówi gdzie.
-  180 zł to nie jest stawka, którą płaci Tadzio — świadomie.
-* **PDF artykułu.** Strona linkuje do DOI, a nie do preprintu, i tak powinno
-  zostać: nagłówek pliku mówi wprost, że to nie jest wersja ostateczna
-  i że prawa ma Canadian Psychological Association.
+* **Stawek nie ma na stronie i nie mają wracać** (decyzja z 2026-09-02, dotyczy
+  wszystkich trzech plików). Cena jest ustalana w rozmowie; liczby żyją wyłącznie
+  w `projects/korepetycje/README.md`, poza tym repozytorium. Reguła obejmuje też
+  komentarze w kodzie — źródło strony jest publiczne.
+* **PDF artykułu.** Strona linkuje do manuskryptu, nie do DOI: DOI nie prowadzi
+  jeszcze do opublikowanego artykułu. Przy PDF-ie musi zostać adnotacja, że to
+  wersja zaakceptowana, a nie ostateczna — nagłówek pliku mówi wprost, że prawa
+  ma Canadian Psychological Association.
 * **Zgoda uczniów.** Na stronie stoi „Malina W." i „Zuzia D." — imię plus
   inicjał, bez nazwisk. Link do repozytorium Maliny prowadził pod
   `github.com/malinawyszynska/...`, czyli nazwisko było o jedno kliknięcie

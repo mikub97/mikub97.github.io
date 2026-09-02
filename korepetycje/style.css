@@ -151,13 +151,10 @@ section > h2 .note { font-size: .85rem; font-weight: 400; color: var(--muted); }
   border-radius: .9rem; padding: 1.15rem;
 }
 .card.feature { border-color: var(--orange); background: var(--accent-soft); }
-.card.feature .price { color: var(--orange-ink); }
 .card h3 { margin: 0 0 .3rem; font-size: 1.05rem; }
 .card .who { color: var(--muted); font-size: .9rem; margin: 0 0 .7rem; }
 .card ul { margin: .5rem 0 0 1.1rem; padding: 0; }
 .card li { margin-bottom: .3rem; }
-.card .price { font-weight: 700; margin-top: .9rem; display: block; }
-.card .price small { font-weight: 400; color: var(--muted); }
 
 /* --- lista referencji / doświadczenia ---------------------------------- */
 .facts { list-style: none; margin: 0; padding: 0; }
