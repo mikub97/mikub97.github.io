@@ -16,9 +16,17 @@
   --border: #e5e7eb;
   --accent-soft: #ecfeff;
   --shadow: 0 6px 24px rgba(2, 8, 23, .08);
+
+  /* Kolory wyjęte ze zdjęcia w hero: pomarańcz ściany i błękit nieba.
+     Używane wyłącznie jako kreski i akcenty — nigdy jako tło pod tekstem. */
+  --orange: #fe6015;
+  --sky: #7fb9d4;
 }
 
 * { box-sizing: border-box; }
+
+/* Kreski wychodzą poza siatkę; bez tego telefon dostaje poziomy pasek przewijania. */
+html, body { overflow-x: hidden; }
 
 body {
   margin: 0;
@@ -62,13 +70,36 @@ header {
 .hero {
   display: grid; grid-template-columns: 1.35fr .65fr; gap: 2rem;
   align-items: center; padding: 2.5rem 0 1rem;
+  position: relative;
 }
+
+/* Dwie kreski w lewym górnym rogu — pierwsza rzecz nad nagłówkiem. */
+.hero::before, .hero::after {
+  content: ""; position: absolute; height: 3px; border-radius: 999px;
+  pointer-events: none;
+}
+.hero::before { width: 76px; top: 1.35rem; left: 0; background: var(--orange); }
+.hero::after  { width: 34px; top: 1.35rem; left: 86px; background: var(--sky); }
 .hero h1 { font-size: clamp(1.6rem, 4vw, 2.3rem); line-height: 1.2; margin: 0 0 .75rem; }
 .hero .lead { font-size: 1.08rem; color: var(--text); margin: 0 0 1rem; }
 .sub { color: var(--muted); margin: 0 0 1rem; }
+.photo-box { position: relative; display: flex; justify-content: center; }
 .photo-box img {
   max-width: 300px; width: 100%; height: auto;
   border-radius: 1rem; box-shadow: var(--shadow);
+  position: relative; z-index: 1;
+}
+
+/* Dwie ramki wychylone w przeciwne strony — pomarańcz ze ściany na zdjęciu
+   i błękit nieba. Same krawędzie, żadnego wypełnienia. */
+.photo-box::before, .photo-box::after {
+  content: ""; position: absolute; inset: -6px 8px -6px 8px;
+  border-radius: 1.1rem; pointer-events: none; z-index: 0;
+}
+.photo-box::before { border: 2px solid var(--orange); transform: rotate(3.5deg); }
+.photo-box::after  { border: 2px solid var(--sky);    transform: rotate(-3deg); }
+@media (max-width: 860px) {
+  .photo-box::before, .photo-box::after { inset: -6px 22% -6px 22%; }
 }
 @media (max-width: 860px) {
   .hero { grid-template-columns: 1fr; padding-top: 1.5rem; }
@@ -105,6 +136,32 @@ section.hero { background: none; border: 0; box-shadow: none; padding: 2.5rem 0 
 section > h2 {
   font-size: 1.3rem; margin: 0 0 .35rem;
   display: flex; align-items: baseline; gap: .6rem; flex-wrap: wrap;
+  position: relative; padding-left: 1.1rem;
+}
+/* Ukośna kreska przed tytułem — pomarańczowa i błękitna na przemian. */
+section > h2::before {
+  content: ""; position: absolute; left: 0; top: .18em;
+  width: 5px; height: .95em; border-radius: 2px;
+  transform: skewX(-18deg);
+}
+section:nth-of-type(even) > h2::before { background: var(--orange); }
+section:nth-of-type(odd)  > h2::before { background: var(--sky); }
+
+/* Pojedyncze kreski wychodzące poza panele — po jednej z każdej strony,
+   pod różnymi kątami. Chodzi o rytm, nie o ozdobę, więc jest ich cztery,
+   nie czternaście. Na wąskim ekranie znikają: nie ma dla nich marginesu. */
+#kim-jestem::after, #projekty::after, #kontakt::after {
+  content: ""; position: absolute; height: 3px; border-radius: 999px;
+  pointer-events: none;
+}
+#kim-jestem { position: relative; }
+#kim-jestem::after { width: 64px; right: -30px; top: 42px;   background: var(--sky);    transform: rotate(62deg); }
+#projekty   { position: relative; }
+#projekty::after   { width: 82px; left: -36px;  bottom: 58px; background: var(--orange); transform: rotate(-48deg); }
+#kontakt    { position: relative; }
+#kontakt::after    { width: 52px; right: -24px; bottom: 34px; background: var(--sky);    transform: rotate(24deg); }
+@media (max-width: 1140px) {
+  #kim-jestem::after, #projekty::after, #kontakt::after { display: none; }
 }
 section > h2 .note { font-size: .85rem; font-weight: 400; color: var(--muted); }
 .section-intro { color: var(--muted); margin: 0 0 1rem; max-width: 62ch; }
@@ -114,7 +171,16 @@ section > h2 .note { font-size: .85rem; font-weight: 400; color: var(--muted); }
   background: var(--bg); border: 1px solid var(--border);
   border-radius: .9rem; padding: 1.15rem;
 }
-.card.feature { border-color: var(--brand); background: var(--accent-soft); }
+.card.feature {
+  border-color: var(--brand); background: var(--accent-soft);
+  position: relative; overflow: hidden;
+}
+.card.feature::before {
+  content: ""; position: absolute; top: -14px; right: -34px;
+  width: 96px; height: 3px; border-radius: 999px;
+  background: var(--orange); transform: rotate(-38deg);
+  transform-origin: right center;
+}
 .card h3 { margin: 0 0 .3rem; font-size: 1.05rem; }
 .card .who { color: var(--muted); font-size: .9rem; margin: 0 0 .7rem; }
 .card ul { margin: .5rem 0 0 1.1rem; padding: 0; }
@@ -144,7 +210,8 @@ blockquote.paper cite { font-style: normal; display: block; color: var(--muted);
 
 footer {
   margin: 3rem 0 2rem; padding-top: 1.25rem;
-  border-top: 1px solid var(--border);
+  border-top: 2px solid transparent;
+  border-image: linear-gradient(90deg, var(--orange), var(--sky) 55%, transparent) 1;
   color: var(--muted); font-size: .9rem;
   display: flex; justify-content: space-between; gap: 1rem; flex-wrap: wrap;
 }

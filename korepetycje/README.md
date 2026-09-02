@@ -7,7 +7,7 @@ jak po wrzuceniu na serwer.
 ```
 index.html      wersja polska (główna)
 index_en.html   wersja angielska
-style.css       jeden arkusz dla obu, wyłącznie jasny motyw
+style.css       jeden arkusz dla obu, wyłącznie jasny motyw + kreski
 cv.pdf          odtworzone z commita c43f27d
 img/            portret i flagi, też z c43f27d
 ```
@@ -40,6 +40,15 @@ a „doktorant, który udziela korepetycji" nie jest.
   konkurencja nie ma.
 * **Pełniejsza lista szkół** — doszły Symposio (kursy maturalne)
   i Otwarte Centrum Edukacyjne / Edukacja Domowa Ursynów.
+
+* **Kreski.** Pomarańcz `#fe6015` i błękit `#7fb9d4` są wzięte pipetą ze
+  zdjęcia w hero (ściana i niebo) i występują wyłącznie jako cienkie kreski:
+  dwie ramki wychylone w przeciwne strony wokół portretu, ukośny znacznik
+  przed każdym tytułem sekcji (kolory na przemian), po jednej kresce
+  wychodzącej poza trzy panele i gradientowa linia nad stopką. Nigdy jako
+  tło pod tekstem — na jasnym układzie to jedyny sposób, żeby dodać koloru
+  i nie stracić czytelności. Poniżej 1140 px kreski w marginesach znikają,
+  bo nie ma dla nich miejsca.
 
 Czego świadomie **nie** zmieniono: paleta i białe panele sekcji zostają takie,
 jak w c43f27d. Ciemny motyw był w pierwszej wersji tego brancha i został
