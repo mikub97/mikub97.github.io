@@ -35,9 +35,9 @@ a „doktorant, który udziela korepetycji" nie jest.
   jest opisany tak, żeby rodzic ósmoklasisty zrozumiał, o co w nim chodzi.
 * **Dydaktyka akademicka 2025/2026** — CPM II i Learning & Adaptation.
   Nowe, nie było czego dodać rok temu.
-* **Projekty uczniów** — Malina (grafowa analiza kompozycji zapachowych)
-  i Zuzanna (aplikacja do planowania dostaw). To jedyna sekcja, której
-  konkurencja nie ma.
+* **Projekty uczniów** — grafowa analiza kompozycji zapachowych i aplikacja
+  do planowania dostaw, podpisane imieniem i inicjałem. To jedyna sekcja,
+  której konkurencja nie ma.
 * **Pełniejsza lista szkół** — doszły Symposio (kursy maturalne)
   i Otwarte Centrum Edukacyjne / Edukacja Domowa Ursynów.
 
@@ -80,9 +80,12 @@ wejdzie z ogłoszenia i zobaczy relację z Salvadoru, nie przeczyta oferty.
 * **PDF artykułu.** Strona linkuje do DOI, a nie do preprintu, i tak powinno
   zostać: nagłówek pliku mówi wprost, że to nie jest wersja ostateczna
   i że prawa ma Canadian Psychological Association.
-* **Zgoda uczniów.** Malina i Zuzanna są wymienione z imienia i nazwiska.
-  Malina ma repozytorium publiczne, więc link jest bezpieczny, ale
-  **zapytaj obie**, zanim to pójdzie w świat.
+* **Zgoda uczniów.** Na stronie stoi „Malina W." i „Zuzia D." — imię plus
+  inicjał, bez nazwisk. Uwaga: **link do repozytorium Maliny prowadzi pod
+  `github.com/malinawyszynska/...`**, więc nazwisko jest o jedno kliknięcie
+  dalej i inicjał go nie ukrywa. Albo zapytaj ją o zgodę na link, albo opisz
+  projekt bez odnośnika, tak jak drugi. Zuzię i tak zapytaj — projekt jest
+  rozpoznawalny.
 * **CV.** `cv.pdf` pochodzi z września 2025 i nie zawiera ani publikacji,
   ani zajęć z 2025/2026.
 * **TidyCal.** Link `tidycal.com/mikub97` jest przeniesiony ze starej strony —
