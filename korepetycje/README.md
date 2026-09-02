@@ -41,14 +41,21 @@ a „doktorant, który udziela korepetycji" nie jest.
 * **Pełniejsza lista szkół** — doszły Symposio (kursy maturalne)
   i Otwarte Centrum Edukacyjne / Edukacja Domowa Ursynów.
 
-* **Kreski.** Pomarańcz `#fe6015` i błękit `#7fb9d4` są wzięte pipetą ze
-  zdjęcia w hero (ściana i niebo) i występują wyłącznie jako cienkie kreski:
-  dwie ramki wychylone w przeciwne strony wokół portretu, ukośny znacznik
-  przed każdym tytułem sekcji (kolory na przemian), po jednej kresce
-  wychodzącej poza trzy panele i gradientowa linia nad stopką. Nigdy jako
-  tło pod tekstem — na jasnym układzie to jedyny sposób, żeby dodać koloru
-  i nie stracić czytelności. Poniżej 1140 px kreski w marginesach znikają,
-  bo nie ma dla nich miejsca.
+* **Kolory ze zdjęcia.** Pomarańcz `#fe6015` (ściana) i błękit `#7fb9d4`
+  (niebo) wzięte pipetą z `img/michal.png`. **Kreski są wyłącznie w hero** —
+  dwie ramki wychylone w przeciwne strony wokół portretu i krótki znacznik
+  nad nagłówkiem. Niżej strona jest spokojna: pierwsza wersja miała jeszcze
+  ukośne znaczniki przy tytułach sekcji i kreski wychodzące poza panele,
+  i wyglądały przypadkowo, więc wypadły.
+* **Pomarańcz zamiast cyjanu.** Dawny akcent `#06b6d4` zniknął — przycisk
+  akcji jest pomarańczowy, linki w spokojnym petrolu `#1f6f8b`.
+  Pomarańcz pojawia się dokładnie w dwóch miejscach: „Napisz do mnie"
+  i jedna wyróżniona karta oferty. Trzecie miejsce i wyróżnienie przestaje
+  wyróżniać — dlatego cytat z publikacji ma neutralne tło.
+* **Wyróżniona jest matematyka na egzaminy**, nie analiza danych. To decyzja
+  o tym, po co ktoś tu wchodzi z ogłoszenia, a nie o tym, co jest najbardziej
+  dochodowe — jeśli kiedyś ma być odwrotnie, wystarczy przenieść klasę
+  `feature` na inną kartę w obu plikach HTML.
 
 Czego świadomie **nie** zmieniono: paleta i białe panele sekcji zostają takie,
 jak w c43f27d. Ciemny motyw był w pierwszej wersji tego brancha i został
@@ -81,11 +88,12 @@ wejdzie z ogłoszenia i zobaczy relację z Salvadoru, nie przeczyta oferty.
   zostać: nagłówek pliku mówi wprost, że to nie jest wersja ostateczna
   i że prawa ma Canadian Psychological Association.
 * **Zgoda uczniów.** Na stronie stoi „Malina W." i „Zuzia D." — imię plus
-  inicjał, bez nazwisk. Uwaga: **link do repozytorium Maliny prowadzi pod
-  `github.com/malinawyszynska/...`**, więc nazwisko jest o jedno kliknięcie
-  dalej i inicjał go nie ukrywa. Albo zapytaj ją o zgodę na link, albo opisz
-  projekt bez odnośnika, tak jak drugi. Zuzię i tak zapytaj — projekt jest
-  rozpoznawalny.
+  inicjał, bez nazwisk. Link do repozytorium Maliny prowadził pod
+  `github.com/malinawyszynska/...`, czyli nazwisko było o jedno kliknięcie
+  dalej i inicjał go nie ukrywał — dlatego został usunięty. Gdyby miał wrócić:
+  albo zapytaj ją o zgodę na link, albo zostaw
+  projekt bez odnośnika. **Stan obecny: żaden projekt nie ma odnośnika**,
+  oba opisane są tekstem. Mimo to zapytaj obie — projekty są rozpoznawalne.
 * **CV.** `cv.pdf` pochodzi z września 2025 i nie zawiera ani publikacji,
   ani zajęć z 2025/2026.
 * **TidyCal.** Link `tidycal.com/mikub97` jest przeniesiony ze starej strony —

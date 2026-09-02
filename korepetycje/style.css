@@ -9,18 +9,21 @@
   --bg-soft: #ffffff;
   --text: #0f1720;
   --muted: #475569;
-  --brand: #0891b2;
-  --brand-strong: #06b6d4;
-  --on-brand: #04222b;
+  --brand: #1f6f8b;
+  --brand-strong: #17627c;
+  --on-brand: #ffffff;
   --card: #ffffff;
   --border: #e5e7eb;
-  --accent-soft: #ecfeff;
+  --accent-soft: #fff5ef;
   --shadow: 0 6px 24px rgba(2, 8, 23, .08);
 
   /* Kolory wyjęte ze zdjęcia w hero: pomarańcz ściany i błękit nieba.
-     Używane wyłącznie jako kreski i akcenty — nigdy jako tło pod tekstem. */
+     Kreski występują wyłącznie w hero — dwie ramki wokół portretu i znacznik
+     nad nagłówkiem. Niżej strona jest spokojna; pomarańcz wraca tylko tam,
+     gdzie ma coś znaczyć: przycisk akcji i wyróżniona karta oferty. */
   --orange: #fe6015;
   --sky: #7fb9d4;
+  --orange-ink: #c9470b;   /* pomarańcz przyciemniony do czytelności na białym */
 }
 
 * { box-sizing: border-box; }
@@ -117,9 +120,10 @@ header {
 }
 .btn:hover { text-decoration: none; border-color: var(--brand); }
 .btn.primary {
-  background: linear-gradient(180deg, var(--brand-strong), var(--brand));
-  color: var(--on-brand); border-color: transparent;
+  background: linear-gradient(180deg, #fe6015, #e5540f);
+  color: #fff; border-color: transparent;
 }
+.btn.primary:hover { background: linear-gradient(180deg, #f05a12, #d34c0b); }
 .btn.ghost { background: transparent; box-shadow: none; }
 
 /* --- sekcje ------------------------------------------------------------ */
@@ -136,32 +140,7 @@ section.hero { background: none; border: 0; box-shadow: none; padding: 2.5rem 0 
 section > h2 {
   font-size: 1.3rem; margin: 0 0 .35rem;
   display: flex; align-items: baseline; gap: .6rem; flex-wrap: wrap;
-  position: relative; padding-left: 1.1rem;
-}
-/* Ukośna kreska przed tytułem — pomarańczowa i błękitna na przemian. */
-section > h2::before {
-  content: ""; position: absolute; left: 0; top: .18em;
-  width: 5px; height: .95em; border-radius: 2px;
-  transform: skewX(-18deg);
-}
-section:nth-of-type(even) > h2::before { background: var(--orange); }
-section:nth-of-type(odd)  > h2::before { background: var(--sky); }
-
-/* Pojedyncze kreski wychodzące poza panele — po jednej z każdej strony,
-   pod różnymi kątami. Chodzi o rytm, nie o ozdobę, więc jest ich cztery,
-   nie czternaście. Na wąskim ekranie znikają: nie ma dla nich marginesu. */
-#kim-jestem::after, #projekty::after, #kontakt::after {
-  content: ""; position: absolute; height: 3px; border-radius: 999px;
-  pointer-events: none;
-}
-#kim-jestem { position: relative; }
-#kim-jestem::after { width: 64px; right: -30px; top: 42px;   background: var(--sky);    transform: rotate(62deg); }
-#projekty   { position: relative; }
-#projekty::after   { width: 82px; left: -36px;  bottom: 58px; background: var(--orange); transform: rotate(-48deg); }
-#kontakt    { position: relative; }
-#kontakt::after    { width: 52px; right: -24px; bottom: 34px; background: var(--sky);    transform: rotate(24deg); }
-@media (max-width: 1140px) {
-  #kim-jestem::after, #projekty::after, #kontakt::after { display: none; }
+  position: relative;
 }
 section > h2 .note { font-size: .85rem; font-weight: 400; color: var(--muted); }
 .section-intro { color: var(--muted); margin: 0 0 1rem; max-width: 62ch; }
@@ -171,16 +150,8 @@ section > h2 .note { font-size: .85rem; font-weight: 400; color: var(--muted); }
   background: var(--bg); border: 1px solid var(--border);
   border-radius: .9rem; padding: 1.15rem;
 }
-.card.feature {
-  border-color: var(--brand); background: var(--accent-soft);
-  position: relative; overflow: hidden;
-}
-.card.feature::before {
-  content: ""; position: absolute; top: -14px; right: -34px;
-  width: 96px; height: 3px; border-radius: 999px;
-  background: var(--orange); transform: rotate(-38deg);
-  transform-origin: right center;
-}
+.card.feature { border-color: var(--orange); background: var(--accent-soft); }
+.card.feature .price { color: var(--orange-ink); }
 .card h3 { margin: 0 0 .3rem; font-size: 1.05rem; }
 .card .who { color: var(--muted); font-size: .9rem; margin: 0 0 .7rem; }
 .card ul { margin: .5rem 0 0 1.1rem; padding: 0; }
@@ -196,9 +167,12 @@ section > h2 .note { font-size: .85rem; font-weight: 400; color: var(--muted); }
 .facts li:last-child { border-bottom: 0; }
 .facts .when { color: var(--muted); font-size: .88rem; display: block; }
 
+/* Cytat z publikacji celowo NIE jest pomarańczowy: pomarańcz zostaje
+   zarezerwowany dla przycisku akcji i jednej wyróżnionej karty oferty.
+   Dwa pomarańczowe bloki na jednym ekranie i wyróżnienie przestaje wyróżniać. */
 blockquote.paper {
   margin: 0; padding: 1rem 1.15rem; border-left: 3px solid var(--brand);
-  background: var(--accent-soft); border-radius: 0 .8rem .8rem 0;
+  background: var(--bg); border-radius: 0 .8rem .8rem 0;
 }
 blockquote.paper cite { font-style: normal; display: block; color: var(--muted); font-size: .9rem; margin-top: .5rem; }
 
@@ -210,8 +184,7 @@ blockquote.paper cite { font-style: normal; display: block; color: var(--muted);
 
 footer {
   margin: 3rem 0 2rem; padding-top: 1.25rem;
-  border-top: 2px solid transparent;
-  border-image: linear-gradient(90deg, var(--orange), var(--sky) 55%, transparent) 1;
+  border-top: 1px solid var(--border);
   color: var(--muted); font-size: .9rem;
   display: flex; justify-content: space-between; gap: 1rem; flex-wrap: wrap;
 }
