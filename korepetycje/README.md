@@ -7,7 +7,7 @@ jak po wrzuceniu na serwer.
 ```
 index.html      wersja polska (główna)
 index_en.html   wersja angielska
-style.css       jeden arkusz dla obu, jasny i ciemny motyw
+style.css       jeden arkusz dla obu, wyłącznie jasny motyw
 cv.pdf          odtworzone z commita c43f27d
 img/            portret i flagi, też z c43f27d
 ```
@@ -26,9 +26,11 @@ a „doktorant, który udziela korepetycji" nie jest.
 * **Analiza danych na pierwszym miejscu.** Segment 250 zł, o który opiera się
   plan w `projects/korepetycje/README.md`, i którego żadne dotychczasowe
   ogłoszenie nie sprzedawało.
-* **Poprawiona afiliacja.** Stara strona i stare ogłoszenia mówiły „doktorant
-  UW (Matematyka i Psychologia)" — tu jest to, co widnieje w publikacji:
-  Wydział Psychologii Uniwersytetu Warszawskiego.
+* **Doprecyzowana afiliacja.** Międzydziedzinowa Szkoła Doktorska UW,
+  dyscypliny: matematyka i psychologia. W publikacji CJEP figuruje jednostka
+  macierzysta (Wydział Psychologii UW) — to nie sprzeczność, tylko dwa poziomy
+  tej samej rzeczy; ważne, żeby wersja ze strony była powtórzona identycznie
+  we wszystkich ogłoszeniach.
 * **Publikacja jako dowód, nie jako pozycja w bibliografii.** Artykuł z CJEP
   jest opisany tak, żeby rodzic ósmoklasisty zrozumiał, o co w nim chodzi.
 * **Dydaktyka akademicka 2025/2026** — CPM II i Learning & Adaptation.
@@ -36,6 +38,12 @@ a „doktorant, który udziela korepetycji" nie jest.
 * **Projekty uczniów** — Malina (grafowa analiza kompozycji zapachowych)
   i Zuzanna (aplikacja do planowania dostaw). To jedyna sekcja, której
   konkurencja nie ma.
+* **Pełniejsza lista szkół** — doszły Symposio (kursy maturalne)
+  i Otwarte Centrum Edukacyjne / Edukacja Domowa Ursynów.
+
+Czego świadomie **nie** zmieniono: paleta i białe panele sekcji zostają takie,
+jak w c43f27d. Ciemny motyw był w pierwszej wersji tego brancha i został
+wycofany — jasny jest przyjemniejszy i to jedyne kryterium, które się tu liczy.
 
 ## Gdzie to opublikować
 

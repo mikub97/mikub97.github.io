@@ -1,7 +1,8 @@
 /* Strona nauczycielska — rozwinięcie style.css z c43f27d.
-   Zmiany wobec oryginału: dwie ścieżki oferty jako karty, sekcja projektów
-   uczniów, ciemny motyw i typografia dopasowana do czytania na telefonie
-   (tam trafia większość ruchu z ogłoszeń). */
+   Paleta i sekcje jako białe panele zostają dokładnie takie, jak w oryginale.
+   Nowe jest tylko to, czego stara strona nie miała: siatka kart oferty,
+   sekcja projektów uczniów i typografia pod telefon (tam trafia większość
+   ruchu z ogłoszeń). Świadomie bez ciemnego motywu — jasny jest ładniejszy. */
 
 :root {
   --bg: #f7fafc;
@@ -15,22 +16,6 @@
   --border: #e5e7eb;
   --accent-soft: #ecfeff;
   --shadow: 0 6px 24px rgba(2, 8, 23, .08);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --bg: #0b1220;
-    --bg-soft: #121c2e;
-    --text: #e8eef6;
-    --muted: #9fb0c4;
-    --brand: #22a5bd;
-    --brand-strong: #38bdd4;
-    --on-brand: #04222b;
-    --card: #121c2e;
-    --border: #24344b;
-    --accent-soft: #102a33;
-    --shadow: 0 6px 24px rgba(0, 0, 0, .35);
-  }
 }
 
 * { box-sizing: border-box; }
@@ -107,7 +92,16 @@ header {
 .btn.ghost { background: transparent; box-shadow: none; }
 
 /* --- sekcje ------------------------------------------------------------ */
-section { margin: 1.75rem 0; }
+section {
+  margin: 1.75rem 0;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 1rem;
+  box-shadow: var(--shadow);
+  padding: 1.35rem 1.5rem;
+}
+section.hero { background: none; border: 0; box-shadow: none; padding: 2.5rem 0 .5rem; }
+@media (max-width: 640px) { section { padding: 1.1rem; } }
 section > h2 {
   font-size: 1.3rem; margin: 0 0 .35rem;
   display: flex; align-items: baseline; gap: .6rem; flex-wrap: wrap;
@@ -117,8 +111,8 @@ section > h2 .note { font-size: .85rem; font-weight: 400; color: var(--muted); }
 
 .cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1rem; }
 .card {
-  background: var(--card); border: 1px solid var(--border);
-  border-radius: 1rem; padding: 1.15rem; box-shadow: var(--shadow);
+  background: var(--bg); border: 1px solid var(--border);
+  border-radius: .9rem; padding: 1.15rem;
 }
 .card.feature { border-color: var(--brand); background: var(--accent-soft); }
 .card h3 { margin: 0 0 .3rem; font-size: 1.05rem; }
