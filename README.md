@@ -1,178 +1,110 @@
-# Blog — instrukcja obsługi
+# mikub97.github.io — strona nauczycielska
 
-Ściągawka do pisania i publikowania postów bez niczyjej pomocy.
-Wszystkie komendy odpalasz z katalogu repo:
+Statyczna strona-wizytówka: żadnego Jekylla, żadnych zależności. Otwiera się
+dwuklikiem z dysku i wygląda tak samo, jak pod adresem publicznym.
 
-```bash
-cd ~/Documents/Capoeira\ Research/brasil-blog/io
+```
+index.html      wersja polska — to, co bylo index-v2.html
+index_en.html   wersja angielska, tlumaczenie tej samej tresci
+style.css       jeden arkusz dla obu, wylacznie jasny motyw + kreski
+cv.pdf          budowane z ~/Documents/Research/cv/ (patrz tamtejszy README)
+abrahamson-et-al-2026-cjep-ortho.pdf   manuskrypt CJEP, linkowany z sekcji Badania
+img/            portret i flagi
+.nojekyll       Pages ma nie probowac budowac tego Jekyllem
+.github/workflows/static.yml   deploy: wysyla katalog jak lezy
 ```
 
----
+Wywodzi się z poprzedniej strony (`index.html` w commicie **c43f27d**,
+2025-09-07), ale nie jest jej kopią. Tamta była wizytówką badacza z dopiskiem
+o lekcjach. Ta jest wizytówką nauczyciela, którego wiarygodność bierze się
+z badań — bo to jest historia, którą da się sprzedać w segmencie, o który
+opiera się plan, a „doktorant, który udziela korepetycji" nie jest.
 
-## Jak to jest poskładane
+## Co zostało zmienione wobec starej wersji
 
-Dwie rzeczy, które trzeba zrozumieć raz, a potem wszystko jest oczywiste:
+* **Oferta zamiast biografii.** Ścieżki z konkretnym odbiorcą i konkretnym
+  zakresem. Poprzednia strona nie mówiła, czego dokładnie dotyczą lekcje —
+  sekcja „Educational Offer" była zakomentowana.
+* **Analiza danych na pierwszym miejscu.** Segment, o który opiera się plan
+  w `projects/korepetycje/README.md`, i którego żadne dotychczasowe
+  ogłoszenie nie sprzedawało.
+* **Doprecyzowana afiliacja.** Międzydziedzinowa Szkoła Doktorska UW,
+  dyscypliny: matematyka i psychologia. W publikacji CJEP figuruje jednostka
+  macierzysta (Wydział Psychologii UW) — to nie sprzeczność, tylko dwa poziomy
+  tej samej rzeczy; ważne, żeby wersja ze strony była powtórzona identycznie
+  we wszystkich ogłoszeniach.
+* **Publikacja jako dowód, nie jako pozycja w bibliografii.** Artykuł z CJEP
+  jest opisany tak, żeby rodzic ósmoklasisty zrozumiał, o co w nim chodzi.
+* **Dydaktyka akademicka 2025/2026** — CPM II i Learning & Adaptation.
+  Nowe, nie było czego dodać rok temu.
+* **Projekty uczniów** — grafowa analiza kompozycji zapachowych i aplikacja
+  do planowania dostaw, podpisane imieniem i inicjałem. To jedyna sekcja,
+  której konkurencja nie ma.
+* **Pełniejsza lista szkół** — doszły Symposio (kursy maturalne)
+  i Otwarte Centrum Edukacyjne / Edukacja Domowa Ursynów.
 
-1. **`_posts/` to Twoja prywatna kopia robocza.** Jest w `.gitignore` i wyłączona
-   z builda Jekylla. Nic stamtąd samo z siebie nie trafia do internetu.
-2. **O tym, co jest publiczne, decyduje `_data/posts.yml`.** Skrypt
-   `publish_posts.py` przepisuje wymienione tam posty do `assets/posts/` jako
-   czysty markdown — i dopiero *to* widzi strona.
+* **Kolory ze zdjęcia.** Pomarańcz `#fe6015` (ściana) i błękit `#7fb9d4`
+  (niebo) wzięte pipetą z `img/michal.png`. **Kreski są wyłącznie w hero** —
+  dwie ramki wychylone w przeciwne strony wokół portretu i krótki znacznik
+  nad nagłówkiem. Niżej strona jest spokojna: pierwsza wersja miała jeszcze
+  ukośne znaczniki przy tytułach sekcji i kreski wychodzące poza panele,
+  i wyglądały przypadkowo, więc wypadły.
+* **Pomarańcz zamiast cyjanu.** Dawny akcent `#06b6d4` zniknął — przycisk
+  akcji jest pomarańczowy, linki w spokojnym petrolu `#1f6f8b`.
+  Pomarańcz pojawia się dokładnie w dwóch miejscach: „Napisz do mnie"
+  i obramowanie jednej wyróżnionej karty oferty (po usunięciu stawek karta
+  trzyma się już tylko ramką i tłem — to wystarcza). Trzecie miejsce i wyróżnienie przestaje
+  wyróżniać — dlatego cytat z publikacji ma neutralne tło.
+* **Wyróżniona jest matematyka na egzaminy**, nie analiza danych. To decyzja
+  o tym, po co ktoś tu wchodzi z ogłoszenia, a nie o tym, co jest najbardziej
+  dochodowe — jeśli kiedyś ma być odwrotnie, wystarczy przenieść klasę
+  `feature` na inną kartę w obu plikach HTML.
 
-Wniosek praktyczny: **po każdej zmianie w `_posts/` musisz odpalić skrypt**,
-inaczej strona pokaże starą wersję. Livereload tego nie łapie.
+Czego świadomie **nie** zmieniono: paleta i białe panele sekcji zostają takie,
+jak w c43f27d. Ciemny motyw był w pierwszej wersji tego brancha i został
+wycofany — jasny jest przyjemniejszy i to jedyne kryterium, które się tu liczy.
 
-Front matter (nagłówek `---` w pliku `.md`) jest przy publikacji **obcinany
-i ignorowany**. Tytuł, data, lokalizacja i zdjęcie brane są wyłącznie
-z `_data/posts.yml`.
+## Jak to jest opublikowane
 
----
+`main` tego repozytorium **jest** stroną: `mikub97.github.io`. Deploy robi
+`.github/workflows/static.yml` — wysyła katalog na Pages bez żadnego budowania.
+Push na `main` publikuje.
 
-## Podgląd lokalny
+Wcześniejsza wersja tego pliku odradzała korzeń, bo stał tam blog podróżniczy
+i rodzic ósmoklasisty wchodzący z ogłoszenia zobaczyłby najpierw relację
+z Salvadoru. Ten argument przestał obowiązywać **2026-09-02**, kiedy blog
+został wyprowadzony do prywatnego repozytorium **`mikub97/brasil-blog`**
+(gałąź `main` to historia bloga, gałąź `brazylia` to post o Pernambuco,
+karty capoeiry i teksty wszystkich postów). W korzeniu nie ma już z czym
+konkurować.
 
-```bash
-bundle exec jekyll serve --livereload
-```
+Konsekwencja, o której trzeba pamiętać: **stare adresy postów bloga zwracają
+teraz 404.** Nie ma żadnych przekierowań. Jeśli kiedyś będą potrzebne, treść
+jest w tamtym repozytorium.
 
-Otwórz **http://127.0.0.1:4000/**. Zatrzymanie: `Ctrl-C`.
+Jeśli kiedyś ma być własna domena (`michalweiss.pl` albo podobna) —
+kilkadziesiąt złotych rocznie, plik `CNAME` w korzeniu i rekord DNS.
 
-Nie otwieraj plików z `_site/` przez podwójne kliknięcie — przy `file://`
-przeglądarka zablokuje wczytywanie treści postów i zobaczysz „Nie udało się
-wczytać treści posta".
+## Zanim trafi do sieci — do sprawdzenia przez człowieka
 
----
-
-## Poprawiam istniejący post
-
-```bash
-# 1. edytujesz _posts/2025-08-14-rio-de-janeiro.md w edytorze
-# 2. przepisujesz zmiany do części publicznej:
-python3 scripts/publish_posts.py
-# 3. odświeżasz kartę w przeglądarce i sprawdzasz
-# 4. wysyłasz w świat:
-git add assets/posts
-git commit -m "Poprawki w poście o Rio"
-git push
-```
-
----
-
-## Piszę nowy post
-
-**Krok 1.** Utwórz plik `_posts/YYYY-MM-DD-slug.md`. Nagłówek jest opcjonalny
-(i tak zostanie obcięty) — możesz zacząć od razu od tekstu.
-
-**Krok 2.** Dopisz wpis do `_data/posts.yml`. **Bez tego kroku post nie istnieje** —
-nie pojawi się ani na liście, ani na osi czasu.
-
-```yaml
-- slug: 2026-09-20-salvador-powrot     # musi być identyczny z nazwą pliku .md
-  title: "Powrót do Salvadoru"
-  date: 2026-09-20
-  location: "Salvador, Bahia"          # opcjonalne, pokazuje się pod datą
-  lat: -12.9714                        # opcjonalne — bez tego brak pinezki na mapie
-  lng: -38.5014
-  cover_image: /assets/images/bahia/foto.jpg   # opcjonalne, miniatura na liście
-```
-
-⚠️ **Kolejność w `posts.yml` ma znaczenie: chronologicznie, od najstarszego.**
-Nowe posty dopisuj **na końcu pliku**. Strona główna odwraca tę listę (najnowsze
-u góry), a oś czasu i strzałki „Wcześniej / Dalej" czytają ją wprost. Zła
-kolejność w pliku = zła kolejność wszędzie.
-
-**Krok 3.** Publikacja i wysyłka:
-
-```bash
-python3 scripts/publish_posts.py
-git add assets/posts _data/posts.yml
-git commit -m "Nowy post: Powrót do Salvadoru"
-git push
-```
-
----
-
-## Chowam post ze strony
-
-W `_data/posts.yml` dopisz do wpisu `hidden: true`, a potem koniecznie:
-
-```bash
-python3 scripts/publish_posts.py --prune
-```
-
-⚠️ **Samo `hidden: true` nie wystarczy.** Bez `--prune` jawny plik zostaje
-w `assets/posts/` i dalej jest dostępny w internecie pod bezpośrednim adresem.
-Skrypt bez tej flagi tylko ostrzeże — wypisze `still published`. Jak zobaczysz
-to zdanie, znaczy, że robota nie jest skończona.
-
-Potem `git add -A assets/posts _data/posts.yml`, commit, push.
-
----
-
-## Zdjęcia
-
-Wrzuć do `assets/images/<folder>/`, w tekście odwołuj się od korzenia:
-
-```markdown
-![Opis](/assets/images/bahia/20251007_220739.jpg)
-```
-
-Nie zapomnij `git add assets/images` — to częsty powód „u mnie działa,
-a na stronie nie ma zdjęcia".
-
----
-
-## Publikacja na żywo
-
-`git push` na gałąź `main` uruchamia GitHub Actions, który buduje stronę
-i wystawia ją na **https://mikub97.github.io**. Trwa to zwykle 1–2 minuty.
-
-```bash
-gh run list --limit 3      # status ostatnich buildów
-gh run watch               # podgląd na żywo
-```
-
-Bez `gh`: zakładka Actions w repo na GitHubie.
-
----
-
-## Co nigdy nie trafia do internetu
-
-- `_posts/*.md` — cały prywatny warsztat (gitignore + wyłączone z builda)
-- posty z `hidden: true` w `posts.yml` — o ile zrobiłeś `--prune`
-- posty, których w ogóle nie ma w `posts.yml` (np. te z 2020)
-- podstrona Capoeira (karty i quiz) — pliki leżą na dysku, ale są wyłączone
-  z builda w `_config.yml`
-- `assets/enc/` i `scripts/` — stare zaszyfrowane kopie, trzymane jako backup
-
-Sprawdzenie, co realnie pójdzie na serwer:
-
-```bash
-git status              # _posts/ NIE powinno się tu pojawić — tak ma być
-```
-
----
-
-## Gdy coś nie gra
-
-| Objaw | Przyczyna |
-|---|---|
-| Post pokazuje starą treść | Nie odpaliłeś `publish_posts.py` po edycji |
-| „Nie udało się wczytać treści posta" | Brak pliku w `assets/posts/` — jw. |
-| „Nie ma takiego posta" | Slug w adresie nie pasuje do `posts.yml`, albo post ma `hidden: true` |
-| Nowy post nie widać na liście | Brak wpisu w `_data/posts.yml` |
-| Posty w złej kolejności | `posts.yml` nie jest ułożony rosnąco po dacie |
-| Zmiana w `_config.yml` nie działa | Jekyll nie przeładowuje configu — zatrzymaj serwer i odpal ponownie |
-| `command not found: bundle` | `gem install bundler`, potem `bundle install` |
-| `ModuleNotFoundError: yaml` | `pip3 install pyyaml` |
-
----
-
-## Kontrola przed pushem
-
-```bash
-python3 scripts/publish_posts.py --check   # co poszłoby do publikacji, nic nie zapisuje
-```
-
-Wypisze listę publikowanych postów oraz — pod „Not published" — te pominięte
-jako ukryte lub niewymienione w `posts.yml`. Warto rzucić okiem, czy nic
-prywatnego nie wskoczyło na pierwszą listę.
+* **Stawek nie ma na stronie i nie mają wracać** (decyzja z 2026-09-02, dotyczy
+  obu wersji językowych). Cena jest ustalana w rozmowie; liczby żyją wyłącznie
+  w `projects/korepetycje/README.md`, poza tym repozytorium. Reguła obejmuje też
+  komentarze w kodzie — źródło strony jest publiczne.
+* **PDF artykułu.** Strona linkuje do manuskryptu, nie do DOI: DOI nie prowadzi
+  jeszcze do opublikowanego artykułu. Przy PDF-ie musi zostać adnotacja, że to
+  wersja zaakceptowana, a nie ostateczna — nagłówek pliku mówi wprost, że prawa
+  ma Canadian Psychological Association.
+* **Zgoda uczniów.** Na stronie stoi „Malina W." i „Zuzia D." — imię plus
+  inicjał, bez nazwisk. Link do repozytorium Maliny prowadził pod
+  `github.com/malinawyszynska/...`, czyli nazwisko było o jedno kliknięcie
+  dalej i inicjał go nie ukrywał — dlatego został usunięty. Gdyby miał wrócić:
+  albo zapytaj ją o zgodę na link, albo zostaw
+  projekt bez odnośnika. **Stan obecny: żaden projekt nie ma odnośnika**,
+  oba opisane są tekstem. Mimo to zapytaj obie — projekty są rozpoznawalne.
+* **CV.** `cv.pdf` pochodzi z września 2025 i nie zawiera ani publikacji,
+  ani zajęć z 2025/2026.
+* **TidyCal.** Link `tidycal.com/mikub97` jest przeniesiony ze starej strony —
+  sprawdź, czy konto nadal działa i czy kalendarz jest aktualny.
+* **Portret.** `img/michal.jpg` to zdjęcie z Morro; działa, ale jest prywatne
+  w tonie. Do rozważenia inne.
