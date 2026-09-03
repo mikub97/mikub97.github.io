@@ -1,112 +1,86 @@
-# mikub97.github.io — strona nauczycielska
+# mikub97.github.io — portfolio naukowe
 
-Statyczna strona-wizytówka: żadnego Jekylla, żadnych zależności. Otwiera się
-dwuklikiem z dysku i wygląda tak samo, jak pod adresem publicznym.
+Statyczna strona osobista: żadnego Jekylla, żadnych zależności. Otwiera się
+dwuklikiem z dysku i wygląda dokładnie tak, jak pod adresem publicznym — to
+pełny podgląd, nie przybliżenie.
 
 ```
-index.html      wersja polska — to, co bylo index-v2.html
-index_en.html   wersja angielska, tlumaczenie tej samej tresci
-style.css       jeden arkusz dla obu, wylacznie jasny motyw + kreski
+index.html      ANGIELSKI — strona główna
+index_pl.html   polski, ta sama treść
+index_en.html   zaślepka: stary adres wersji angielskiej, meta refresh na korzeń
+style.css       jeden arkusz dla obu wersji, wyłącznie jasny motyw
 cv.pdf          budowane z ~/Documents/Research/cv/ (patrz tamtejszy README)
-abrahamson-et-al-2026-cjep-ortho.pdf   manuskrypt CJEP, linkowany z sekcji Badania
+abrahamson-et-al-2026-cjep-ortho.pdf        manuskrypt CJEP
+from-center-to-circle-esri-2026-poster.pdf  poster z ESRI 2026
 img/            portret i flagi
-.nojekyll       Pages ma nie probowac budowac tego Jekyllem
-.github/workflows/static.yml   deploy: wysyla katalog jak lezy
+.nojekyll       Pages ma nie próbować budować tego Jekyllem
+.github/workflows/static.yml   deploy: wysyła katalog jak leży
 ```
 
-Wywodzi się z poprzedniej strony (`index.html` w commicie **c43f27d**,
-2025-09-07), ale nie jest jej kopią. Tamta była wizytówką badacza z dopiskiem
-o lekcjach. Ta jest wizytówką nauczyciela, którego wiarygodność bierze się
-z badań — bo to jest historia, którą da się sprzedać w segmencie, o który
-opiera się plan, a „doktorant, który udziela korepetycji" nie jest.
+## Historia i kierunek
 
-## Co zostało zmienione wobec starej wersji
+Ta strona przeszła trzy wcielenia i warto wiedzieć, dlaczego jest, jaka jest.
 
-* **Oferta zamiast biografii.** Ścieżki z konkretnym odbiorcą i konkretnym
-  zakresem. Poprzednia strona nie mówiła, czego dokładnie dotyczą lekcje —
-  sekcja „Educational Offer" była zakomentowana.
-* **Analiza danych na pierwszym miejscu.** Segment, o który opiera się plan
-  w `projects/korepetycje/README.md`, i którego żadne dotychczasowe
-  ogłoszenie nie sprzedawało.
-* **Doprecyzowana afiliacja.** Międzydziedzinowa Szkoła Doktorska UW,
-  dyscypliny: matematyka i psychologia. W publikacji CJEP figuruje jednostka
-  macierzysta (Wydział Psychologii UW) — to nie sprzeczność, tylko dwa poziomy
-  tej samej rzeczy; ważne, żeby wersja ze strony była powtórzona identycznie
-  we wszystkich ogłoszeniach.
-* **Publikacja jako dowód, nie jako pozycja w bibliografii.** Artykuł z CJEP
-  jest opisany tak, żeby rodzic ósmoklasisty zrozumiał, o co w nim chodzi.
-* **Dydaktyka akademicka 2025/2026** — CPM II i Learning & Adaptation.
-  Nowe, nie było czego dodać rok temu.
-* **Projekty uczniów** — grafowa analiza kompozycji zapachowych i aplikacja
-  do planowania dostaw, podpisane imieniem i inicjałem. To jedyna sekcja,
-  której konkurencja nie ma.
-* **Pełniejsza lista szkół** — doszły Symposio (kursy maturalne)
-  i Otwarte Centrum Edukacyjne / Edukacja Domowa Ursynów.
+1. **Wizytówka badacza** (commit `c43f27d`, 2025-09) — trzy akapity bio,
+   bez dorobku, z dopiskiem o lekcjach.
+2. **Wizytówka nauczyciela** (2026-09-02) — oferta korepetycji na pierwszym
+   miejscu, badania jako uwiarygodnienie oferty. Blog podróżniczy wyprowadzony
+   wtedy do prywatnego repo `mikub97/brasil-blog`, strona weszła do korzenia.
+3. **Portfolio naukowe** (2026-09-03, obecne) — badania, publikacje i projekty
+   na pierwszym planie; nauczanie zachowane, ale jako jedna sekcja niżej.
+   Angielski został domyślnym językiem, polski schował się pod flagę.
 
-* **Kolory ze zdjęcia.** Pomarańcz `#fe6015` (ściana) i błękit `#7fb9d4`
-  (niebo) wzięte pipetą z `img/michal.png`. **Kreski są wyłącznie w hero** —
-  dwie ramki wychylone w przeciwne strony wokół portretu i krótki znacznik
-  nad nagłówkiem. Niżej strona jest spokojna: pierwsza wersja miała jeszcze
-  ukośne znaczniki przy tytułach sekcji i kreski wychodzące poza panele,
-  i wyglądały przypadkowo, więc wypadły.
-* **Pomarańcz zamiast cyjanu.** Dawny akcent `#06b6d4` zniknął — przycisk
-  akcji jest pomarańczowy, linki w spokojnym petrolu `#1f6f8b`.
-  **Wyróżniona karta oferty wypadła 2026-09-02** — kolorowe tło pod jedną
-  z czterech kart czytało się jak ranking ofert, a nie jak podpowiedź.
-  W zamian pomarańcz jest rozłożony po dolnej połowie strony w samym detalu:
-  krótka kreska pod nagłówkiem każdej sekcji, daty w „Gdzie uczyłem",
-  lewa krawędź cytatu z publikacji, obwódki pigułek. **Zasada: linie i tekst,
-  nigdy wypełnione tło** — jedynym wypełnieniem zostaje przycisk akcji. Trzecie miejsce i wyróżnienie przestaje
-  wyróżniać — dlatego cytat z publikacji ma neutralne tło.
-* **Kolejność kart oferty** niesie to, co dawniej niosło wyróżnienie: matematyka
-  na egzaminy jest pierwsza, bo po to ktoś tu wchodzi z ogłoszenia. Klasy
-  `feature` już nie ma — jeśli kolejność ma się zmienić, przestaw karty.
+Trzecie wcielenie jest bliższe pierwszemu niż drugiemu, ale nie jest do niego
+powrotem: tamto miało bio i zero dorobku, to ma grant, publikację, wystąpienia
+i narzędzie.
 
-Czego świadomie **nie** zmieniono: paleta i białe panele sekcji zostają takie,
-jak w c43f27d. Ciemny motyw był w pierwszej wersji tego brancha i został
-wycofany — jasny jest przyjemniejszy i to jedyne kryterium, które się tu liczy.
+## Zasady, które łatwo złamać przez przypadek
+
+* **Stawek nie ma na stronie i nie mają wracać** (decyzja 2026-09-02). Cena jest
+  ustalana w rozmowie; liczby żyją wyłącznie w `Research/projects/korepetycje/`,
+  poza tym repozytorium. Reguła obejmuje też komentarze w kodzie — źródło strony
+  jest publiczne.
+* **Pomarańcz tylko w liniach i tekście, nigdy jako wypełnione tło.** Krótka
+  kreska pod nagłówkiem sekcji, daty w listach, krawędź cytatu, obwódki pigułek.
+  Jedynym wypełnieniem jest przycisk akcji. Wyróżniona kolorowym tłem karta była
+  i została zdjęta — czytała się jak ranking.
+* **Nowego CSS praktycznie nie potrzeba.** Cała strona składa się z komponentów,
+  które już są w `style.css`. Jeśli piszesz nowy — sprawdź najpierw, czy nie
+  powielasz `.cards`, `.facts`, `.pill` albo `blockquote.paper`.
+* **`index.html` jest po angielsku.** Łatwo o pomyłkę, bo przez rok było odwrotnie.
+
+## Czego tu nie publikować
+
+Wynika z etyki projektu EVA i z tego, czyje to są dane:
+
+* surowe wideo, dane pozy i bazy sesji — wszędzie są rozpoznawalne osoby trzecie,
+  a EVA ma w zobowiązaniach etycznych zapis, że przetwarzanie jest w 100% offline
+* treść wniosku EVA poza poziomem abstraktu — hipotezy, budżet, formularze
+* prywatne repozytoria: `ORTHO_DB`, `DIMS_ORTHO_VIEWER`, `hub`, `roda`, `treino`,
+  `brasil-blog`, `Zuzia_Internal`, `storytelling_study`
+* niesfinansowany wniosek Impulsy — odrzucone wnioski nie są dorobkiem
+
+## Do sprawdzenia przez człowieka
+
+* **Licencje zdjęć w posterze ESRI.** `from-center-to-circle-esri-2026-poster.pdf`
+  zawiera zdjęcia osób trzecich o niepewnym pochodzeniu (`angola.jpg`,
+  `zimba.jpeg`, stockowe berimbau) — źródła w
+  `Research/projects/eva/poster/`. **Sprawdź przed pushem.** Jeśli licencja jest
+  niejasna: wymień zdjęcia albo zostaw sam tytuł wystąpienia bez odnośnika do PDF.
+* **PDF artykułu.** Strona linkuje do manuskryptu, nie do DOI: DOI nie prowadzi
+  jeszcze do opublikowanego artykułu. Adnotacja, że to wersja zaakceptowana,
+  a nie ostateczna, musi zostać — nagłówek pliku mówi wprost, że prawa ma
+  Canadian Psychological Association.
+* **Zgoda uczniów.** „Malina W." i „Zuzia D." — imię plus inicjał, bez nazwisk
+  i bez odnośników do repozytoriów. Mimo to zapytaj obie: projekty są rozpoznawalne.
+* **Brak ORCID.** Portfolio naukowe bez ORCID wygląda na niedokończone. Jak
+  założysz, dopisz link w hero obok GitHuba.
 
 ## Jak to jest opublikowane
 
-`main` tego repozytorium **jest** stroną: `mikub97.github.io`. Deploy robi
-`.github/workflows/static.yml` — wysyła katalog na Pages bez żadnego budowania.
-Push na `main` publikuje.
+`main` tego repozytorium **jest** stroną. Deploy robi
+`.github/workflows/static.yml` — wysyła katalog na Pages bez budowania.
+**Push publikuje.**
 
-Wcześniejsza wersja tego pliku odradzała korzeń, bo stał tam blog podróżniczy
-i rodzic ósmoklasisty wchodzący z ogłoszenia zobaczyłby najpierw relację
-z Salvadoru. Ten argument przestał obowiązywać **2026-09-02**, kiedy blog
-został wyprowadzony do prywatnego repozytorium **`mikub97/brasil-blog`**
-(gałąź `main` to historia bloga, gałąź `brazylia` to post o Pernambuco,
-karty capoeiry i teksty wszystkich postów). W korzeniu nie ma już z czym
-konkurować.
-
-Konsekwencja, o której trzeba pamiętać: **stare adresy postów bloga zwracają
-teraz 404.** Nie ma żadnych przekierowań. Jeśli kiedyś będą potrzebne, treść
-jest w tamtym repozytorium.
-
-Jeśli kiedyś ma być własna domena (`michalweiss.pl` albo podobna) —
-kilkadziesiąt złotych rocznie, plik `CNAME` w korzeniu i rekord DNS.
-
-## Zanim trafi do sieci — do sprawdzenia przez człowieka
-
-* **Stawek nie ma na stronie i nie mają wracać** (decyzja z 2026-09-02, dotyczy
-  obu wersji językowych). Cena jest ustalana w rozmowie; liczby żyją wyłącznie
-  w `projects/korepetycje/README.md`, poza tym repozytorium. Reguła obejmuje też
-  komentarze w kodzie — źródło strony jest publiczne.
-* **PDF artykułu.** Strona linkuje do manuskryptu, nie do DOI: DOI nie prowadzi
-  jeszcze do opublikowanego artykułu. Przy PDF-ie musi zostać adnotacja, że to
-  wersja zaakceptowana, a nie ostateczna — nagłówek pliku mówi wprost, że prawa
-  ma Canadian Psychological Association.
-* **Zgoda uczniów.** Na stronie stoi „Malina W." i „Zuzia D." — imię plus
-  inicjał, bez nazwisk. Link do repozytorium Maliny prowadził pod
-  `github.com/malinawyszynska/...`, czyli nazwisko było o jedno kliknięcie
-  dalej i inicjał go nie ukrywał — dlatego został usunięty. Gdyby miał wrócić:
-  albo zapytaj ją o zgodę na link, albo zostaw
-  projekt bez odnośnika. **Stan obecny: żaden projekt nie ma odnośnika**,
-  oba opisane są tekstem. Mimo to zapytaj obie — projekty są rozpoznawalne.
-* **CV.** `cv.pdf` pochodzi z września 2025 i nie zawiera ani publikacji,
-  ani zajęć z 2025/2026.
-* **TidyCal.** Link `tidycal.com/mikub97` jest przeniesiony ze starej strony —
-  sprawdź, czy konto nadal działa i czy kalendarz jest aktualny.
-* **Portret.** `img/michal.jpg` to zdjęcie z Morro; działa, ale jest prywatne
-  w tonie. Do rozważenia inne.
+Stare adresy postów bloga podróżniczego zwracają 404, bez przekierowań; treść
+jest w `mikub97/brasil-blog`.

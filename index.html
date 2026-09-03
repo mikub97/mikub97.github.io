@@ -1,37 +1,32 @@
 <!doctype html>
-<html lang="pl">
+<html lang="en">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Michał Weiss</title>
-  <meta name="description" content="Uczę matematyki, informatyki i analizy danych. Doktorant Międzydziedzinowej Szkoły Doktorskiej UW, badam uczenie się matematyki. Online i na Saskiej Kępie.">
+  <meta name="description" content="I study how thinking arises from movement and joint action. Doctoral student at the Interdisciplinary Doctoral School, University of Warsaw, Human Interactivity and Language Lab.">
   <link rel="canonical" href="https://mikub97.github.io/">
-  <link rel="alternate" href="https://mikub97.github.io/" hreflang="pl">
-  <link rel="alternate" href="https://mikub97.github.io/index_en.html" hreflang="en">
+  <link rel="alternate" href="https://mikub97.github.io/" hreflang="en">
+  <link rel="alternate" href="https://mikub97.github.io/index_pl.html" hreflang="pl">
   <link rel="stylesheet" href="style.css">
-  <style>
-    /* Cztery karty oferty zamiast trzech: na szerokim ekranie 2x2, żeby
-       czwarta nie zostawała sama w rzędzie. */
-    @media (min-width: 900px) { #oferta .cards { grid-template-columns: repeat(2, 1fr); } }
-  </style>
 
-  <meta property="og:title" content="Michał Weiss — matematyka, informatyka, analiza danych">
-  <meta property="og:description" content="Uczę matematyki, informatyki i analizy danych. Badam, jak ludzie uczą się matematyki.">
+  <meta property="og:title" content="Michał Weiss — embodied cognition, movement coordination">
+  <meta property="og:description" content="I study how thinking arises from movement and joint action.">
   <meta property="og:type" content="profile">
 </head>
 <body>
-<a class="skip" href="#main">Przejdź do treści</a>
+<a class="skip" href="#main">Skip to content</a>
 
 <header>
-  <nav class="nav" aria-label="Główna">
+  <nav class="nav" aria-label="Main">
     <span class="brand">Michał Weiss</span>
     <ul>
-      <li><a href="#oferta">Czego uczę</a></li>
-      <li><a href="#praca">Gdzie uczyłem</a></li>
-      <li><a href="#badania">Badania</a></li>
-      <li><a href="#projekty">Projekty uczniów</a></li>
-      <li><a href="#kontakt">Kontakt</a></li>
-      <li><a class="lang" href="index_en.html" aria-label="English version"><img src="img/uk-flag.jpg" alt="EN"></a></li>
+      <li><a href="#research">Research</a></li>
+      <li><a href="#publications">Publications</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#teaching">Teaching</a></li>
+      <li><a href="#contact">Contact</a></li>
+      <li><a class="lang" href="index_pl.html" aria-label="Wersja polska"><img src="img/pl-flag.png" alt="PL"></a></li>
     </ul>
   </nav>
 </header>
@@ -40,21 +35,24 @@
 
   <section class="hero">
     <div>
-      <h1>Jestem nauczycielem, badaczem, kognitywistą i informatykiem.</h1>
+      <h1>Teacher, researcher, cognitive scientist, computer scientist.</h1>
       <p class="lead">
-        Uczę od ponad 8 lat, w szkołach i indywidualnie — od siódmoklasisty po magistranta. Przygotowuję do egzaminu
-        ósmoklasisty, matury i egzaminów klasyfikacyjnych w edukacji domowej. Od niedawna prowadzę również zajęcia na Uniwersytecie Warszawskim.
-
+        I study how thinking arises from movement and from acting together — cognition
+        in the embodied sense, where what does the knowing is not the brain alone but
+        the whole body, and rarely on its own.
       </p>
       <p class="sub">
-        Równolegle jestem doktorantem Międzydziedzinowej Szkoły Doktorskiej UW
-        (matematyka i psychologia) i badam procesy poznawcze, z perspektywy ucieleśnionej (tzn. badam nie [tylko] mózg, a cało ciało)
-        Wcześniej: informatyka na Politechnice Warszawskiej, kognitywistyka na UW.
+        Doctoral student at the Interdisciplinary Doctoral School, University of Warsaw
+        (mathematics and psychology), based in the Human Interactivity and Language Lab
+        at the Faculty of Psychology. I have been teaching for over eight years — in
+        schools, one to one, and since this year at the University of Warsaw as well.
+        Before that: computer science at the Warsaw University of Technology, cognitive
+        science at the University of Warsaw.
       </p>
       <div class="cta">
-        <a class="btn primary" href="mailto:mikub97@gmail.com?subject=Zaj%C4%99cia%20%E2%80%94%20zapytanie">Napisz do mnie</a>
-        <a class="btn" href="https://tidycal.com/mikub97" target="_blank" rel="noopener">Umów rozmowę</a>
         <a class="btn ghost" href="cv.pdf" target="_blank" rel="noopener">CV (PDF)</a>
+        <a class="btn primary" href="mailto:michal.weiss@psych.edu.pl">Email me</a>
+        <a class="btn" href="https://github.com/mikub97" target="_blank" rel="noopener">GitHub</a>
       </div>
     </div>
     <div class="photo-box">
@@ -62,174 +60,252 @@
     </div>
   </section>
 
-  <section id="oferta">
-    <h2>Co prowadzę</h2>
+  <section id="research">
+    <h2>Research</h2>
     <p class="section-intro">
-      Zajęcia indywidualne, 60 minut. Online — w całej Polsce i poza nią;
-      stacjonarnie u mnie na Saskiej Kępie.
-      Po polsku i po angielsku. Grupy — po ustaleniu.
+      What interests me is the moment two people start behaving as one system — and
+      what happens to their experience when they do. I pair measures from dynamical
+      systems theory with first-person accounts of experience, because neither on its
+      own is enough.
     </p>
-    <div class="cards">
 
-      <div class="card">
-        <h3>Matematyka — egzaminy</h3>
-        <p class="who">Egzamin ósmoklasisty, matura podstawowa i rozszerzona</p>
-        <ul>
-          <li>Pierwsza lekcja to arkusz i rozmowa — z tego wychodzi plan na resztę roku</li>
-          <li>Od stycznia arkusze CKE na czas, potem omówienie tego, co poszło źle</li>
-          <li>Zapis rozwiązania i punktowanie krok po kroku — tam giną punkty</li>
-          <li>Zadania między lekcjami, sprawdzane</li>
-        </ul>
-      </div>
-
-      <div class="card">
-        <h3>Informatyka i matematyka — edukacja domowa</h3>
-        <p class="who">Egzaminy klasyfikacyjne</p>
-        <ul>
-          <li>Przygotowanie do części praktycznej, bo tak wygląda ten egzamin</li>
-          <li>Programowanie, arkusze, grafika, praca z dokumentem — zależnie od wymagań szkoły</li>
-          <li>Prowadzę takie zajęcia w Otwartym Centrum Edukacyjnym, grupowo i indywidualnie</li>
-          <li>Współtworzyłem zestawy egzaminacyjne — wiem, jak są układane</li>
-        </ul>
-      </div>
-
-      <div class="card">
-        <h3>Programowanie</h3>
-        <p class="who">Od pierwszych kroków do własnego projektu</p>
-        <ul>
-          <li>Najmłodsi: Scratch, Turtle — programowanie jako zabawa, bez klawiatury pełnej nawiasów</li>
-          <li>Python od podstaw, myślenie algorytmiczne</li>
-          <li>Bazy danych i SQL</li>
-          <li>Prowadzenie własnego projektu do końca — przykłady niżej</li>
-        </ul>
-      </div>
-
-    </div>
-  </section>
-
-  <section id="praca">
-    <h2>Gdzie uczyłem</h2>
     <div class="cards">
       <div class="card">
-        <h3>Szkoły i kursy</h3>
-        <ul class="facts">
-          <li><strong>Classical School</strong> (d. Akademeia Tutoring College) — matematyka i informatyka, przygotowanie do A-levels, zajęcia po angielsku.<span class="when">od 2020</span></li>
-          <li><strong>Symposio</strong> — kursy grupowe, cztery grupy po 8–20 osób: egzamin ósmoklasisty i matura rozszerzona.<span class="when">2025/2026</span></li>
-          <li><strong>Otwarte Centrum Edukacyjne</strong> — informatyka dla edukacji domowej, Ursynów.<span class="when">od 2024</span></li>
-          <li><strong>Liceum w Chmurze</strong> — matematyka i informatyka. Mimo nazwy liceum stacjonarne, na Słodowcu.<span class="when">2021–2022</span></li>
-          <li><strong>L.O. im. Zuzanny Ginczanki</strong> — matematyka i informatyka.<span class="when">2021–2022</span></li>
-        </ul>
-      </div>
-      <div class="card">
-        <h3>Uniwersytet Warszawski</h3>
-        <ul class="facts">
-          <li>
-            <strong>Cognitive Processes Modeling II</strong> — prowadzę laboratoria na
-            magisterskiej kognitywistyce (60 godz., 6 ECTS). Modelowanie pamięci,
-            kategoryzacji, decyzji i koordynacji ruchowej, w kodzie.
-            <span class="when">2025/2026</span>
-          </li>
-          <li>
-            <strong>Learning, adaptation and uncertainty</strong> — uczenie maszynowe
-            w modelowaniu poznania. Współprowadzenie, w tym część wykładów.
-            <span class="when">2025/2026</span>
-          </li>
-        </ul>
-        <p style="margin-top:.8rem">
-          <span class="pill">Python</span><span class="pill">R</span><span class="pill">SQL</span>
-          <span class="pill">Java</span><span class="pill">Statystyka</span>
-          <span class="pill">Uczenie maszynowe</span><span class="pill">Szeregi czasowe</span>
-          <span class="pill">Eye-tracking</span>
+        <h3>From Center to Circle</h3>
+        <p class="who">European Varela Award, Mind &amp; Life Europe · Principal Investigator · 2026–2028</p>
+        <p>
+          Capoeira Angola as a contemplative practice in its own right — relational,
+          embodied, Afro-diasporic. The question is how agency is shaped and transformed
+          in the <em>jogo</em>: domination, resistance, liberation. Fieldwork in Salvador,
+          Bahia: inertial sensors and markerless pose estimation, set against video-cued
+          micro-phenomenological interviews.
         </p>
+        <p><span class="pill">RQA</span><span class="pill">Micro-phenomenology</span><span class="pill">IMU</span><span class="pill">Mixed methods</span></p>
+      </div>
+
+      <div class="card">
+        <h3>OЯTHO — Copernicus Science Centre</h3>
+        <p class="who">Research internship · since 2025</p>
+        <p>
+          How children arrive at a coordinate system when they have to make themselves
+          understood to each other. A corpus of more than 1,200 players at the exhibit,
+          analysing how the order of tasks affects what is actually understood. The basis
+          of the paper in the <em>Canadian Journal of Experimental Psychology</em>.
+        </p>
+        <p><span class="pill">Embodied learning</span><span class="pill">Joint action</span><span class="pill">Mathematics education</span></p>
+      </div>
+
+      <div class="card">
+        <h3>Interpersonal coordination</h3>
+        <p class="who">NCN Opus 27 "CoMotion", HILL UW · since 2025</p>
+        <p>
+          My doctoral work sits inside a project on the tension between connection and
+          autonomy in movement — coupling and decoupling as a measure of interaction
+          quality. Within the same strand, a triadic study of father–child–mother
+          coordination using cross-recurrence quantification analysis.
+        </p>
+        <p><span class="pill">CRQA</span><span class="pill">Dynamical systems</span><span class="pill">Time series</span></p>
       </div>
     </div>
+
+    <p style="margin-top:1rem">
+      <span class="pill">Embodied and distributed cognition</span><span class="pill">Movement coordination</span>
+      <span class="pill">Contemplative studies</span><span class="pill">Multimodal interaction</span>
+      <span class="pill">Recurrence methods</span><span class="pill">Eye-tracking</span>
+      <span class="pill">Machine learning</span>
+    </p>
   </section>
 
-  <section id="badania">
-    <h2>Badania</h2>
-    <p class="section-intro">
-      Korepetytorów matematyki są setki. Różnica jest taka, że uczenie się
-      matematyki jest moim tematem badawczym, a nie tylko zajęciem — i to samo
-      pytanie wraca na lekcjach.
-    </p>
+  <section id="publications">
+    <h2>Publications and talks</h2>
 
     <blockquote class="paper">
-      <strong>„It's Our Move: Mathematical Perception Emerges for Coordinating
-      Joint Action"</strong> — OЯTHO to gra, w której dwoje dzieci prowadzi wspólnie
-      kulkę przez labirynt:
-      jedno odpowiada za oś poziomą, drugie za pionową. Nikt nie tłumaczy im układu
-      współrzędnych — układ pojawia się jako sposób na dogadanie się. Sprawdzaliśmy
-      na ponad 1200 graczach, która kolejność zadań realnie buduje to rozumienie.
+      <strong>"It's Our Move: Mathematical Perception Emerges for Coordinating
+      Joint Action"</strong> — OЯTHO is a game in which two children steer a ball
+      through a maze together: one controls the horizontal axis, the other the vertical.
+      Nobody explains a coordinate system to them — the system shows up as a way of
+      getting through to each other. We tested, across more than 1,200 players, which
+      order of tasks actually builds that understanding.
       <cite>
         Abrahamson, D., Tancredi, S., Xiao, A., Li, X., <strong>Weiss, M.</strong>,
         Potega vel Żabik, K., &amp; Dimmel, J. K. (2026).
-        <em>It's Our Move: Mathematical Perception Emerges for Coordinating Joint Action.</em>
-        Canadian Journal of Experimental Psychology (w druku).
-        <a href="abrahamson-et-al-2026-cjep-ortho.pdf" target="_blank" rel="noopener">Pełny tekst (PDF)</a>
-        — wersja zaakceptowana do publikacji, nie ostateczna wersja wydawcy.
+        <em>Canadian Journal of Experimental Psychology</em> (in press).
+        <a href="abrahamson-et-al-2026-cjep-ortho.pdf" target="_blank" rel="noopener">Full text (PDF)</a>
+        — accepted manuscript, not the publisher's copy of record.
       </cite>
     </blockquote>
+
+    <ul class="facts" style="margin-top:1.25rem">
+      <li>
+        <strong>ESRI 2026 — European Summer Research Institute</strong> and the Mind &amp;
+        Life Europe Retreat, Scharnstein, Austria. Poster:
+        <a href="from-center-to-circle-esri-2026-poster.pdf" target="_blank" rel="noopener"><em>From Center to Circle</em> (PDF)</a>.
+        <span class="when">2026</span>
+      </li>
+      <li>
+        <strong>MDIG2026 Multiscale Summer School</strong>, Tilburg University.
+        <span class="when">2026</span>
+      </li>
+      <li>
+        <strong>Unboxing Multimodality</strong>, summer school, University of Amsterdam.
+        <span class="when">2025</span>
+      </li>
+      <li>
+        <strong>13th Peripatetic Conference on Cognitive Systems Modeling</strong>,
+        Zakopane. Talk: <em>Quantifying Movement Coordination in Human–Robot Interaction</em>.
+        <span class="when">2024</span>
+      </li>
+      <li>
+        <strong>4th Summer School on Social Human–Robot Interaction</strong> —
+        co-organizer, and a poster.
+        <span class="when">2023</span>
+      </li>
+      <li>
+        <strong>12th Peripatetic Conference</strong>, Zakopane — organized the workshop
+        <em>"What is the shape of doubt in the mind of a cognitive scientist?"</em>
+        <span class="when">2023</span>
+      </li>
+      <li>
+        <strong>NLM 2023</strong>, Leuphana University — summer school on recurrence
+        quantification, fractal analysis and convergent cross-mapping.
+        <span class="when">2023</span>
+      </li>
+      <li>
+        <strong>Cognitive Futures in the Arts and Humanities</strong>, University of
+        Warsaw — volunteer.
+        <span class="when">2023</span>
+      </li>
+      <li>
+        <strong>11th Peripatetic Conference</strong>, Zakopane. Poster:
+        <em>Fractals — a formula for creativity</em>.
+        <span class="when">2022</span>
+      </li>
+    </ul>
   </section>
 
-  <section id="projekty">
-    <h2>Projekty uczniów</h2>
-    <p class="section-intro">
-      Najlepszy dowód, że coś zadziałało, to rzecz, która działa. Dwa projekty
-      doprowadzone do końca przez osoby, z którymi pracowałem — od pustego pliku
-      do programu, który da się uruchomić i pokazać.
-    </p>
+  <section id="projects">
+    <h2>Projects and tools</h2>
     <div class="cards">
       <div class="card">
-        <h3>Analiza kompozycji zapachowych metodami grafowymi</h3>
-        <p class="who">Malina W.</p>
+        <h3>DIMS Dashboard</h3>
+        <p class="who">Grace Qiyuan Miao, Wim Pouw, Michał Weiss · open source</p>
         <p>
-          Zbiór około 60 tysięcy perfum. Dane wyciągnięte i połączone w SQL-u,
-          przygotowane w pandas, potem graf: składniki jako węzły, współwystępowanie
-          jako krawędzie. Miary centralności i klastrowanie pokazały, które nuty
-          organizują kompozycje.
+          A browser tool for looking at multimodal interaction data: synchronised time
+          series, video, transcripts and — optionally — recurrence analysis,
+          cross-wavelet and ELAN annotations. Built so that interaction data can be
+          looked at before anyone starts computing on it. In use on several corpora
+          across different labs.
         </p>
-        <p><span class="pill">Python</span><span class="pill">SQL</span><span class="pill">pandas</span><span class="pill">NetworkX</span><span class="pill">Plotly</span></p>
-        <p class="sub" style="margin:0">Repozytorium prywatne — chętnie pokażę na rozmowie.</p>
-      </div>
-      <div class="card">
-        <h3>System planowania dostaw</h3>
-        <p class="who">Zuzia D.</p>
-        <p>
-          Aplikacja we Flasku: sklepy składają zamówienia, kierowcy rozwożą je
-          samochodami o ograniczonej pojemności. Schemat bazy napisany od zera w SQL-u,
-          zapytania z joinami bez ORM-a, mapa punktów w Folium, trasa liczona
-          heurystyką najbliższego sąsiada. Do tego dokumentacja architektury.
+        <p><span class="pill">JavaScript</span><span class="pill">Python</span><span class="pill">RQA</span><span class="pill">ELAN</span></p>
+        <p class="sub" style="margin:0">
+          <a href="https://github.com/dims-network/DIMS_dashboard_template" target="_blank" rel="noopener">github.com/dims-network</a>
         </p>
-        <p><span class="pill">Python</span><span class="pill">Flask</span><span class="pill">SQLite</span><span class="pill">Jinja2</span><span class="pill">Folium</span></p>
-        <p class="sub" style="margin:0">Repozytorium prywatne — chętnie pokażę na rozmowie.</p>
       </div>
     </div>
   </section>
 
-  <section id="kontakt">
-    <h2>Kontakt</h2>
+  <section id="teaching">
+    <h2>Teaching</h2>
+    <p class="section-intro">
+      I have taught mathematics and computer science for over eight years — for the
+      Polish year-8 leaving exam, for the <em>matura</em> at both levels, and for
+      home-education classification exams. Programming from Scratch and Turtle up to
+      a project of one's own, carried through to the end. Lessons in Polish or English,
+      online or at my place in Saska Kępa, Warsaw.
+    </p>
+
+    <div class="cards">
+      <div class="card">
+        <h3>Schools and courses</h3>
+        <ul class="facts">
+          <li><strong>Classical School</strong> (formerly Akademeia Tutoring College) — mathematics and computer science, A-level preparation, taught in English.<span class="when">since 2020</span></li>
+          <li><strong>Symposio</strong> — group courses, four groups of 8–20 students: year-8 leaving exam and extended-level matura.<span class="when">2025/2026</span></li>
+          <li><strong>Otwarte Centrum Edukacyjne</strong> — computer science for home-educated students, Ursynów.<span class="when">since 2024</span></li>
+          <li><strong>Liceum w Chmurze</strong> — mathematics and computer science. Despite the name ("high school in the cloud"), an on-site school in the Słodowiec district.<span class="when">2021–2022</span></li>
+          <li><strong>L.O. im. Zuzanny Ginczanki</strong> — mathematics and computer science.<span class="when">2021–2022</span></li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3>University of Warsaw</h3>
+        <ul class="facts">
+          <li>
+            <strong>Cognitive Processes Modeling II</strong> — I run the labs on the
+            Cognitive Science master's programme (60 h, 6 ECTS). Modelling memory,
+            categorisation, decision making and motor coordination, in code.
+            <span class="when">2025/2026</span>
+          </li>
+          <li>
+            <strong>Learning, adaptation and uncertainty</strong> — machine learning for
+            cognitive modelling. Co-taught, including part of the lecture series.
+            <span class="when">2025/2026</span>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <p class="section-intro" style="margin-top:1.5rem">
+      The best evidence that something worked is a thing that works. Two projects
+      carried through to the end by people I taught — from an empty file to a program
+      you can run and show.
+    </p>
+    <div class="cards">
+      <div class="card">
+        <h3>Graph-based analysis of fragrance compositions</h3>
+        <p class="who">Malina W.</p>
+        <p>
+          A dataset of roughly 60,000 perfumes. Data extracted and joined in SQL,
+          prepared in pandas, then a graph: ingredients as nodes, co-occurrence as
+          edges. Centrality measures and clustering showed which notes organise
+          compositions.
+        </p>
+        <p><span class="pill">Python</span><span class="pill">SQL</span><span class="pill">pandas</span><span class="pill">NetworkX</span><span class="pill">Plotly</span></p>
+        <p class="sub" style="margin:0">Private repository — happy to walk through it on a call.</p>
+      </div>
+      <div class="card">
+        <h3>Delivery planning system</h3>
+        <p class="who">Zuzia D.</p>
+        <p>
+          A Flask application: shops place orders, drivers deliver them in vans of
+          limited capacity. Database schema written from scratch in SQL, queries with
+          joins and no ORM, a map of the stops in Folium, the route computed with a
+          nearest-neighbour heuristic. Plus architecture documentation.
+        </p>
+        <p><span class="pill">Python</span><span class="pill">Flask</span><span class="pill">SQLite</span><span class="pill">Jinja2</span><span class="pill">Folium</span></p>
+        <p class="sub" style="margin:0">Private repository — happy to walk through it on a call.</p>
+      </div>
+    </div>
+
+    <p class="sub" style="margin-top:1.25rem">
+      I also take private students. The first lesson is diagnostic — after it we know
+      where the problem actually is and how many lessons it will take. A fixed slot each
+      week, settled monthly, cancel up to 24 hours ahead at no charge. Write if you are
+      looking for a slot.
+    </p>
+  </section>
+
+  <section id="contact">
+    <h2>Contact</h2>
     <div class="cards">
       <div class="card">
         <p>
-          Napisz, na czym stoisz i do kiedy potrzebujesz. Odpisuję zwykle tego
-          samego dnia.
+          Write and tell me where you are and by when you need it. I usually reply the
+          same day.
         </p>
-        <p><a href="mailto:mikub97@gmail.com">mikub97@gmail.com</a></p>
+        <p>
+          <a href="mailto:michal.weiss@psych.edu.pl">michal.weiss@psych.edu.pl</a><br>
+          <a href="mailto:mikub97@gmail.com">mikub97@gmail.com</a>
+        </p>
         <div class="cta" style="margin-top:1rem">
-          <a class="btn primary" href="mailto:mikub97@gmail.com?subject=Zaj%C4%99cia%20%E2%80%94%20zapytanie">Napisz do mnie</a>
-          <a class="btn" href="https://tidycal.com/mikub97" target="_blank" rel="noopener">Umów rozmowę</a>
+          <a class="btn primary" href="mailto:michal.weiss@psych.edu.pl">Email me</a>
+          <a class="btn ghost" href="cv.pdf" target="_blank" rel="noopener">CV (PDF)</a>
         </div>
       </div>
       <div class="card">
-        <h3>Jak pracuję</h3>
-        <ul>
-          <li>Pierwsza lekcja jest diagnostyczna — po niej wiadomo, gdzie naprawdę jest
-              problem i ile lekcji będzie potrzeba.</li>
-          <li>Program pisany pod konkretną osobę, nie kolejny rozdział z podręcznika.</li>
-          <li>Stały termin w tygodniu. Bez tego przygotowanie do egzaminu nie działa.</li>
-          <li>Zajęcia po polsku i po angielsku.</li>
-          <li>Odwołanie do 24 godzin przed — bez opłaty. Rozliczenie miesięczne,
-              przelewem; faktura na życzenie.</li>
+        <h3>Where to find me</h3>
+        <ul class="facts">
+          <li><strong>Human Interactivity and Language Lab</strong><span class="when">Faculty of Psychology, University of Warsaw</span></li>
+          <li><strong>Interdisciplinary Doctoral School, UW</strong><span class="when">mathematics and psychology, 2025–2029</span></li>
+          <li><strong>GitHub</strong> — <a href="https://github.com/mikub97" target="_blank" rel="noopener">github.com/mikub97</a></li>
         </ul>
       </div>
     </div>
@@ -239,7 +315,7 @@
 
 <footer class="container">
   <span>© <span id="y"></span> Michał Weiss</span>
-  <span><a href="index_en.html">English</a> · <a href="https://github.com/mikub97" target="_blank" rel="noopener">GitHub</a></span>
+  <span><a href="index_pl.html">Polski</a> · <a href="https://github.com/mikub97" target="_blank" rel="noopener">GitHub</a></span>
 </footer>
 
 <script>document.getElementById('y').textContent = new Date().getFullYear();</script>
