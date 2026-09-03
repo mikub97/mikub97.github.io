@@ -63,140 +63,46 @@
 
 
 
-<div class="timeline">
-  
-  <div class="timeline-entry" >
-    <div class="timeline-date">1.08.2025</div>
-    
-    <div class="timeline-title">
-      <a href="/blog/post/?s=2025-08-01-poczatek">Początek</a>
-    </div>
-  </div>
-  
-  <div class="timeline-entry" data-lat="-22.9068" data-lng="-43.1729">
-    <div class="timeline-date">14.08.2025</div>
-    
-    <div class="timeline-location">Rio de Janeiro</div>
-    
-    <div class="timeline-title">
-      <a href="/blog/post/?s=2025-08-14-rio-de-janeiro">Cidade de Deus</a>
-    </div>
-  </div>
-  
-  <div class="timeline-entry" data-lat="-13.3814" data-lng="-38.9138">
-    <div class="timeline-date">25.08.2025</div>
-    
-    <div class="timeline-location">Morro de São Paulo, Bahia</div>
-    
-    <div class="timeline-title">
-      <a href="/blog/post/?s=2025-08-25-morro-de-sao-paulo">Morro de São Paulo</a>
-    </div>
-  </div>
-  
-  <div class="timeline-entry" data-lat="-12.5583" data-lng="-41.3906">
-    <div class="timeline-date">18.09.2025</div>
-    
-    <div class="timeline-location">Chapada Diamantina</div>
-    
-    <div class="timeline-title">
-      <a href="/blog/post/?s=2025-09-18-chapada-diamantina">Salvador i Lençóis</a>
-    </div>
-  </div>
-  
-  <div class="timeline-entry" data-lat="-12.9714" data-lng="-38.5014">
-    <div class="timeline-date">5.10.2025</div>
-    
-    <div class="timeline-location">Salvador, Bahia</div>
-    
-    <div class="timeline-title">
-      <a href="/blog/post/?s=2025-10-05-salvador">Salvador pt.2</a>
-    </div>
-  </div>
-  
-  <div class="timeline-entry" data-lat="52.2297" data-lng="21.0122">
-    <div class="timeline-date">13.08.2026</div>
-    
-    <div class="timeline-location">Warszawa</div>
-    
-    <div class="timeline-title">
-      <a href="/blog/post/?s=2026-08-13-stary-kontynent">Stary kontynent</a>
-    </div>
-  </div>
-  
-</div>
+<div class="timeline" id="timeline"></div>
 
 
 
 </div>
 
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script src="/blog/assets/js/blog.js"></script>
 <script>
 (function () {
-  var posts = [
-    
-    
-    
-    
-    {
-      title:    "Cidade de Deus",
-      date:     "14.08.2025",
-      location: "Rio de Janeiro",
-      url:      "/blog/post/?s=2025-08-14-rio-de-janeiro",
-      cover:    "/assets/images/rio/20250821_143350.jpg",
-      lat:      -22.9068,
-      lng:      -43.1729
-    },
-    
-    
-    
-    {
-      title:    "Morro de São Paulo",
-      date:     "25.08.2025",
-      location: "Morro de São Paulo, Bahia",
-      url:      "/blog/post/?s=2025-08-25-morro-de-sao-paulo",
-      cover:    "/assets/images/morro/20250904_205728.jpg",
-      lat:      -13.3814,
-      lng:      -38.9138
-    },
-    
-    
-    
-    {
-      title:    "Salvador i Lençóis",
-      date:     "18.09.2025",
-      location: "Chapada Diamantina",
-      url:      "/blog/post/?s=2025-09-18-chapada-diamantina",
-      cover:    "/assets/images/bahia/20250927_082346.jpg",
-      lat:      -12.5583,
-      lng:      -41.3906
-    },
-    
-    
-    
-    {
-      title:    "Salvador pt.2",
-      date:     "5.10.2025",
-      location: "Salvador, Bahia",
-      url:      "/blog/post/?s=2025-10-05-salvador",
-      cover:    "/assets/images/bahia/20251007_220739.jpg",
-      lat:      -12.9714,
-      lng:      -38.5014
-    },
-    
-    
-    
-    {
-      title:    "Stary kontynent",
-      date:     "13.08.2026",
-      location: "Warszawa",
-      url:      "/blog/post/?s=2026-08-13-stary-kontynent",
-      cover:    "/assets/images/europa/angola.jpg",
-      lat:      52.2297,
-      lng:      21.0122
-    },
-    
-    
-  ];
+  // Jedno zrodlo listy: /blog/assets/posts.json. Wpisy osi czasu i dymki na
+  // mapie powstaja z tych samych danych, wiec nie moga sie juz rozjechac.
+  Blog.load().then(function (newest_first) {
+    var posts = newest_first.slice().reverse();   // os czasu idzie chronologicznie
+
+    var tl = document.getElementById("timeline");
+    posts.forEach(function (p) {
+      var e = document.createElement("div");
+      e.className = "timeline-entry";
+      if (p.lat != null) { e.dataset.lat = p.lat; e.dataset.lng = p.lng; }
+      e.innerHTML =
+        '<div class="timeline-date"></div>' +
+        (p.location ? '<div class="timeline-location"></div>' : '') +
+        '<div class="timeline-title"><a></a></div>';
+      e.querySelector(".timeline-date").textContent = Blog.formatDate(p.date);
+      if (p.location) e.querySelector(".timeline-location").textContent = p.location;
+      var a = e.querySelector(".timeline-title a");
+      a.textContent = p.title;
+      a.href = Blog.postUrl(p.slug);
+      tl.appendChild(e);
+    });
+
+    posts = posts.filter(function (p) { return p.lat != null; })
+                 .map(function (p) {
+                   return {
+                     title: p.title, date: Blog.formatDate(p.date),
+                     location: p.location, url: Blog.postUrl(p.slug),
+                     cover: p.cover, lat: p.lat, lng: p.lng
+                   };
+                 });
 
   // Group posts that share the same coordinates
   var byCoord = {};
@@ -264,6 +170,7 @@
         document.getElementById("map").scrollIntoView({ behavior: "smooth", block: "center" });
       }
     });
+  });
   });
 })();
 </script>

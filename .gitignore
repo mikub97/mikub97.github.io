@@ -1,1 +1,15 @@
 .DS_Store
+
+# Szkice postów — kopia robocza na dysku, celowo POZA repozytorium.
+#
+# To repozytorium jest PUBLICZNE. Plik zacommitowany tutaj jest czytelny dla
+# każdego na GitHubie, nawet jeśli żadna strona go nie renderuje i nie ma do
+# niego odnośnika. Dla tekstu, który ma jeszcze nie wyjść, "niewidoczny na
+# stronie" to za mało — musi go nie być w commitach.
+#
+# Kiedy szkic jest gotowy: przenieś markdown do blog/assets/posts/ i dopisz
+# wpis do blog/assets/posts.json. Dopiero to go publikuje.
+#
+# Kopia zapasowa tych plików: gałąź `brazylia` prywatnego repo
+# mikub97/brasil-blog. Tutaj nie ma żadnej — skasowane znikają.
+blog/_drafts/

@@ -24,32 +24,52 @@ Pod `mikub97.github.io/blog` stoi blog podróżniczy. **Nie ma do niego żadnego
 odnośnika ze strony głównej** i tak ma zostać — adres działa tylko wpisany
 z palca (decyzja 2026-09-03).
 
-Wszystko w `blog/` to **wygenerowany HTML**. Źródło jest w osobnym, prywatnym
-repozytorium `mikub97/brasil-blog` (lokalnie `~/Documents/Research/brasil-blog/io`),
-bo blog jest Jekyllem, a to repo Jekylla nie buduje. Ręczna edycja czegokolwiek
-w `blog/` zniknie przy najbliższym przebudowaniu.
+**Nic tu się nie buduje.** Blog był Jekyllem w osobnym repozytorium; od
+2026-09-03 jest zwykłym HTML-em i mieszka w całości tutaj. Pliki w `blog/`
+edytuje się wprost — nie ma skryptu, który by je nadpisał.
 
-Nowy post albo poprawka w istniejącym:
-
-```sh
-cd ~/Documents/Research/brasil-blog/io
-# 1. napisz _posts/RRRR-MM-DD-slug.md, dopisz wpis do _data/posts.yml
-python3 scripts/publish_posts.py     # markdown -> assets/posts/
-./scripts/build_for_site.sh          # Jekyll -> ten katalog blog/
-cd ~/Documents/codes/mikub97.github.io && git add blog && git commit && git push
+```
+blog/
+  index.html          lista postów
+  post/index.html     czytnik pojedynczego posta
+  timeline/index.html oś czasu + mapa
+  assets/posts.json   ← JEDYNE źródło listy postów
+  assets/posts/*.md   treści
+  assets/js/blog.js   wspólny loader dla trzech stron powyżej
+  assets/images/
+  _drafts/            szkice, poza repozytorium (patrz .gitignore)
 ```
 
-Skrypt buduje z nakładką `_config.site.yml`, która ustawia `baseurl: /blog`
-i wycina to, czego na stronie być nie ma: kanał RSS, podstronę „O tej stronie",
-katalog `scripts/` (razem z `crypt.py`), prywatne `_posts/`, podstrony o capoeirze,
-oba PDF-y i dziewięć nieużywanych plików graficznych. Synchronizuje przez
-`rsync --delete`, więc usunięte zdjęcie faktycznie znika ze strony.
+### Nowy post
 
-Publikowanych jest **sześć** postów. Dwa mają w `posts.yml` flagę `hidden: true`
-i nie wychodzą na zewnątrz: ich markdown nie jest kopiowany do `assets/posts/`,
-a czytnik filtruje je po stronie przeglądarki. Jeśli któryś ma się kiedyś pojawić,
-zdejmij flagę i przebuduj — pamiętając, że post o EVA używa zdjęć z
-`assets/images/capoeira/`, które `_config.site.yml` teraz wyklucza.
+1. wrzuć `blog/assets/posts/RRRR-MM-DD-slug.md` (czysty markdown, bez front matter)
+2. zdjęcia do `blog/assets/images/<katalog>/`
+3. dopisz **jeden** wpis do `blog/assets/posts.json` — na końcu, plik jest
+   w kolejności chronologicznej; ścieżka w `cover` zaczyna się od `/blog`
+4. `git add blog && git commit && git push`
+
+Trzy strony czytają ten sam JSON, więc nie ma jak się rozjechać. Przedtem ta
+sama lista była wklejona w trzech miejscach naraz i to właśnie tam siedział błąd:
+miniatury w dymkach mapy miały ścieżki bez `/blog` i się nie ładowały.
+
+### Post, który ma nie wyjść
+
+Nie ma flagi „ukryty" i nie ma być. **To repozytorium jest publiczne** — wpis
+z flagą zdradzałby tytuł i lokalizację w źródle strony, a sam plik markdown
+byłby do pobrania. Post nieopublikowany to po prostu post, którego tu nie ma:
+ani w `posts.json`, ani w `assets/posts/`.
+
+Szkice w robocie leżą w `blog/_drafts/`, wykluczonym przez `.gitignore`. Są
+tylko na tym dysku; kopia zapasowa jest na gałęzi `brazylia` prywatnego repo
+`mikub97/brasil-blog`. Gotowy szkic przenosi się do `assets/posts/` i dopisuje
+do `posts.json`.
+
+### Skąd się to wzięło
+
+Historia i pełne oryginały zdjęć zostają w prywatnym `mikub97/brasil-blog`.
+To repozytorium nie jest już z niego budowane — `scripts/build_for_site.sh`
+i `_config.site.yml` tam zostały, ale ich nie uruchamiaj: nadpisałyby `blog/`
+wersją sprzed przejścia na `posts.json`.
 
 ## Historia i kierunek
 
