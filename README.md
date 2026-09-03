@@ -13,9 +13,43 @@ cv.pdf          budowane z ~/Documents/Research/cv/ (patrz tamtejszy README)
 abrahamson-et-al-2026-cjep-ortho.pdf        manuskrypt CJEP
 from-center-to-circle-esri-2026-poster.pdf  poster z ESRI 2026
 img/            portret i flagi
+blog/           WYNIK BUDOWANIA, nie źródło — patrz niżej
 .nojekyll       Pages ma nie próbować budować tego Jekyllem
 .github/workflows/static.yml   deploy: wysyła katalog jak leży
 ```
+
+## `blog/` — katalog, którego się nie edytuje
+
+Pod `mikub97.github.io/blog` stoi blog podróżniczy. **Nie ma do niego żadnego
+odnośnika ze strony głównej** i tak ma zostać — adres działa tylko wpisany
+z palca (decyzja 2026-09-03).
+
+Wszystko w `blog/` to **wygenerowany HTML**. Źródło jest w osobnym, prywatnym
+repozytorium `mikub97/brasil-blog` (lokalnie `~/Documents/Research/brasil-blog/io`),
+bo blog jest Jekyllem, a to repo Jekylla nie buduje. Ręczna edycja czegokolwiek
+w `blog/` zniknie przy najbliższym przebudowaniu.
+
+Nowy post albo poprawka w istniejącym:
+
+```sh
+cd ~/Documents/Research/brasil-blog/io
+# 1. napisz _posts/RRRR-MM-DD-slug.md, dopisz wpis do _data/posts.yml
+python3 scripts/publish_posts.py     # markdown -> assets/posts/
+./scripts/build_for_site.sh          # Jekyll -> ten katalog blog/
+cd ~/Documents/codes/mikub97.github.io && git add blog && git commit && git push
+```
+
+Skrypt buduje z nakładką `_config.site.yml`, która ustawia `baseurl: /blog`
+i wycina to, czego na stronie być nie ma: kanał RSS, podstronę „O tej stronie",
+katalog `scripts/` (razem z `crypt.py`), prywatne `_posts/`, podstrony o capoeirze,
+oba PDF-y i dziewięć nieużywanych plików graficznych. Synchronizuje przez
+`rsync --delete`, więc usunięte zdjęcie faktycznie znika ze strony.
+
+Publikowanych jest **sześć** postów. Dwa mają w `posts.yml` flagę `hidden: true`
+i nie wychodzą na zewnątrz: ich markdown nie jest kopiowany do `assets/posts/`,
+a czytnik filtruje je po stronie przeglądarki. Jeśli któryś ma się kiedyś pojawić,
+zdejmij flagę i przebuduj — pamiętając, że post o EVA używa zdjęć z
+`assets/images/capoeira/`, które `_config.site.yml` teraz wyklucza.
 
 ## Historia i kierunek
 

@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Oś czasu — Viajando</title>
+<meta name="description" content="Notes, photos, and movement — travels in Brazil">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;1,400&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/blog/assets/css/style.css">
+<!-- Begin Jekyll SEO tag v2.9.0 -->
+<title>Oś czasu | Viajando</title>
+<meta name="generator" content="Jekyll v4.4.1" />
+<meta property="og:title" content="Oś czasu" />
+<meta name="author" content="Michał Weiss" />
+<meta property="og:locale" content="pl" />
+<meta name="description" content="Notes, photos, and movement — travels in Brazil" />
+<meta name="twitter:description" property="og:description" content="Notes, photos, and movement — travels in Brazil" />
+<link rel="canonical" href="https://mikub97.github.io/blog/timeline/" />
+<meta property="og:url" content="https://mikub97.github.io/blog/timeline/" />
+<meta property="og:site_name" content="Viajando" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="Oś czasu" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","author":{"@type":"Person","name":"Michał Weiss"},"description":"Notes, photos, and movement — travels in Brazil","headline":"Oś czasu","url":"https://mikub97.github.io/blog/timeline/"}</script>
+<!-- End Jekyll SEO tag -->
+
+
+</head>
+<body>
+  <header class="site-header">
+  <div class="container nav-inner">
+    <a class="site-title" href="/blog/">
+      <img class="nav-flag" src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/05/Flag_of_Brazil.svg/500px-Flag_of_Brazil.svg.png" alt="Brazil">
+      Viajando
+    </a>
+    <nav class="site-nav">
+      <a href="/blog/" >Posty</a>
+      <a href="/blog/timeline" >Oś czasu</a>
+    </nav>
+  </div>
+</header>
+
+  <main class="main-content">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+
+<div class="container">
+  <div class="timeline-header">
+    <h1>Oś czasu</h1>
+    <p>Posty w kolejności chronologicznej</p>
+  </div>
+</div>
+
+<div class="map-wrap">
+  <div id="map"></div>
+</div>
+
+<div class="container">
+
+
+
+
+
+<div class="timeline">
+  
+  <div class="timeline-entry" >
+    <div class="timeline-date">1.08.2025</div>
+    
+    <div class="timeline-title">
+      <a href="/blog/post/?s=2025-08-01-poczatek">Początek</a>
+    </div>
+  </div>
+  
+  <div class="timeline-entry" data-lat="-22.9068" data-lng="-43.1729">
+    <div class="timeline-date">14.08.2025</div>
+    
+    <div class="timeline-location">Rio de Janeiro</div>
+    
+    <div class="timeline-title">
+      <a href="/blog/post/?s=2025-08-14-rio-de-janeiro">Cidade de Deus</a>
+    </div>
+  </div>
+  
+  <div class="timeline-entry" data-lat="-13.3814" data-lng="-38.9138">
+    <div class="timeline-date">25.08.2025</div>
+    
+    <div class="timeline-location">Morro de São Paulo, Bahia</div>
+    
+    <div class="timeline-title">
+      <a href="/blog/post/?s=2025-08-25-morro-de-sao-paulo">Morro de São Paulo</a>
+    </div>
+  </div>
+  
+  <div class="timeline-entry" data-lat="-12.5583" data-lng="-41.3906">
+    <div class="timeline-date">18.09.2025</div>
+    
+    <div class="timeline-location">Chapada Diamantina</div>
+    
+    <div class="timeline-title">
+      <a href="/blog/post/?s=2025-09-18-chapada-diamantina">Salvador i Lençóis</a>
+    </div>
+  </div>
+  
+  <div class="timeline-entry" data-lat="-12.9714" data-lng="-38.5014">
+    <div class="timeline-date">5.10.2025</div>
+    
+    <div class="timeline-location">Salvador, Bahia</div>
+    
+    <div class="timeline-title">
+      <a href="/blog/post/?s=2025-10-05-salvador">Salvador pt.2</a>
+    </div>
+  </div>
+  
+  <div class="timeline-entry" data-lat="52.2297" data-lng="21.0122">
+    <div class="timeline-date">13.08.2026</div>
+    
+    <div class="timeline-location">Warszawa</div>
+    
+    <div class="timeline-title">
+      <a href="/blog/post/?s=2026-08-13-stary-kontynent">Stary kontynent</a>
+    </div>
+  </div>
+  
+</div>
+
+
+
+</div>
+
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script>
+(function () {
+  var posts = [
+    
+    
+    
+    
+    {
+      title:    "Cidade de Deus",
+      date:     "14.08.2025",
+      location: "Rio de Janeiro",
+      url:      "/blog/post/?s=2025-08-14-rio-de-janeiro",
+      cover:    "/assets/images/rio/20250821_143350.jpg",
+      lat:      -22.9068,
+      lng:      -43.1729
+    },
+    
+    
+    
+    {
+      title:    "Morro de São Paulo",
+      date:     "25.08.2025",
+      location: "Morro de São Paulo, Bahia",
+      url:      "/blog/post/?s=2025-08-25-morro-de-sao-paulo",
+      cover:    "/assets/images/morro/20250904_205728.jpg",
+      lat:      -13.3814,
+      lng:      -38.9138
+    },
+    
+    
+    
+    {
+      title:    "Salvador i Lençóis",
+      date:     "18.09.2025",
+      location: "Chapada Diamantina",
+      url:      "/blog/post/?s=2025-09-18-chapada-diamantina",
+      cover:    "/assets/images/bahia/20250927_082346.jpg",
+      lat:      -12.5583,
+      lng:      -41.3906
+    },
+    
+    
+    
+    {
+      title:    "Salvador pt.2",
+      date:     "5.10.2025",
+      location: "Salvador, Bahia",
+      url:      "/blog/post/?s=2025-10-05-salvador",
+      cover:    "/assets/images/bahia/20251007_220739.jpg",
+      lat:      -12.9714,
+      lng:      -38.5014
+    },
+    
+    
+    
+    {
+      title:    "Stary kontynent",
+      date:     "13.08.2026",
+      location: "Warszawa",
+      url:      "/blog/post/?s=2026-08-13-stary-kontynent",
+      cover:    "/assets/images/europa/angola.jpg",
+      lat:      52.2297,
+      lng:      21.0122
+    },
+    
+    
+  ];
+
+  // Group posts that share the same coordinates
+  var byCoord = {};
+  posts.forEach(function (p) {
+    var key = p.lat + "," + p.lng;
+    if (!byCoord[key]) byCoord[key] = { lat: p.lat, lng: p.lng, posts: [] };
+    byCoord[key].posts.push(p);
+  });
+
+  // Default center: Salvador, Bahia
+  var defaultCenter = posts.length ? [posts[0].lat, posts[0].lng] : [-12.97, -38.50];
+  var map = L.map("map", { zoomControl: true }).setView(defaultCenter, 6);
+
+  L.tileLayer("https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png", {
+    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> &copy; <a href="https://carto.com/">CARTO</a>',
+    subdomains: "abcd",
+    maxZoom: 19
+  }).addTo(map);
+
+  var routeCoords = posts.map(function (p) { return [p.lat, p.lng]; });
+  if (routeCoords.length > 1) {
+    L.polyline(routeCoords, { color: "#c9a227", weight: 2, opacity: 0.5, dashArray: "5, 10" }).addTo(map);
+  }
+
+  var markerStyle = { radius: 9, fillColor: "#c9a227", color: "#1a4731", weight: 2, opacity: 1, fillOpacity: 0.92 };
+  var markers = [];
+
+  Object.values(byCoord).forEach(function (loc) {
+    var m = L.circleMarker([loc.lat, loc.lng], markerStyle).addTo(map);
+
+    var inner = loc.posts.map(function (p) {
+      return '<div class="mp-entry">' +
+        (p.cover ? '<img class="mp-img" src="' + p.cover + '" alt="">' : "") +
+        '<div class="mp-body">' +
+        '<div class="mp-date">' + p.date + "</div>" +
+        '<a class="mp-title" href="' + p.url + '">' + p.title + "</a>" +
+        "</div></div>";
+    }).join("");
+
+    var html = '<div class="mp-wrap"><div class="mp-loc">' + (loc.posts[0].location || "") + "</div>" + inner + "</div>";
+    m.bindPopup(html, { maxWidth: 220, minWidth: 180 });
+    markers.push(m);
+  });
+
+  if (markers.length > 1) {
+    var group = L.featureGroup(markers);
+    map.fitBounds(group.getBounds().pad(0.4));
+  }
+
+  document.querySelectorAll(".timeline-entry[data-lat]").forEach(function (el) {
+    el.style.cursor = "pointer";
+    el.addEventListener("click", function (e) {
+      if (e.target.tagName === "A") return;
+      var lat = parseFloat(el.dataset.lat);
+      var lng = parseFloat(el.dataset.lng);
+      var key = lat + "," + lng;
+      var loc = byCoord[key];
+      if (!loc) return;
+      var target = markers.find(function (mk) {
+        return mk.getLatLng().lat === lat && mk.getLatLng().lng === lng;
+      });
+      if (target) {
+        map.setView([lat, lng], 10, { animate: true });
+        target.openPopup();
+        document.getElementById("map").scrollIntoView({ behavior: "smooth", block: "center" });
+      }
+    });
+  });
+})();
+</script>
+
+  </main>
+  <footer class="site-footer">
+    <div class="container">
+      <p>Michał Weiss &mdash; 2026</p>
+    </div>
+  </footer>
+</body>
+</html>

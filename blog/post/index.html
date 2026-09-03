@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Post — Viajando</title>
+<meta name="description" content="Notes, photos, and movement — travels in Brazil">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;1,400&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/blog/assets/css/style.css">
+<!-- Begin Jekyll SEO tag v2.9.0 -->
+<title>Post | Viajando</title>
+<meta name="generator" content="Jekyll v4.4.1" />
+<meta property="og:title" content="Post" />
+<meta name="author" content="Michał Weiss" />
+<meta property="og:locale" content="pl" />
+<meta name="description" content="Notes, photos, and movement — travels in Brazil" />
+<meta name="twitter:description" property="og:description" content="Notes, photos, and movement — travels in Brazil" />
+<link rel="canonical" href="https://mikub97.github.io/blog/post/" />
+<meta property="og:url" content="https://mikub97.github.io/blog/post/" />
+<meta property="og:site_name" content="Viajando" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="Post" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","author":{"@type":"Person","name":"Michał Weiss"},"description":"Notes, photos, and movement — travels in Brazil","headline":"Post","url":"https://mikub97.github.io/blog/post/"}</script>
+<!-- End Jekyll SEO tag -->
+
+
+</head>
+<body>
+  <header class="site-header">
+  <div class="container nav-inner">
+    <a class="site-title" href="/blog/">
+      <img class="nav-flag" src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/05/Flag_of_Brazil.svg/500px-Flag_of_Brazil.svg.png" alt="Brazil">
+      Viajando
+    </a>
+    <nav class="site-nav">
+      <a href="/blog/" >Posty</a>
+      <a href="/blog/timeline" >Oś czasu</a>
+    </nav>
+  </div>
+</header>
+
+  <main class="main-content">
+    
+<script>const POSTS_DATA = [{"slug":"2025-08-01-poczatek","title":"Początek","date":"2025-08-01"},{"slug":"2025-08-14-rio-de-janeiro","title":"Cidade de Deus","date":"2025-08-14","location":"Rio de Janeiro","lat":-22.9068,"lng":-43.1729,"cover_image":"/assets/images/rio/20250821_143350.jpg"},{"slug":"2025-08-25-morro-de-sao-paulo","title":"Morro de São Paulo","date":"2025-08-25","location":"Morro de São Paulo, Bahia","lat":-13.3814,"lng":-38.9138,"cover_image":"/assets/images/morro/20250904_205728.jpg"},{"slug":"2025-09-18-chapada-diamantina","title":"Salvador i Lençóis","date":"2025-09-18","location":"Chapada Diamantina","lat":-12.5583,"lng":-41.3906,"cover_image":"/assets/images/bahia/20250927_082346.jpg"},{"slug":"2025-10-05-salvador","title":"Salvador pt.2","date":"2025-10-05","location":"Salvador, Bahia","lat":-12.9714,"lng":-38.5014,"cover_image":"/assets/images/bahia/20251007_220739.jpg"},{"slug":"2026-06-07-from-center-to-circle","title":"From Center to Circle","date":"2026-06-07","location":"Warszawa","lat":52.2297,"lng":21.0122,"hidden":true},{"slug":"2026-08-13-stary-kontynent","title":"Stary kontynent","date":"2026-08-13","location":"Warszawa","lat":52.2297,"lng":21.0122,"cover_image":"/assets/images/europa/angola.jpg","hidden":false}];</script>
+
+<article class="post container" id="post-article">
+
+  <header class="post-header" id="post-header" hidden>
+    <div class="post-meta">
+      <time id="post-date"></time>
+      <span id="post-location" class="post-location" hidden>
+        <span class="pin">&#9675;</span> <span id="post-location-text"></span>
+      </span>
+    </div>
+    <h1 class="post-title" id="post-title"></h1>
+  </header>
+
+  <p id="post-error" class="post-error" hidden></p>
+
+  <div id="post-body" class="post-body" hidden></div>
+
+  <nav class="post-nav" id="post-nav" hidden>
+    <a id="post-nav-prev" class="post-nav-prev" href="#">
+      <span class="nav-label">&#8592; Wcześniej</span>
+      <span class="nav-title" id="post-nav-prev-title"></span>
+    </a>
+    <a id="post-nav-next" class="post-nav-next" href="#">
+      <span class="nav-label">Dalej &#8594;</span>
+      <span class="nav-title" id="post-nav-next-title"></span>
+    </a>
+  </nav>
+
+</article>
+
+<script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+<script>
+(function () {
+  // Przez relative_url, nie na sztywno: pod /blog zaszyty '/post/' wyrzucałby
+  // czytelnika na nieistniejący adres w korzeniu strony.
+  const POST_BASE = '/blog/post/';
+  const slug  = new URLSearchParams(location.search).get('s') || '';
+  const posts = POSTS_DATA.filter(p => !p.hidden);
+  const idx   = posts.findIndex(p => p.slug === slug);
+  const meta  = idx >= 0 ? posts[idx] : null;
+
+  function showError(msg) {
+    const el = document.getElementById('post-error');
+    el.textContent = msg;
+    el.hidden = false;
+  }
+
+  // Unknown or hidden slug: nothing to fetch, and nothing to say about it.
+  if (!meta) {
+    showError('Nie ma takiego posta.');
+    return;
+  }
+
+  // Header metadata comes from _data/posts.yml, not from the markdown.
+  document.title = meta.title + ' – Viajando';
+  const fmtDate = new Date(meta.date + 'T12:00:00').toLocaleDateString('pl-PL',
+    { day: 'numeric', month: '2-digit', year: 'numeric' });
+  document.getElementById('post-date').textContent = fmtDate;
+  document.getElementById('post-title').textContent = meta.title;
+  if (meta.location) {
+    document.getElementById('post-location-text').textContent = meta.location;
+    document.getElementById('post-location').hidden = false;
+  }
+  document.getElementById('post-header').hidden = false;
+
+  function setupNav() {
+    const nav  = document.getElementById('post-nav');
+    const prev = document.getElementById('post-nav-prev');
+    const next = document.getElementById('post-nav-next');
+    const prevTitle = document.getElementById('post-nav-prev-title');
+    const nextTitle = document.getElementById('post-nav-next-title');
+    if (idx > 0) {
+      const p = posts[idx - 1];
+      prevTitle.textContent = p.title;
+      prev.href = POST_BASE + '?s=' + p.slug;
+      prev.hidden = false;
+    } else {
+      prev.hidden = true;
+    }
+    if (idx < posts.length - 1) {
+      const n = posts[idx + 1];
+      nextTitle.textContent = n.title;
+      next.href = POST_BASE + '?s=' + n.slug;
+      next.hidden = false;
+    } else {
+      next.hidden = true;
+    }
+    nav.hidden = false;
+  }
+
+  // Plain markdown, written by scripts/publish_posts.py with front matter stripped.
+  (async () => {
+    let raw;
+    try {
+      const res = await fetch('/blog/assets/posts/' + slug + '.md');
+      if (!res.ok) throw new Error(res.status);
+      raw = await res.text();
+    } catch {
+      showError('Nie udało się wczytać treści posta.');
+      setupNav();
+      return;
+    }
+    const body = document.getElementById('post-body');
+    body.innerHTML = marked.parse(raw);
+    body.hidden = false;
+    setupNav();
+  })();
+})();
+</script>
+
+<style>
+.post-error {
+  color: var(--muted);
+  font-style: italic;
+  margin: 2rem 0;
+}
+</style>
+
+  </main>
+  <footer class="site-footer">
+    <div class="container">
+      <p>Michał Weiss &mdash; 2026</p>
+    </div>
+  </footer>
+</body>
+</html>
