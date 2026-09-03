@@ -124,6 +124,16 @@ img { max-width: 100%; height: auto; display: block; }
 
 .index-header p { color: var(--muted); font-size: 0.95rem; }
 
+/* Bez h1 nad soba ten akapit niesie caly ciezar wprowadzenia, wiec jest
+   wiekszy i ciemniejszy niz podtytul, do ktorego .index-header p bylo pisane. */
+.index-header .lead {
+  color: var(--text);
+  font-family: 'Lora', Georgia, serif;
+  font-size: 1.15rem;
+  line-height: 1.6;
+  max-width: 46ch;
+}
+
 .posts-note {
   color: var(--muted);
   font-size: 0.9rem;
