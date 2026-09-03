@@ -18,12 +18,15 @@
   --shadow: 0 6px 24px rgba(2, 8, 23, .08);
 
   /* Kolory wyjęte ze zdjęcia w hero: pomarańcz ściany i błękit nieba.
-     Kreski występują wyłącznie w hero — dwie ramki wokół portretu i znacznik
-     nad nagłówkiem. Niżej strona jest spokojna; pomarańcz wraca tylko tam,
-     gdzie ma coś znaczyć: przycisk akcji i wyróżniona karta oferty. */
+     Wyróżniona karta oferty została wycofana 2026-09-02: kolorowe tło pod jedną
+     z czterech kart czytało się jak ranking. Zamiast plamy koloru pomarańcz jest
+     od tego dnia rozłożony po dolnej połowie w samym detalu — kreska pod
+     nagłówkiem sekcji, daty w "Gdzie uczyłem", krawędź cytatu, obwódki pigułek.
+     Zasada: linie i tekst, nigdy wypełnione tło. */
   --orange: #fe6015;
   --sky: #7fb9d4;
   --orange-ink: #c9470b;   /* pomarańcz przyciemniony do czytelności na białym */
+  --orange-line: #f4b795;  /* pomarańcz rozbielony — obwódki, nie plamy koloru */
 }
 
 * { box-sizing: border-box; }
@@ -143,6 +146,10 @@ section > h2 {
   position: relative;
 }
 section > h2 .note { font-size: .85rem; font-weight: 400; color: var(--muted); }
+section > h2::after {
+  content: ""; flex: 0 0 100%; height: 3px; margin-top: .5rem; border-radius: 2px;
+  background: linear-gradient(to right, var(--orange) 0 2.5rem, transparent 2.5rem);
+}
 .section-intro { color: var(--muted); margin: 0 0 1rem; max-width: 62ch; }
 
 .cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1rem; }
@@ -150,7 +157,6 @@ section > h2 .note { font-size: .85rem; font-weight: 400; color: var(--muted); }
   background: var(--bg); border: 1px solid var(--border);
   border-radius: .9rem; padding: 1.15rem;
 }
-.card.feature { border-color: var(--orange); background: var(--accent-soft); }
 .card h3 { margin: 0 0 .3rem; font-size: 1.05rem; }
 .card .who { color: var(--muted); font-size: .9rem; margin: 0 0 .7rem; }
 .card ul { margin: .5rem 0 0 1.1rem; padding: 0; }
@@ -162,21 +168,18 @@ section > h2 .note { font-size: .85rem; font-weight: 400; color: var(--muted); }
   padding: .7rem 0; border-bottom: 1px solid var(--border);
 }
 .facts li:last-child { border-bottom: 0; }
-.facts .when { color: var(--muted); font-size: .88rem; display: block; }
+.facts .when { color: var(--orange-ink); font-size: .88rem; display: block; }
 
-/* Cytat z publikacji celowo NIE jest pomarańczowy: pomarańcz zostaje
-   zarezerwowany dla przycisku akcji i jednej wyróżnionej karty oferty.
-   Dwa pomarańczowe bloki na jednym ekranie i wyróżnienie przestaje wyróżniać. */
 blockquote.paper {
-  margin: 0; padding: 1rem 1.15rem; border-left: 3px solid var(--brand);
+  margin: 0; padding: 1rem 1.15rem; border-left: 3px solid var(--orange);
   background: var(--bg); border-radius: 0 .8rem .8rem 0;
 }
 blockquote.paper cite { font-style: normal; display: block; color: var(--muted); font-size: .9rem; margin-top: .5rem; }
 
 .pill {
   display: inline-block; padding: .3rem .6rem; margin: .25rem .25rem 0 0;
-  border: 1px solid var(--border); border-radius: 999px;
-  font-size: .85rem; background: var(--bg-soft); color: var(--muted);
+  border: 1px solid var(--orange-line); border-radius: 999px;
+  font-size: .85rem; background: var(--bg-soft); color: var(--orange-ink);
 }
 
 footer {

@@ -51,14 +51,16 @@ opiera się plan, a „doktorant, który udziela korepetycji" nie jest.
   i wyglądały przypadkowo, więc wypadły.
 * **Pomarańcz zamiast cyjanu.** Dawny akcent `#06b6d4` zniknął — przycisk
   akcji jest pomarańczowy, linki w spokojnym petrolu `#1f6f8b`.
-  Pomarańcz pojawia się dokładnie w dwóch miejscach: „Napisz do mnie"
-  i obramowanie jednej wyróżnionej karty oferty (po usunięciu stawek karta
-  trzyma się już tylko ramką i tłem — to wystarcza). Trzecie miejsce i wyróżnienie przestaje
+  **Wyróżniona karta oferty wypadła 2026-09-02** — kolorowe tło pod jedną
+  z czterech kart czytało się jak ranking ofert, a nie jak podpowiedź.
+  W zamian pomarańcz jest rozłożony po dolnej połowie strony w samym detalu:
+  krótka kreska pod nagłówkiem każdej sekcji, daty w „Gdzie uczyłem",
+  lewa krawędź cytatu z publikacji, obwódki pigułek. **Zasada: linie i tekst,
+  nigdy wypełnione tło** — jedynym wypełnieniem zostaje przycisk akcji. Trzecie miejsce i wyróżnienie przestaje
   wyróżniać — dlatego cytat z publikacji ma neutralne tło.
-* **Wyróżniona jest matematyka na egzaminy**, nie analiza danych. To decyzja
-  o tym, po co ktoś tu wchodzi z ogłoszenia, a nie o tym, co jest najbardziej
-  dochodowe — jeśli kiedyś ma być odwrotnie, wystarczy przenieść klasę
-  `feature` na inną kartę w obu plikach HTML.
+* **Kolejność kart oferty** niesie to, co dawniej niosło wyróżnienie: matematyka
+  na egzaminy jest pierwsza, bo po to ktoś tu wchodzi z ogłoszenia. Klasy
+  `feature` już nie ma — jeśli kolejność ma się zmienić, przestaw karty.
 
 Czego świadomie **nie** zmieniono: paleta i białe panele sekcji zostają takie,
 jak w c43f27d. Ciemny motyw był w pierwszej wersji tego brancha i został
