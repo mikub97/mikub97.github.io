@@ -440,6 +440,14 @@ img { max-width: 100%; height: auto; display: block; }
   background: #f0ece4;
 }
 
+/* Standardowe kafelki OpenStreetMap sa kolorowe i odstaja od cieplej,
+   stonowanej palety bloga — poprzedni dostawca (CARTO light_all) dawal wersje
+   juz wyszarzona, ale zaczal wymagac klucza API. Filtr obejmuje wylacznie
+   warstwe kafelkow: znaczniki, trasa i dymki zostaja w pelnym kolorze. */
+.leaflet-tile-pane {
+  filter: grayscale(0.7) brightness(1.04) contrast(0.96);
+}
+
 /* Timeline entries with coords are clickable */
 .timeline-entry[data-lat]:hover {
   background: #f5f0e8;

@@ -116,9 +116,14 @@
   var defaultCenter = posts.length ? [posts[0].lat, posts[0].lng] : [-12.97, -38.50];
   var map = L.map("map", { zoomControl: true }).setView(defaultCenter, 6);
 
-  L.tileLayer("https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png", {
-    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> &copy; <a href="https://carto.com/">CARTO</a>',
-    subdomains: "abcd",
+  // OpenStreetMap zamiast CARTO: basemaps.cartocdn.com zaczelo wymagac klucza
+  // API i od tej pory serwuje kafelki z wypalonym napisem "API KEY REQUIRED".
+  // Nie zwraca przy tym bledu - odpowiedz to nadal HTTP 200 - wiec widac to
+  // wylacznie na ekranie. OSM nie wymaga klucza; nie obsluguje za to subdomen
+  // {s} ani kafelkow retina {r}, stad krotszy adres.
+  // Wyszarzenie robi filtr CSS nizej, zeby mapa nie odstawala od palety bloga.
+  L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
+    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>',
     maxZoom: 19
   }).addTo(map);
 
