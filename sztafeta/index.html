@@ -1,0 +1,838 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="Gra diagnostyczna z matematyki na jeden komputer dla dwojga uczniów przed kursem do egzaminu ósmoklasisty — tryb drużynowy albo rywalizacja, 20 pytań i runda zagadek.">
+<meta name="color-scheme" content="light dark">
+<title>Sztafeta na Szczyt</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%F0%9F%8F%94%EF%B8%8F%3C/text%3E%3C/svg%3E">
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;600;700;800&family=Inter:wght@400;500;600;700&display=swap');
+
+*{box-sizing:border-box;}
+html,body{height:100%;}
+html{color-scheme:light dark;}
+
+:root{
+  --bg:#f6f1e6; --surface:#ffffff; --surface-2:#eef1e3; --surface-3:#e6ead8;
+  --text:#1c2620; --text-muted:#5c6a60;
+  --p1:#2f6b52; --p1-soft:#dcece2; --p1-line:#bcdac8;
+  --p2:#c96a1f; --p2-soft:#f6e2c8; --p2-line:#f0c896;
+  --team:#3d6fa3; --team-soft:#dde9f4; --team-line:#bcd3ea;
+  --good:#2f8f5b; --good-soft:#e1f3e8;
+  --bad:#c1432f; --bad-soft:#fbe6e1;
+  --border:#ddd5bf; --shadow:0 3px 14px rgba(35,40,25,.09);
+  --sky-a:#eaf1e2; --sky-b:#fbead3;
+  padding-top:env(safe-area-inset-top, 0px);
+  padding-bottom:env(safe-area-inset-bottom, 0px);
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#0f1a16; --surface:#16241e; --surface-2:#1b2a23; --surface-3:#213229;
+    --text:#eaf1ec; --text-muted:#93a89c;
+    --p1:#5fcf9e; --p1-soft:#163227; --p1-line:#245240;
+    --p2:#f0a35a; --p2-soft:#2e2213; --p2-line:#573a1c;
+    --team:#7fb3e0; --team-soft:#182636; --team-line:#2c4358;
+    --good:#5fcf9e; --good-soft:#15281f;
+    --bad:#f2796a; --bad-soft:#331e1a;
+    --border:#2a3a32; --shadow:0 3px 18px rgba(0,0,0,.35);
+    --sky-a:#142420; --sky-b:#1d2a1f;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#0f1a16; --surface:#16241e; --surface-2:#1b2a23; --surface-3:#213229;
+  --text:#eaf1ec; --text-muted:#93a89c;
+  --p1:#5fcf9e; --p1-soft:#163227; --p1-line:#245240;
+  --p2:#f0a35a; --p2-soft:#2e2213; --p2-line:#573a1c;
+  --team:#7fb3e0; --team-soft:#182636; --team-line:#2c4358;
+  --good:#5fcf9e; --good-soft:#15281f;
+  --bad:#f2796a; --bad-soft:#331e1a;
+  --border:#2a3a32; --shadow:0 3px 18px rgba(0,0,0,.35);
+  --sky-a:#142420; --sky-b:#1d2a1f;
+}
+
+body{
+  margin:0;
+  background:var(--bg); color:var(--text);
+  font-family:'Inter',system-ui,sans-serif;
+  padding-inline:16px; padding-block:22px;
+  min-height:100%;
+}
+h1,h2,h3,.disp{font-family:'Baloo 2',system-ui,sans-serif;}
+button{font-family:inherit;}
+img{max-width:100%;}
+[hidden]{display:none!important;}
+
+.wrap{max-width:900px; margin:0 auto;}
+
+/* ---------- start screen ---------- */
+.start-card{
+  background:var(--surface); border:1px solid var(--border); border-radius:22px;
+  box-shadow:var(--shadow); padding:32px 28px; text-align:center;
+}
+.eyebrow{
+  display:inline-block; font-size:.78rem; font-weight:700; letter-spacing:.09em;
+  text-transform:uppercase; color:var(--p1); background:var(--p1-soft);
+  padding:5px 12px; border-radius:999px; margin-bottom:14px;
+}
+.start-card h1{font-size:2rem; line-height:1.15; margin:0 0 8px; text-wrap:balance;}
+.start-card p{color:var(--text-muted); font-size:1rem; line-height:1.55; max-width:56ch; margin:0 auto 22px;}
+
+.mode-select{display:flex; gap:14px; flex-wrap:wrap; justify-content:center; margin-bottom:24px;}
+.mode-card{
+  flex:1 1 240px; max-width:280px; text-align:left; cursor:pointer;
+  background:var(--surface-2); border:2px solid var(--border); border-radius:16px;
+  padding:16px 18px; font-family:inherit; color:var(--text);
+  transition:border-color .12s ease, transform .08s ease;
+}
+.mode-card:hover{transform:translateY(-1px);}
+.mode-card .mode-title{font-family:'Baloo 2'; font-weight:700; font-size:1.05rem; display:flex; align-items:center; gap:8px; margin-bottom:4px;}
+.mode-card .mode-desc{font-size:.86rem; color:var(--text-muted); line-height:1.45;}
+.mode-card[data-mode="team"].selected{border-color:var(--team); background:var(--team-soft);}
+.mode-card[data-mode="race"].selected{border-color:var(--p2); background:var(--p2-soft);}
+
+.names{display:flex; gap:14px; flex-wrap:wrap; justify-content:center; margin-bottom:22px;}
+.name-field{flex:1 1 220px; text-align:left;}
+.name-field label{display:flex; align-items:center; gap:8px; font-weight:700; font-size:.9rem; margin-bottom:6px;}
+.dot{width:11px; height:11px; border-radius:50%; display:inline-block;}
+.dot.p1{background:var(--p1);} .dot.p2{background:var(--p2);}
+.name-field input{
+  width:100%; padding:12px 14px; border-radius:12px; border:2px solid var(--border);
+  background:var(--surface-2); color:var(--text); font-size:1rem; font-family:inherit;
+}
+.name-field input:focus{outline:none; border-color:var(--p1);}
+.big-btn{
+  font-family:'Baloo 2',system-ui,sans-serif; font-weight:700; font-size:1.15rem;
+  background:var(--p1); color:#fff; border:none; border-radius:16px;
+  padding:14px 34px; cursor:pointer; box-shadow:0 4px 0 rgba(0,0,0,.15);
+  transition:transform .08s ease;
+}
+.big-btn:hover{transform:translateY(-1px);}
+.big-btn:active{transform:translateY(2px); box-shadow:0 2px 0 rgba(0,0,0,.15);}
+.big-btn:focus-visible, .choice:focus-visible, .reveal-btn:focus-visible, .teacher-toggle:focus-visible, .mode-card:focus-visible{
+  outline:3px solid var(--p1); outline-offset:2px;
+}
+.fine{color:var(--text-muted); font-size:.85rem; margin-top:16px;}
+
+/* ---------- game screen ---------- */
+.topbar{display:flex; justify-content:space-between; align-items:baseline; margin-bottom:16px; flex-wrap:wrap; gap:8px;}
+.topbar h1{font-size:1.3rem; margin:0;}
+.round-counter{color:var(--text-muted); font-size:.9rem; font-variant-numeric:tabular-nums;}
+
+.tracks{display:grid; grid-template-columns:1fr 1fr; gap:14px; margin-bottom:18px;}
+.track{
+  background:var(--surface); border:1px solid var(--border); border-radius:18px; padding:14px 16px;
+  box-shadow:var(--shadow);
+}
+.track.active{border-color:var(--track-color, var(--p1));}
+.track-head{display:flex; justify-content:space-between; align-items:center; margin-bottom:10px;}
+.track-name{font-family:'Baloo 2'; font-weight:700; font-size:1.05rem;}
+.track-score{font-size:.85rem; color:var(--text-muted); font-variant-numeric:tabular-nums;}
+.mountain{position:relative; height:58px; background:var(--surface-2); border-radius:12px; overflow:hidden;}
+.mountain::after{
+  content:"🚩"; position:absolute; right:6px; top:50%; transform:translateY(-50%); font-size:1.3rem;
+}
+.mountain-fill{
+  position:absolute; left:0; top:0; bottom:0; width:0%;
+  background:linear-gradient(90deg, transparent, var(--fill-color, var(--p1-soft)));
+  transition:width .5s cubic-bezier(.2,.8,.3,1);
+}
+.climber{
+  position:absolute; top:50%; left:0%; transform:translate(-50%,-50%); font-size:1.5rem;
+  transition:left .5s cubic-bezier(.2,.8,.3,1); filter:drop-shadow(0 1px 1px rgba(0,0,0,.25));
+}
+.climber.pair{display:flex; gap:2px; transform:translate(-50%,-50%);}
+.climber.pair span{font-size:1.35rem;}
+
+.tracks-team{
+  background:var(--surface); border:1px solid var(--border); border-radius:18px; padding:16px 18px;
+  box-shadow:var(--shadow); margin-bottom:18px;
+}
+.team-head{display:flex; justify-content:space-between; align-items:center; margin-bottom:10px;}
+.team-title{font-family:'Baloo 2'; font-weight:700; font-size:1.05rem; color:var(--team); display:flex; align-items:center; gap:8px;}
+.team-score{font-size:.85rem; color:var(--text-muted); font-variant-numeric:tabular-nums;}
+.team-mountain{position:relative; height:64px; background:var(--surface-2); border-radius:12px; overflow:hidden;}
+.team-mountain::after{
+  content:"🚩"; position:absolute; right:6px; top:50%; transform:translateY(-50%); font-size:1.4rem;
+}
+.team-mountain-fill{
+  position:absolute; left:0; top:0; bottom:0; width:0%;
+  background:linear-gradient(90deg, transparent, var(--team-soft));
+  transition:width .5s cubic-bezier(.2,.8,.3,1);
+}
+
+.turn-banner{
+  display:flex; align-items:center; gap:10px; justify-content:center;
+  font-family:'Baloo 2'; font-weight:700; font-size:1.05rem;
+  padding:10px 16px; border-radius:14px; margin-bottom:16px;
+  background:var(--banner-soft, var(--p1-soft)); color:var(--banner-color, var(--p1));
+  border:1px solid var(--banner-line, var(--p1-line));
+}
+
+.q-card{
+  background:var(--surface); border:1px solid var(--border); border-radius:20px;
+  padding:26px 24px; box-shadow:var(--shadow);
+}
+.q-pill{
+  display:inline-block; font-size:.75rem; font-weight:700; letter-spacing:.05em; text-transform:uppercase;
+  background:var(--surface-3); color:var(--text-muted); padding:4px 10px; border-radius:999px; margin-bottom:12px;
+}
+.q-text{font-size:1.3rem; line-height:1.5; margin:0 0 20px; text-wrap:balance;}
+.choices{display:grid; grid-template-columns:1fr 1fr; gap:12px;}
+@media (max-width:560px){.choices{grid-template-columns:1fr;} .tracks{grid-template-columns:1fr;} .mode-select{flex-direction:column; align-items:stretch;}}
+.choice{
+  text-align:left; padding:14px 16px; border-radius:14px; border:2px solid var(--border);
+  background:var(--surface-2); color:var(--text); font-size:1.02rem; cursor:pointer;
+  transition:border-color .12s ease, background .12s ease, transform .08s ease;
+}
+.choice:hover:not(:disabled){border-color:var(--p1); transform:translateY(-1px);}
+.choice:disabled{cursor:default;}
+.choice.correct{background:var(--good-soft); border-color:var(--good); color:var(--text);}
+.choice.wrong{background:var(--bad-soft); border-color:var(--bad); color:var(--text);}
+
+.feedback{margin-top:18px; padding:14px 16px; border-radius:14px; display:flex; gap:10px; align-items:flex-start;}
+.feedback.good{background:var(--good-soft); color:var(--text);}
+.feedback.bad{background:var(--bad-soft); color:var(--text);}
+.feedback .emoji{font-size:1.4rem; line-height:1;}
+.feedback p{margin:0; font-size:.96rem; line-height:1.5;}
+.feedback b{font-family:'Baloo 2';}
+
+.next-row{display:flex; justify-content:flex-end; margin-top:16px;}
+
+/* ---------- bonus ---------- */
+.bonus-wrap{
+  background:radial-gradient(ellipse at top, var(--sky-b), var(--sky-a));
+  border-radius:20px; padding:26px 24px; border:1px solid var(--border); box-shadow:var(--shadow);
+}
+.bonus-head{text-align:center; margin-bottom:18px;}
+.bonus-head .eyebrow{background:var(--p2-soft); color:var(--p2);}
+.riddle{background:var(--surface); border:1px solid var(--border); border-radius:16px; padding:20px; margin-bottom:16px;}
+.riddle h3{margin:0 0 8px; font-size:1.1rem;}
+.riddle p{margin:0 0 12px; line-height:1.55; color:var(--text);}
+.reveal-btn{
+  background:var(--surface-2); border:2px solid var(--border); border-radius:12px; padding:8px 16px;
+  font-weight:600; cursor:pointer; color:var(--text);
+}
+.reveal-btn:hover{border-color:var(--p2);}
+.answer-box{margin-top:12px; padding:12px 14px; border-radius:12px; background:var(--p2-soft); color:var(--text); font-size:.95rem; line-height:1.5;}
+
+.grid-visual{display:flex; justify-content:center; margin:14px 0;}
+.grid-4x4{
+  display:grid; grid-template-columns:repeat(4, 1fr); gap:3px;
+  width:180px; aspect-ratio:1; padding:3px; background:var(--border); border-radius:8px;
+}
+.grid-4x4 span{background:var(--surface-2); border-radius:2px;}
+
+/* ---------- results ---------- */
+.results{text-align:center;}
+.results h1{font-size:1.9rem; margin-bottom:6px;}
+.results p.lead{color:var(--text-muted); margin-bottom:26px;}
+
+.team-result{
+  border-radius:18px; padding:26px; border:2px solid var(--team); background:var(--surface);
+  margin:0 auto 20px; max-width:360px;
+}
+.team-result .big{font-family:'Baloo 2'; font-size:2.6rem; font-weight:800; color:var(--team); font-variant-numeric:tabular-nums;}
+.team-result .cap{color:var(--text-muted); font-size:.9rem; margin-top:4px;}
+.team-contrib{display:flex; justify-content:center; gap:22px; margin-bottom:22px; flex-wrap:wrap; color:var(--text-muted); font-size:.88rem;}
+.team-contrib span b{color:var(--text);}
+
+.result-cards{display:grid; grid-template-columns:1fr 1fr; gap:16px; margin-bottom:22px;}
+@media (max-width:560px){.result-cards{grid-template-columns:1fr;}}
+.result-card{border-radius:18px; padding:22px; border:2px solid; background:var(--surface);}
+.result-card.p1{border-color:var(--p1);} .result-card.p2{border-color:var(--p2);}
+.result-card .big{font-family:'Baloo 2'; font-size:2.3rem; font-weight:800; font-variant-numeric:tabular-nums;}
+.result-card .who{font-weight:700; margin-bottom:6px;}
+.result-card .cap{color:var(--text-muted); font-size:.88rem;}
+
+.teacher-toggle{
+  background:none; border:1px dashed var(--border); color:var(--text-muted); border-radius:12px;
+  padding:8px 14px; font-size:.85rem; cursor:pointer; margin-top:6px;
+}
+.teacher-panel{
+  margin-top:16px; text-align:left; background:var(--surface-2); border-radius:14px; padding:16px 18px;
+  font-size:.88rem; line-height:1.6; color:var(--text-muted);
+}
+.teacher-panel b{color:var(--text);}
+.restart-btn{margin-top:20px;}
+
+/* ---------- breakdown (final page) ---------- */
+.breakdown-cols{display:grid; grid-template-columns:1fr 1fr; gap:16px; margin:22px 0; text-align:left;}
+@media (max-width:560px){.breakdown-cols{grid-template-columns:1fr;}}
+.breakdown-col{background:var(--surface); border:2px solid; border-radius:18px; padding:18px 20px;}
+.breakdown-col.p1{border-color:var(--p1);} .breakdown-col.p2{border-color:var(--p2);}
+.breakdown-col h3{margin:0 0 4px; font-size:1.1rem;}
+.breakdown-col .score-line{color:var(--text-muted); font-size:.88rem; margin-bottom:12px;}
+.breakdown-list{list-style:none; margin:0; padding:0; display:flex; flex-direction:column; gap:6px;}
+.breakdown-list li{
+  display:flex; align-items:center; gap:10px; padding:8px 10px; border-radius:10px;
+  background:var(--surface-2); font-size:.92rem;
+}
+.breakdown-list li.ok{background:var(--good-soft);}
+.breakdown-list li.miss{background:var(--bad-soft);}
+.breakdown-list .bicon{font-size:1.05rem; line-height:1;}
+
+@media (prefers-reduced-motion: reduce){
+  .mountain-fill, .team-mountain-fill, .climber, .big-btn{transition:none;}
+}
+</style>
+</head>
+<body>
+
+<div class="wrap">
+
+  <!-- START -->
+  <section id="screen-start">
+    <div class="start-card">
+      <span class="eyebrow">Diagnoza · matematyka · egzamin ósmoklasisty</span>
+      <h1>Sztafeta na Szczyt</h1>
+      <p>Dwadzieścia pytań, dwoje wspinaczy, jeden komputer. Odpowiadacie na zmianę — każda dobra
+        odpowiedź to krok w górę. Nie ma kar za błędy, tylko podpowiedź i dalej pod górę.
+        Na koniec — runda zagadek do rozwiązania razem.</p>
+
+      <div class="mode-select" role="radiogroup" aria-label="Tryb gry">
+        <button type="button" class="mode-card selected" data-mode="team" id="mode-team" role="radio" aria-checked="true">
+          <div class="mode-title">🤝 Drużyna</div>
+          <div class="mode-desc">Wspólny szlak, jeden wynik na dwoje. Liczy się, ile razem zdobędziecie — nie kto lepiej.</div>
+        </button>
+        <button type="button" class="mode-card" data-mode="race" id="mode-race" role="radio" aria-checked="false">
+          <div class="mode-title">🏁 Rywalizacja</div>
+          <div class="mode-desc">Dwie osobne ścieżki obok siebie — każde z was wspina się na własne tempo.</div>
+        </button>
+      </div>
+
+      <div class="names">
+        <div class="name-field">
+          <label for="name1"><span class="dot p1"></span>Gracz 1</label>
+          <input id="name1" type="text" placeholder="np. Franek" maxlength="20">
+        </div>
+        <div class="name-field">
+          <label for="name2"><span class="dot p2"></span>Gracz 2</label>
+          <input id="name2" type="text" placeholder="np. Helena" maxlength="20">
+        </div>
+      </div>
+      <button class="big-btn" id="start-btn">Zaczynamy wspinaczkę 🏔️</button>
+      <p class="fine">Losuje się kolejność pytań między wami — każde z was odpowiada na wszystkie 10 tematów, tylko w innej wersji liczb. Tryb nie zmienia pytań, tylko sposób pokazywania wyniku.</p>
+    </div>
+  </section>
+
+  <!-- GAME -->
+  <section id="screen-game" hidden>
+    <div class="topbar">
+      <h1 class="disp">Sztafeta na Szczyt</h1>
+      <span class="round-counter" id="round-counter">Pytanie 1 / 20</span>
+    </div>
+
+    <div class="tracks" id="tracks-race">
+      <div class="track" id="track-0">
+        <div class="track-head">
+          <span class="track-name" id="track-name-0" style="color:var(--p1)">Gracz 1</span>
+          <span class="track-score" id="track-score-0">0 / 10</span>
+        </div>
+        <div class="mountain">
+          <div class="mountain-fill" id="fill-0" style="--fill-color:var(--p1-soft)"></div>
+          <span class="climber" id="climber-0">🧗</span>
+        </div>
+      </div>
+      <div class="track" id="track-1">
+        <div class="track-head">
+          <span class="track-name" id="track-name-1" style="color:var(--p2)">Gracz 2</span>
+          <span class="track-score" id="track-score-1">0 / 10</span>
+        </div>
+        <div class="mountain">
+          <div class="mountain-fill" id="fill-1" style="--fill-color:var(--p2-soft)"></div>
+          <span class="climber" id="climber-1">🧗</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="tracks-team" id="tracks-team" hidden>
+      <div class="team-head">
+        <span class="team-title">🤝 <span id="team-names">Gracz 1 i Gracz 2</span></span>
+        <span class="team-score" id="team-score">0 / 20</span>
+      </div>
+      <div class="team-mountain">
+        <div class="team-mountain-fill" id="team-fill"></div>
+        <span class="climber pair" id="team-climber"><span>🧗</span><span>🧗</span></span>
+      </div>
+    </div>
+
+    <div class="turn-banner" id="turn-banner">Kolej: Gracz 1</div>
+
+    <div class="q-card">
+      <span class="q-pill" id="q-module">Dział</span>
+      <p class="q-text" id="q-text">Treść pytania</p>
+      <div class="choices" id="choices"></div>
+      <div class="feedback" id="feedback" hidden>
+        <span class="emoji" id="feedback-emoji">✅</span>
+        <p id="feedback-text"></p>
+      </div>
+      <div class="next-row">
+        <button class="big-btn" id="next-btn" hidden>Dalej →</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- BONUS -->
+  <section id="screen-bonus" hidden>
+    <div class="bonus-wrap">
+      <div class="bonus-head">
+        <span class="eyebrow">Runda bonusowa · razem, na głos</span>
+        <h2 class="disp">Dotarliście na szczyt. Teraz dwie zagadki dla przyjemności</h2>
+        <p style="color:var(--text-muted)">Nie liczą się do wyniku. Próbujcie dojść do odpowiedzi wspólnie, zanim ją odsłonicie.</p>
+      </div>
+
+      <div class="riddle">
+        <h3>🌉 Most i latarka</h3>
+        <p>Czworo ludzi przechodzi w nocy przez most. Mają jedną latarkę, a most wytrzyma naraz
+          najwyżej dwie osoby. Każde z nich idzie z inną prędkością: 1, 2, 5 i 10 minut.
+          Idąc razem, dwie osoby poruszają się z prędkością wolniejszej z nich. Czy da się
+          przeprawić całą czwórkę w 17 minut? Kto powinien wracać z latarką po drugiej stronie?</p>
+        <button class="reveal-btn" data-target="answer-most">Pokaż odpowiedź</button>
+        <div class="answer-box" id="answer-most" hidden>
+          Tak, da się dokładnie w 17 minut. Klucz: dwie najwolniejsze osoby (5 i 10 min) muszą iść
+          razem, żeby nie tracić czasu na osobne przeprawy. Kolejność: 1+2 idą (2 min) → 1 wraca (1 min)
+          → 5+10 idą razem (10 min) → 2 wraca (2 min) → 1+2 idą (2 min). Razem: 2+1+10+2+2 = 17 minut.
+        </div>
+      </div>
+
+      <div class="riddle">
+        <h3>🔲 Ile kwadratów na szachownicy?</h3>
+        <p>Popatrzcie na siatkę 4×4 obok. Widać w niej od razu 16 małych pól — ale to nie jest
+          odpowiedź. Kwadratem jest też każdy większy obszar złożony z pól, który sam jest
+          kwadratem: 2×2, 3×3 i cała plansza 4×4. Ile w sumie kwadratów (każdej wielkości) da się
+          znaleźć na tej siatce? Policzcie osobno, ile jest kwadratów 1×1, ile 2×2, ile 3×3 i ile
+          4×4 — a dopiero na końcu zsumujcie.</p>
+        <div class="grid-visual" aria-hidden="true">
+          <div class="grid-4x4">
+            <span></span><span></span><span></span><span></span>
+            <span></span><span></span><span></span><span></span>
+            <span></span><span></span><span></span><span></span>
+            <span></span><span></span><span></span><span></span>
+          </div>
+        </div>
+        <button class="reveal-btn" data-target="answer-squares">Pokaż odpowiedź</button>
+        <div class="answer-box" id="answer-squares" hidden>
+          30 kwadratów. Licząc według wielkości: 1×1 jest 16 (bo mieści się w 4×4 pozycjach na
+          4×4 pozycji), 2×2 jest 9 (3×3 możliwych pozycji lewego górnego rogu), 3×3 są 4
+          (2×2 pozycje), a 4×4 jest tylko 1 — cała plansza. Razem: 16 + 9 + 4 + 1 = 30. Wzór ogólny
+          dla siatki n×n to suma kwadratów 1² + 2² + … + n².
+        </div>
+      </div>
+
+      <div style="text-align:center; margin-top:20px;">
+        <button class="big-btn" id="to-results-btn">Zobacz podsumowanie →</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- RESULTS -->
+  <section id="screen-results" hidden>
+    <div class="results">
+      <h1 class="disp">Dotarliście na szczyt! 🚩</h1>
+      <p class="lead">Egzamin jest w maju 2027 — dziś liczyło się tylko to, żeby zobaczyć, od czego zaczynamy.</p>
+
+      <div id="results-team">
+        <div class="team-result">
+          <div class="big" id="team-res-score">0 / 20</div>
+          <div class="cap">wspólnie zdobytych pytań</div>
+        </div>
+        <div class="team-contrib">
+          <span>Wkład: <b id="team-contrib-0">Gracz 1</b></span>
+          <span>i <b id="team-contrib-1">Gracz 2</b></span>
+        </div>
+      </div>
+
+      <div id="results-race" class="result-cards" hidden>
+        <div class="result-card p1">
+          <div class="who" id="res-name-0" style="color:var(--p1)">Gracz 1</div>
+          <div class="big" id="res-score-0">0 / 10</div>
+          <div class="cap">poprawnych odpowiedzi</div>
+        </div>
+        <div class="result-card p2">
+          <div class="who" id="res-name-1" style="color:var(--p2)">Gracz 2</div>
+          <div class="big" id="res-score-1">0 / 10</div>
+          <div class="cap">poprawnych odpowiedzi</div>
+        </div>
+      </div>
+
+      <button class="teacher-toggle" id="teacher-toggle">Notatki dla prowadzącego (rozwiń)</button>
+      <div class="teacher-panel" id="teacher-panel" hidden></div>
+      <div>
+        <button class="big-btn" id="to-breakdown-btn">Zobacz, co komu poszło →</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- BREAKDOWN (final page) -->
+  <section id="screen-breakdown" hidden>
+    <div class="results">
+      <h1 class="disp">Co komu poszło</h1>
+      <p class="lead">Dla każdego z was — temat po temacie, tak jak odpowiadaliście.</p>
+      <div class="breakdown-cols" id="breakdown-cols"></div>
+      <div>
+        <button class="big-btn restart-btn" id="restart-btn">Zagraj jeszcze raz</button>
+      </div>
+    </div>
+  </section>
+
+</div>
+
+<script>
+(function(){
+  "use strict";
+
+  var STORAGE_KEY = "sztafeta-na-szczyt-v2";
+
+  // Każdy wiersz to jedna umiejętność z content/mat-e8.yaml, w dwóch wersjach liczbowych (A/B),
+  // żeby gracze nie podpowiadali sobie wyniku, słuchając odpowiedzi tej samej liczby.
+  var ROUNDS = [
+    { module:"Ułamki",
+      A:{ text:"Oblicz: 3/4 + 2/5 − 1/2", choices:["13/20","7/20","9/20","1/2"], correct:0,
+          note:"Wspólny mianownik to 20: 15/20 + 8/20 − 10/20 = 13/20." },
+      B:{ text:"Oblicz: 5/6 − 1/3 + 1/4", choices:["3/4","5/6","7/12","2/3"], correct:0,
+          note:"Wspólny mianownik to 12: 10/12 − 4/12 + 3/12 = 9/12 = 3/4." } },
+    { module:"Potęgi i pierwiastki",
+      A:{ text:"Oblicz: 2³ + 3² − √49", choices:["10","4","24","15"], correct:0,
+          note:"8 + 9 − 7 = 10. Najpierw potęgi i pierwiastek, potem dodawanie/odejmowanie." },
+      B:{ text:"Oblicz: 3² + 2⁴ − √36", choices:["19","11","31","13"], correct:0,
+          note:"9 + 16 − 6 = 19." } },
+    { module:"Procenty",
+      A:{ text:"W klasie jest 28 uczniów. 25% z nich gra w piłkę nożną. Ilu to uczniów?", choices:["7","25","4","11"], correct:0,
+          note:"25% to jedna czwarta: 28 ÷ 4 = 7." },
+      B:{ text:"W szkole jest 35 nauczycieli. 40% uczy przedmiotów ścisłych. Ilu to nauczycieli?", choices:["14","40","9","21"], correct:0,
+          note:"40% z 35 = 0,4 × 35 = 14." } },
+    { module:"Równania",
+      A:{ text:"Rozwiąż: 3(x + 2) = 5x − 4", choices:["x = 5","x = 2","x = 10","x = −5"], correct:0,
+          note:"3x + 6 = 5x − 4 → 10 = 2x → x = 5." },
+      B:{ text:"Rozwiąż: 2(x − 3) = 4x − 10", choices:["x = 2","x = 4","x = −2","x = 8"], correct:0,
+          note:"2x − 6 = 4x − 10 → 4 = 2x → x = 2." } },
+    { module:"Prędkość, droga, czas",
+      A:{ text:"Samochód jedzie 150 km ze stałą prędkością 60 km/h. Ile to trwa?", choices:["2,5 h","2 h","1,5 h","3 h"], correct:0,
+          note:"t = s ÷ v = 150 ÷ 60 = 2,5 h, czyli 2 h 30 min." },
+      B:{ text:"Rowerzysta jedzie 240 km ze stałą prędkością 80 km/h. Ile to trwa?", choices:["3 h","2,5 h","2 h","3,5 h"], correct:0,
+          note:"t = 240 ÷ 80 = 3 h." } },
+    { module:"Kąty w trójkącie",
+      A:{ text:"W trójkącie α = 40°, β = 65°. Ile wynosi γ?", choices:["75°","105°","65°","85°"], correct:0,
+          note:"Suma kątów w trójkącie to 180°: 180 − 40 − 65 = 75°." },
+      B:{ text:"W trójkącie α = 55°, β = 60°. Ile wynosi γ?", choices:["65°","115°","60°","70°"], correct:0,
+          note:"180 − 55 − 60 = 65°." } },
+    { module:"Twierdzenie Pitagorasa",
+      A:{ text:"Przyprostokątne trójkąta mają 6 cm i 8 cm. Ile ma przeciwprostokątna?", choices:["10 cm","14 cm","48 cm","7 cm"], correct:0,
+          note:"6² + 8² = 36 + 64 = 100 = 10². Trójka 6-8-10." },
+      B:{ text:"Przyprostokątne trójkąta mają 9 cm i 12 cm. Ile ma przeciwprostokątna?", choices:["15 cm","21 cm","108 cm","10,5 cm"], correct:0,
+          note:"9² + 12² = 81 + 144 = 225 = 15². Trójka 9-12-15 (to 6-8-10 razy 1,5)." } },
+    { module:"Pole figury złożonej",
+      A:{ text:"Prostokąt 12 cm × 5 cm ma wycięty w rogu kwadrat o boku 3 cm. Jakie jest pole reszty?", choices:["51 cm²","60 cm²","69 cm²","45 cm²"], correct:0,
+          note:"12×5 − 3×3 = 60 − 9 = 51 cm²." },
+      B:{ text:"Prostokąt 10 cm × 6 cm ma wycięty w rogu kwadrat o boku 2 cm. Jakie jest pole reszty?", choices:["56 cm²","60 cm²","64 cm²","52 cm²"], correct:0,
+          note:"10×6 − 2×2 = 60 − 4 = 56 cm²." } },
+    { module:"Średnia i mediana",
+      A:{ text:"Wyniki quizu: 4, 7, 7, 9, 3. Podaj średnią i medianę.", choices:["średnia 6, mediana 7","średnia 6, mediana 6","średnia 7, mediana 6","średnia 5, mediana 7"], correct:0,
+          note:"Suma 30 ÷ 5 = 6. Posortowane: 3,4,7,7,9 — środkowa to 7." },
+      B:{ text:"Wyniki quizu: 2, 5, 5, 8, 10. Podaj średnią i medianę.", choices:["średnia 6, mediana 5","średnia 6, mediana 8","średnia 5, mediana 6","średnia 6, mediana 6"], correct:0,
+          note:"Suma 30 ÷ 5 = 6. Posortowane: 2,5,5,8,10 — środkowa to 5." } },
+    { module:"Zadanie tekstowe",
+      A:{ text:"Ola kupiła 3 zeszyty po 2,50 zł i długopis. Zapłaciła 12,80 zł. Ile kosztował długopis?", choices:["5,30 zł","4,80 zł","7,50 zł","5,80 zł"], correct:0,
+          note:"3 × 2,50 = 7,50. 12,80 − 7,50 = 5,30 zł." },
+      B:{ text:"Kuba kupił 4 ołówki po 1,20 zł i gumkę. Zapłacił 7,30 zł. Ile kosztowała gumka?", choices:["2,50 zł","1,20 zł","4,80 zł","3,00 zł"], correct:0,
+          note:"4 × 1,20 = 4,80. 7,30 − 4,80 = 2,50 zł." } }
+  ];
+
+  var mode = "team"; // "team" | "race"
+  var players = [
+    { name:"Gracz 1", correct:0, answers:[] },
+    { name:"Gracz 2", correct:0, answers:[] }
+  ];
+  var turn = 0; // 0..19, turn t: round=floor(t/2), playerIdx=t%2, version A for player0, B for player1
+  var answered = false;
+  var currentChoices = []; // shuffled [{text, isCorrect}] for the question on screen
+
+  function shuffled(arr){
+    var a = arr.slice();
+    for (var i = a.length - 1; i > 0; i--){
+      var j = Math.floor(Math.random() * (i + 1));
+      var tmp = a[i]; a[i] = a[j]; a[j] = tmp;
+    }
+    return a;
+  }
+
+  var el = function(id){ return document.getElementById(id); };
+  var show = function(id){ el(id).hidden = false; };
+  var hide = function(id){ el(id).hidden = true; };
+
+  function currentRound(){ return ROUNDS[Math.floor(turn/2)]; }
+  function currentPlayerIdx(){ return turn % 2; }
+  function currentVersion(){ return currentPlayerIdx() === 0 ? "A" : "B"; }
+  function totalCorrect(){ return players[0].correct + players[1].correct; }
+
+  function renderTracks(){
+    if (mode === "race"){
+      show("tracks-race"); hide("tracks-team");
+      for (var i=0;i<2;i++){
+        el("track-name-"+i).textContent = players[i].name;
+        el("track-score-"+i).textContent = players[i].correct + " / 10";
+        var pct = (players[i].correct/10)*92;
+        el("fill-"+i).style.width = pct + "%";
+        el("climber-"+i).style.left = pct + "%";
+      }
+      el("track-0").classList.toggle("active", currentPlayerIdx()===0);
+      el("track-1").classList.toggle("active", currentPlayerIdx()===1);
+    } else {
+      hide("tracks-race"); show("tracks-team");
+      el("team-names").textContent = players[0].name + " i " + players[1].name;
+      el("team-score").textContent = totalCorrect() + " / 20";
+      var tpct = (totalCorrect()/20)*94;
+      el("team-fill").style.width = tpct + "%";
+      el("team-climber").style.left = tpct + "%";
+    }
+  }
+
+  function renderTurnBanner(){
+    var idx = currentPlayerIdx();
+    var b = el("turn-banner");
+    b.textContent = "Kolej: " + players[idx].name;
+    b.style.setProperty("--banner-soft", idx===0 ? "var(--p1-soft)" : "var(--p2-soft)");
+    b.style.setProperty("--banner-color", idx===0 ? "var(--p1)" : "var(--p2)");
+    b.style.setProperty("--banner-line", idx===0 ? "var(--p1-line)" : "var(--p2-line)");
+  }
+
+  function renderQuestion(){
+    answered = false;
+    var round = currentRound();
+    var q = round[currentVersion()];
+    el("round-counter").textContent = "Pytanie " + (turn+1) + " / 20";
+    el("q-module").textContent = round.module;
+    el("q-text").textContent = q.text;
+    currentChoices = shuffled(q.choices.map(function(text, i){ return { text:text, isCorrect: i === q.correct }; }));
+    var box = el("choices");
+    box.innerHTML = "";
+    currentChoices.forEach(function(item, i){
+      var btn = document.createElement("button");
+      btn.className = "choice";
+      btn.type = "button";
+      btn.textContent = item.text;
+      btn.addEventListener("click", function(){ pickAnswer(i); });
+      box.appendChild(btn);
+    });
+    hide("feedback");
+    hide("next-btn");
+    renderTurnBanner();
+    renderTracks();
+  }
+
+  function pickAnswer(i){
+    if (answered) return;
+    answered = true;
+    var round = currentRound();
+    var q = round[currentVersion()];
+    var idx = currentPlayerIdx();
+    var buttons = el("choices").querySelectorAll(".choice");
+    buttons.forEach(function(b, bi){
+      b.disabled = true;
+      if (currentChoices[bi].isCorrect) b.classList.add("correct");
+      else if (bi === i) b.classList.add("wrong");
+    });
+    var fb = el("feedback");
+    var isCorrect = currentChoices[i].isCorrect;
+    players[idx].answers.push({ module: round.module, correct: isCorrect });
+    if (isCorrect){
+      players[idx].correct++;
+      fb.className = "feedback good";
+      el("feedback-emoji").textContent = "✅";
+      el("feedback-text").innerHTML = "<b>Jest!</b> " + q.note;
+    } else {
+      fb.className = "feedback bad";
+      el("feedback-emoji").textContent = "💡";
+      el("feedback-text").innerHTML = "<b>Prawie.</b> " + q.note;
+    }
+    show("feedback");
+    show("next-btn");
+    renderTracks();
+    saveState();
+  }
+
+  function nextTurn(){
+    turn++;
+    if (turn >= 20){
+      goToBonus();
+    } else {
+      renderQuestion();
+    }
+    saveState();
+  }
+
+  function goToBonus(){
+    hide("screen-game");
+    show("screen-bonus");
+    saveState();
+  }
+
+  function goToResults(){
+    hide("screen-bonus");
+    show("screen-results");
+    if (mode === "race"){
+      show("results-race"); hide("results-team");
+      el("res-name-0").textContent = players[0].name;
+      el("res-name-1").textContent = players[1].name;
+      el("res-score-0").textContent = players[0].correct + " / 10";
+      el("res-score-1").textContent = players[1].correct + " / 10";
+    } else {
+      hide("results-race"); show("results-team");
+      el("team-res-score").textContent = totalCorrect() + " / 20";
+      el("team-contrib-0").textContent = players[0].name + " " + players[0].correct + "/10";
+      el("team-contrib-1").textContent = players[1].name + " " + players[1].correct + "/10";
+    }
+    buildTeacherPanel();
+    saveState();
+  }
+
+  function buildTeacherPanel(){
+    var panel = el("teacher-panel");
+    var lines = [];
+    players.forEach(function(p){
+      var weak = p.answers.filter(function(a){ return !a.correct; }).map(function(a){ return a.module; });
+      lines.push("<p><b>" + p.name + "</b>: " + p.correct + "/10. " +
+        (weak.length ? "Do powtórki: " + weak.join(", ") + "." : "Bez słabszych działów w tej rundzie.") +
+        "</p>");
+    });
+    lines.push("<p>Mapowanie na moduły kursu: content/mat-e8.yaml → moduł <b>diagnoza-liczby</b> " +
+      "(ułamki, potęgi), <b>procenty</b>, <b>algebra</b>, <b>proporcje</b>, <b>geometria-plaska</b>, " +
+      "<b>czworokaty-kolo</b>, <b>dane</b>, <b>arkusze</b> (zadanie tekstowe).</p>");
+    panel.innerHTML = lines.join("");
+  }
+
+  function goToBreakdown(){
+    hide("screen-results");
+    show("screen-breakdown");
+    var cols = el("breakdown-cols");
+    cols.innerHTML = "";
+    players.forEach(function(p, i){
+      var col = document.createElement("div");
+      col.className = "breakdown-col p" + (i+1);
+      var head = document.createElement("h3");
+      head.textContent = p.name;
+      head.style.color = i===0 ? "var(--p1)" : "var(--p2)";
+      var scoreLine = document.createElement("div");
+      scoreLine.className = "score-line";
+      scoreLine.textContent = p.correct + " / 10 poprawnych";
+      var list = document.createElement("ul");
+      list.className = "breakdown-list";
+      p.answers.forEach(function(a){
+        var li = document.createElement("li");
+        li.className = a.correct ? "ok" : "miss";
+        var icon = document.createElement("span");
+        icon.className = "bicon";
+        icon.textContent = a.correct ? "✅" : "💡";
+        var label = document.createElement("span");
+        label.textContent = a.module;
+        li.appendChild(icon);
+        li.appendChild(label);
+        list.appendChild(li);
+      });
+      col.appendChild(head);
+      col.appendChild(scoreLine);
+      col.appendChild(list);
+      cols.appendChild(col);
+    });
+    saveState();
+  }
+
+  function restart(){
+    players = [
+      { name: players[0].name, correct:0, answers:[] },
+      { name: players[1].name, correct:0, answers:[] }
+    ];
+    turn = 0;
+    hide("screen-breakdown");
+    show("screen-game");
+    renderQuestion();
+    saveState();
+  }
+
+  // ---- mode selector ----
+  document.querySelectorAll(".mode-card").forEach(function(card){
+    card.addEventListener("click", function(){
+      mode = card.getAttribute("data-mode");
+      document.querySelectorAll(".mode-card").forEach(function(c){
+        var on = c === card;
+        c.classList.toggle("selected", on);
+        c.setAttribute("aria-checked", on ? "true" : "false");
+      });
+    });
+  });
+
+  // ---- wiring ----
+  el("start-btn").addEventListener("click", function(){
+    var n1 = el("name1").value.trim() || "Gracz 1";
+    var n2 = el("name2").value.trim() || "Gracz 2";
+    players[0].name = n1;
+    players[1].name = n2;
+    hide("screen-start");
+    show("screen-game");
+    renderQuestion();
+    saveState();
+  });
+
+  el("next-btn").addEventListener("click", nextTurn);
+  el("to-results-btn").addEventListener("click", goToResults);
+  el("to-breakdown-btn").addEventListener("click", goToBreakdown);
+  el("restart-btn").addEventListener("click", restart);
+
+  el("teacher-toggle").addEventListener("click", function(){
+    el("teacher-panel").hidden = !el("teacher-panel").hidden;
+  });
+
+  document.querySelectorAll(".reveal-btn").forEach(function(btn){
+    btn.addEventListener("click", function(){
+      var t = el(btn.getAttribute("data-target"));
+      t.hidden = !t.hidden;
+    });
+  });
+
+  // ---- local persistence (per-browser convenience: survives a reload mid-lesson) ----
+  function currentPhase(){
+    if (!el("screen-game").hidden) return "game";
+    if (!el("screen-bonus").hidden) return "bonus";
+    if (!el("screen-results").hidden) return "results";
+    if (!el("screen-breakdown").hidden) return "breakdown";
+    return "start";
+  }
+
+  function saveState(){
+    try{
+      localStorage.setItem(STORAGE_KEY, JSON.stringify({ mode:mode, players:players, turn:turn, phase:currentPhase() }));
+    }catch(e){}
+  }
+
+  function loadState(){
+    try{
+      var raw = localStorage.getItem(STORAGE_KEY);
+      return raw ? JSON.parse(raw) : null;
+    }catch(e){ return null; }
+  }
+
+  function boot(){
+    var data = loadState();
+    if (data && data.players && data.phase && data.phase !== "start"){
+      mode = data.mode || "team";
+      players = data.players;
+      turn = data.turn || 0;
+      hide("screen-start"); hide("screen-game"); hide("screen-bonus"); hide("screen-results"); hide("screen-breakdown");
+      if (data.phase === "game"){ show("screen-game"); renderQuestion(); }
+      else if (data.phase === "bonus"){ show("screen-bonus"); }
+      else if (data.phase === "results"){ show("screen-results"); goToResults(); }
+      else if (data.phase === "breakdown"){ show("screen-results"); goToResults(); goToBreakdown(); }
+      else { show("screen-start"); }
+    } else {
+      show("screen-start");
+    }
+  }
+
+  boot();
+
+})();
+</script>
+</body>
+</html>
